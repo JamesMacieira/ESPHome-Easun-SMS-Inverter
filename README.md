@@ -1,6 +1,6 @@
 # ESPHome Easun SMS Inverter
 
-![Easun SMS](images/easun_sms_6.5kp.jpeg)
+![Easun SMS](image/Easun SMS 6.5KP.jpg)
 
 An open-source ESPHome integration for Easun SMS Hybrid Inverters.
 
