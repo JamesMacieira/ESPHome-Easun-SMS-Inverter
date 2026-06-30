@@ -1,5 +1,7 @@
 # ESPHome Easun SMS Inverter
 
+![Easun SMS](images/easun_sms_6.5kp.jpeg)
+
 An open-source ESPHome integration for Easun SMS Hybrid Inverters.
 
 This project aims to provide a complete Modbus implementation for the new Easun SMS inverter platform, including documentation, ESPHome configuration, Home Assistant integration and protocol reverse engineering.
