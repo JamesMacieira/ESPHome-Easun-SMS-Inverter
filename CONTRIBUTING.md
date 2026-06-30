@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks to Easun Support Team to provide the oficial Modbus Chart Documentation
+Thanks to Easun Support Team to provide the official Modbus Chart Documentation
 
 Contributions are welcome.
 
