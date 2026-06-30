@@ -1,32 +1,58 @@
 # ESPHome Easun SMS Inverter
 
-An open-source ESPHome integration and Modbus documentation project for Easun SMS hybrid inverters.
+An open-source ESPHome integration for Easun SMS Hybrid Inverters.
 
-This project provides a complete English translation of the official Modbus protocol supplied by Easun together with ready-to-use ESPHome configurations.
+This project aims to provide a complete Modbus implementation for the new Easun SMS inverter platform, including documentation, ESPHome configuration, Home Assistant integration and protocol reverse engineering.
 
-## Features
+## Current Status
 
-* Official Modbus register documentation (English)
-* ESPHome configuration packages
-* Home Assistant ready
-* Battery, PV, Grid and Output monitoring
-* Alarm and warning decoding
-* Read/Write configuration registers
-* Community driven
+🚧 Early development
+
+The project is currently focused on:
+
+- Translating the official Modbus documentation
+- Mapping every register
+- Building a native ESPHome configuration
+- Testing on real hardware
 
 ## Supported Models
 
-Current focus:
+Currently tested:
 
-* Easun SMS-6.2KP-W
-* Easun SMS-6.5KP-W-E
+- Easun SMS-6.2KP-W
 
-Additional CVTE-based models will be added as they are verified.
+Planned:
 
-## Project Goals
+- SMS-6.5KP-W-E
+- Other CVTE based models
 
-* Translate the official Modbus documentation
-* Create a complete ESPHome package
-* Document every Modbus register
-* Support Home Assistant auto-discovery
-* Build an open community knowledge base
+## Repository Structure
+
+/docs
+Technical documentation
+
+/modbus
+Official Modbus documentation and translated register database
+
+/esphome
+ESPHome packages
+
+/research
+Notes, firmware information and protocol analysis
+
+/tools
+Utilities used during development
+
+## Goals
+
+✔ Complete Modbus register map
+
+✔ ESPHome native integration
+
+✔ Home Assistant ready
+
+✔ Alarm decoding
+
+✔ Configuration registers
+
+✔ Community documentation
