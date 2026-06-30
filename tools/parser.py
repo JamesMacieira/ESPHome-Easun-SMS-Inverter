@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from openpyxl import load_workbook
+from openpyxl.worksheet.worksheet import Worksheet
 
 
 class ExcelParser:
@@ -18,6 +19,10 @@ class ExcelParser:
             data_only=True
         )
 
-    def worksheet_names(self):
+    def worksheet_names(self) -> list[str]:
 
         return self.workbook.sheetnames
+
+    def worksheet(self, name: str) -> Worksheet:
+
+        return self.workbook[name]
