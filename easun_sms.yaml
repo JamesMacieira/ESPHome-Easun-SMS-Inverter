@@ -1,4 +1,4 @@
-# Safe, read-only telemetry modules for the Easun SMS CVTE protocol.
+﻿# Safe, read-only telemetry modules for the Easun SMS CVTE protocol.
 # Writable user settings are deliberately not included until they are validated
 # against a physical inverter.
 packages:
