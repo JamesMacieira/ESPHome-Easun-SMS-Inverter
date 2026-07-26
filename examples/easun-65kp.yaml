@@ -81,7 +81,7 @@ modbus_controller:
 packages:
 
   easun_sms:
-    url: https://github.com/JamesMacieira/ESPHome-Easun-SMS-Inverter$0
+    url: https://github.com/JamesMacieira/ESPHome-Easun-SMS-Inverter
     ref: main
     files:
       - easun_sms.yaml

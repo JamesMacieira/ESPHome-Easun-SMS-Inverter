@@ -1,6 +1,6 @@
 # ESPHome Easun SMS Inverter
 
-![Easun SMS](image/Easun_SMS_6.5KP.jpg)
+![Easun SMS](images/Easun%20SMS%206.5KP.jpg)
 
 An open-source ESPHome integration for Easun SMS Hybrid Inverters.
 
@@ -30,23 +30,11 @@ Planned:
 
 ## Repository Structure
 
-/docs
-Technical documentation
-
-/modbus
-Official Modbus documentation and translated register database
-
-/esphome
-ESPHome packages
-
-/research
-Notes, firmware information and protocol analysis
-
-/tools
-Utilities used during development
-
-/esphome/packages/easun_sms
-Generated, reusable ESPHome Modbus package
+- `docs/` — official Modbus workbooks; `CVTE_Modbus_v1.20 - simplex.xlsx` is the clean reference.
+- `modules/` — ESPHome telemetry modules.
+- `easun_sms.yaml` — package that combines the available, read-only modules.
+- `examples/` — complete device configurations.
+- `tools/` — conversion and generation utilities.
 
 ## Goals
 
@@ -62,26 +50,25 @@ Generated, reusable ESPHome Modbus package
 
 ✔ Community documentation
 
-## ESPHome package generated from the Excel map
+## Install the ESPHome package
 
-The complete safe read-only map is generated directly from
-`modbus/original/CVTE_Modbus_v1.20 - simplex.xlsx`, the cleaned version of
-the original protocol workbook. It provides the documented runtime entities,
-grouped by the worksheet that defines them.
+The safe, read-only telemetry modules are derived from
+`docs/CVTE_Modbus_v1.20 - simplex.xlsx`.
 
-Add the package to an ESPHome configuration:
+Add this package to a device configuration that already defines the `uart`,
+`modbus`, and `modbus_controller` IDs used by the package (`uart_0`,
+`modbus_0`, and `sms_0`):
 
 ```yaml
-substitutions:
-  friendly_name: Easun SMS
-  tx_pin: GPIO16
-  rx_pin: GPIO17
-
 packages:
-  transport: !include esphome/packages/easun_sms/base.yaml
-  telemetry: !include esphome/packages/easun_sms/telemetry.yaml
+  easun_sms:
+    url: https://github.com/JamesMacieira/ESPHome-Easun-SMS-Inverter
+    ref: main
+    files:
+      - easun_sms.yaml
 ```
 
-See `esphome/packages/easun_sms/README.md` for scope and regeneration
-instructions. Factory, calibration, drive-test and firmware-update registers
-are intentionally not published as Home Assistant controls.
+See `examples/easun-65kp.yaml` for a complete starting configuration.
+Factory, calibration, drive-test, OTA, and writable user-setting registers are
+intentionally not published as Home Assistant controls until validated on real
+hardware.
