@@ -1,0 +1,107 @@
+###############################################################################
+# WF_THERMAL
+###############################################################################
+
+binary_sensor:
+
+  - platform: template
+    id: fan_fault
+    name: "Fan Fault"
+    device_class: problem
+    lambda: |-
+      return id(fan_status_raw).state != 0;
+
+sensor:
+
+###############################################################################
+# Fan
+###############################################################################
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: fan_speed
+    name: "Fan Speed"
+    address: 0x0320
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "%"
+    state_class: measurement
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: fan_status_raw
+    internal: true
+    address: 0x0321
+    register_type: holding
+    value_type: U_WORD
+
+###############################################################################
+# Temperatures
+###############################################################################
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv_temperature
+    name: "PV Temperature"
+    address: 0x0330
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "°C"
+    device_class: temperature
+    state_class: measurement
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: inverter_temperature
+    name: "Inverter Temperature"
+    address: 0x0331
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "°C"
+    device_class: temperature
+    state_class: measurement
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: charger_temperature
+    name: "Charger Temperature"
+    address: 0x0332
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "°C"
+    device_class: temperature
+    state_class: measurement
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: charger2_temperature
+    name: "Charger 2 Temperature"
+    address: 0x0333
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "°C"
+    device_class: temperature
+    state_class: measurement
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: ambient_temperature
+    name: "Ambient Temperature"
+    address: 0x0334
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "°C"
+    device_class: temperature
+    state_class: measurement
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: discharge_temperature
+    name: "Discharge Temperature"
+    address: 0x0335
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "°C"
+    device_class: temperature
+    state_class: measurement
+    

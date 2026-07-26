@@ -1,0 +1,214 @@
+# Generated from CVTE_Modbus_v1.20 - simplex.xlsx. Do not edit by hand.
+# Source worksheet: WF_BMS
+sensor:
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: bms_0190_communication_protocol
+    name: "${friendly_name} Communication Protocol"
+    address: 0x0190
+    register_type: holding
+    value_type: U_WORD
+    entity_category: diagnostic
+    # reserve
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: bms_0191_communication_status
+    name: "${friendly_name} Communication status"
+    address: 0x0191
+    register_type: holding
+    value_type: U_WORD
+    entity_category: diagnostic
+    # 0: ID search in progress 1: ID remote lock 2: ID lock
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: bms_0192_package_id
+    name: "${friendly_name} Package ID"
+    address: 0x0192
+    register_type: holding
+    value_type: U_WORD
+    entity_category: diagnostic
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: bms_0193_voltage
+    name: "${friendly_name} Voltage"
+    address: 0x0193
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "V"
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: bms_0194_current
+    name: "${friendly_name} Current"
+    address: 0x0194
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "A"
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: bms_0195_temperature
+    name: "${friendly_name} temperature"
+    address: 0x0195
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "°C"
+    device_class: temperature
+    state_class: measurement
+    accuracy_decimals: 0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: bms_0196_soc
+    name: "${friendly_name} SOC"
+    address: 0x0196
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "%"
+    device_class: battery
+    state_class: measurement
+    accuracy_decimals: 0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: bms_0197_soh
+    name: "${friendly_name} SOH"
+    address: 0x0197
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "%"
+    state_class: measurement
+    accuracy_decimals: 0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: bms_0198_current_capacity
+    name: "${friendly_name} Current capacity"
+    address: 0x0198
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "mAh"
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: bms_0199_full_charge_capacity
+    name: "${friendly_name} Full charge capacity"
+    address: 0x0199
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "mAh"
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: bms_019a_cv_points
+    name: "${friendly_name} CV points"
+    address: 0x019A
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "V"
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: bms_019b_maximum_charging_current
+    name: "${friendly_name} Maximum charging current"
+    address: 0x019B
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "A"
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: bms_019c_maximum_discharge_current
+    name: "${friendly_name} Maximum discharge current"
+    address: 0x019C
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "A"
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: bms_019d_low_soc_alarm_points
+    name: "${friendly_name} Low SOC alarm points"
+    address: 0x019D
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "%"
+    device_class: battery
+    state_class: measurement
+    accuracy_decimals: 0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: bms_019e_low_soc_shutdown_point
+    name: "${friendly_name} Low SOC shutdown point"
+    address: 0x019E
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "%"
+    device_class: battery
+    state_class: measurement
+    accuracy_decimals: 0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: bms_019f_low_soc_switching_point
+    name: "${friendly_name} Low SOC switching point"
+    address: 0x019F
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "V"
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+    # reserve
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: bms_01a0_high_soc_cut_battery_power
+    name: "${friendly_name} High SOC cut battery power"
+    address: 0x01A0
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "V"
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+    # reserve
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: bms_01a1_alarm
+    name: "${friendly_name} Alarm"
+    address: 0x01A1
+    register_type: holding
+    value_type: U_WORD
+    entity_category: diagnostic
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: bms_01a2_mistake
+    name: "${friendly_name} mistake"
+    address: 0x01A2
+    register_type: holding
+    value_type: U_WORD
+    entity_category: diagnostic

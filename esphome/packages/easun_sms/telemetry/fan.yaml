@@ -1,0 +1,22 @@
+# Generated from CVTE_Modbus_v1.20 - simplex.xlsx. Do not edit by hand.
+# Source worksheet: WF_FAN
+sensor:
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: fan_0320_fan_speed
+    name: "${friendly_name} Fan speed"
+    address: 0x0320
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "%"
+    state_class: measurement
+    accuracy_decimals: 0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: fan_0321_fan_status
+    name: "${friendly_name} Fan status"
+    address: 0x0321
+    register_type: holding
+    value_type: U_WORD
+    entity_category: diagnostic
+    # A non-zero value indicates a stalled turn.

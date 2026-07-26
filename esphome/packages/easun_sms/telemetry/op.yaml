@@ -1,0 +1,592 @@
+# Generated from CVTE_Modbus_v1.20 - simplex.xlsx. Do not edit by hand.
+# Source worksheet: WF_OP
+sensor:
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0210_output_priority
+    name: "${friendly_name} Output priority"
+    address: 0x0210
+    register_type: holding
+    value_type: U_WORD
+    entity_category: diagnostic
+    # 0:GPB 1:PGB 2:PBG 3:MKS
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0211_operating_mode
+    name: "${friendly_name} Operating mode"
+    address: 0x0211
+    register_type: holding
+    value_type: U_WORD
+    entity_category: diagnostic
+    # 0:APP 1:UPS 2:GEN
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0218_a_phase_output_voltage
+    name: "${friendly_name} A-phase output voltage"
+    address: 0x0218
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "V"
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0219_phase_a_output_frequency
+    name: "${friendly_name} Phase A output frequency"
+    address: 0x0219
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "Hz"
+    device_class: frequency
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_021a_phase_a_output_current
+    name: "${friendly_name} Phase A output current"
+    address: 0x021A
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "A"
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_021b_phase_a_outputs_a_small_current
+    name: "${friendly_name} Phase A outputs a small current."
+    address: 0x021B
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "A"
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+    # reserve
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_021c_phase_a_output_active_power
+    name: "${friendly_name} Phase A output active power"
+    address: 0x021C
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_021d_apparent_power_output_of_phase_a
+    name: "${friendly_name} Apparent power output of phase A"
+    address: 0x021D
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0220_phase_a_load_percentage
+    name: "${friendly_name} Phase A load percentage"
+    address: 0x0220
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "%"
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0221_a_equivalent_daily_output_power_h
+    name: "${friendly_name} A equivalent daily output power H"
+    address: 0x0221
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "Wh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0222_a_equivalent_daily_output_power_l
+    name: "${friendly_name} A equivalent daily output power L"
+    address: 0x0222
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "Wh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0223_a_is_equivalent_to_monthly_output_power_h
+    name: "${friendly_name} A is equivalent to monthly output power H"
+    address: 0x0223
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "Wh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0224_a_is_equivalent_to_monthly_power_output_l
+    name: "${friendly_name} A is equivalent to monthly power output L"
+    address: 0x0224
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "Wh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0225_a_equivalent_annual_power_output_h
+    name: "${friendly_name} A equivalent annual power output H"
+    address: 0x0225
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "Wh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0226_a_equivalent_annual_power_output_l
+    name: "${friendly_name} A equivalent annual power output L"
+    address: 0x0226
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "Wh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0227_phase_a_total_output_power_h
+    name: "${friendly_name} Phase A total output power H"
+    address: 0x0227
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "Wh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0228_phase_a_total_output_power_l
+    name: "${friendly_name} Phase A total output power L"
+    address: 0x0228
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "Wh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0230_b_phase_output_voltage
+    name: "${friendly_name} B-phase output voltage"
+    address: 0x0230
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "V"
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0231_b_phase_output_frequency
+    name: "${friendly_name} B-phase output frequency"
+    address: 0x0231
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "Hz"
+    device_class: frequency
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0232_b_phase_output_current
+    name: "${friendly_name} B-phase output current"
+    address: 0x0232
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "A"
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0233_b_phase_outputs_a_small_current
+    name: "${friendly_name} B-phase outputs a small current."
+    address: 0x0233
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "A"
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0234_phase_b_output_active_power
+    name: "${friendly_name} Phase B output active power"
+    address: 0x0234
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0235_phase_b_output_apparent_power
+    name: "${friendly_name} Phase B output apparent power"
+    address: 0x0235
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0238_phase_b_load_percentage
+    name: "${friendly_name} Phase B load percentage"
+    address: 0x0238
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "%"
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0239_b_is_equivalent_to_daily_output_power_h
+    name: "${friendly_name} B is equivalent to daily output power H"
+    address: 0x0239
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "Wh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_023a_b_is_equivalent_to_daily_output_power_l
+    name: "${friendly_name} B is equivalent to daily output power L"
+    address: 0x023A
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "Wh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_023b_b_is_equivalent_to_monthly_output_power_h
+    name: "${friendly_name} B is equivalent to monthly output power H"
+    address: 0x023B
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "Wh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_023c_b_is_equivalent_to_monthly_output_power_l
+    name: "${friendly_name} B is equivalent to monthly output power L"
+    address: 0x023C
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "Wh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_023d_b_is_equivalent_to_annual_power_output_h
+    name: "${friendly_name} B is equivalent to annual power output H"
+    address: 0x023D
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "Wh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_023e_b_is_equivalent_to_annual_power_output_l
+    name: "${friendly_name} B is equivalent to annual power output L"
+    address: 0x023E
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "Wh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_023f_b_phase_total_output_power_h
+    name: "${friendly_name} B-phase total output power H"
+    address: 0x023F
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "Wh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0240_phase_b_total_output_power_l
+    name: "${friendly_name} Phase B total output power L"
+    address: 0x0240
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "Wh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0248_c_phase_output_voltage
+    name: "${friendly_name} C-phase output voltage"
+    address: 0x0248
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "V"
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0249_c_phase_output_frequency
+    name: "${friendly_name} C-phase output frequency"
+    address: 0x0249
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "Hz"
+    device_class: frequency
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_024a_c_phase_output_current
+    name: "${friendly_name} C-phase output current"
+    address: 0x024A
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "A"
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_024b_c_phase_outputs_a_small_current
+    name: "${friendly_name} C-phase outputs a small current."
+    address: 0x024B
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "A"
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_024c_c_phase_output_active_power
+    name: "${friendly_name} C-phase output active power"
+    address: 0x024C
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_024d_c_phase_output_apparent_power
+    name: "${friendly_name} C-phase output apparent power"
+    address: 0x024D
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0250_c_phase_load_percentage
+    name: "${friendly_name} C-phase load percentage"
+    address: 0x0250
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "%"
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0251_c_is_equivalent_to_daily_output_power_h
+    name: "${friendly_name} C is equivalent to daily output power H"
+    address: 0x0251
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "Wh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0252_c_equivalent_daily_output_power_l
+    name: "${friendly_name} C Equivalent daily output power L"
+    address: 0x0252
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "Wh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0253_c_is_equivalent_to_monthly_output_power_h
+    name: "${friendly_name} C is equivalent to monthly output power H"
+    address: 0x0253
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "Wh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0254_c_is_equivalent_to_monthly_output_power_l
+    name: "${friendly_name} C is equivalent to monthly output power L"
+    address: 0x0254
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "Wh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0255_c_equivalent_annual_power_output_h
+    name: "${friendly_name} C equivalent annual power output H"
+    address: 0x0255
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "Wh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0256_c_is_equivalent_to_annual_power_output_l
+    name: "${friendly_name} C is equivalent to annual power output L"
+    address: 0x0256
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "Wh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0257_c_phase_total_output_power_h
+    name: "${friendly_name} C-phase total output power H"
+    address: 0x0257
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "Wh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: op_0258_c_phase_total_output_power_l
+    name: "${friendly_name} C-phase total output power L"
+    address: 0x0258
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "Wh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0

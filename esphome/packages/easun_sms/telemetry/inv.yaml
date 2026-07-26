@@ -1,0 +1,485 @@
+# Generated from CVTE_Modbus_v1.20 - simplex.xlsx. Do not edit by hand.
+# Source worksheet: WF_INV
+sensor:
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02a0_inverter_voltage_setting_value
+    name: "${friendly_name} Inverter voltage setting value"
+    address: 0x02A0
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "Hz"
+    device_class: frequency
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02a1_inverter_frequency_setting_value
+    name: "${friendly_name} Inverter frequency setting value"
+    address: 0x02A1
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "Hz"
+    device_class: frequency
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02aa_a_phase_inverter_voltage
+    name: "${friendly_name} A-phase inverter voltage"
+    address: 0x02AA
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "V"
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02ab_a_phase_inverter_frequency
+    name: "${friendly_name} A-phase inverter frequency"
+    address: 0x02AB
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "Hz"
+    device_class: frequency
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02ac_a_phase_inverter_current
+    name: "${friendly_name} A-phase inverter current"
+    address: 0x02AC
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "A"
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02ad_phase_a_dc_component
+    name: "${friendly_name} Phase A DC component"
+    address: 0x02AD
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "mV"
+    accuracy_decimals: 0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02ae_phase_a_daily_input_power_h
+    name: "${friendly_name} Phase A Daily Input Power H"
+    address: 0x02AE
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02af_phase_a_daily_input_power_l
+    name: "${friendly_name} Phase A Daily Input Power L"
+    address: 0x02AF
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02b0_phase_a_monthly_input_power_h
+    name: "${friendly_name} Phase A Monthly Input Power H"
+    address: 0x02B0
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02b1_phase_a_monthly_input_power_l
+    name: "${friendly_name} Phase A Monthly Input Power L"
+    address: 0x02B1
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02b2_phase_a_total_input_power_h
+    name: "${friendly_name} Phase A total input power H"
+    address: 0x02B2
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02b3_phase_a_total_input_power_l
+    name: "${friendly_name} Phase A total input power L"
+    address: 0x02B3
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02b4_phase_a_daily_output_power_h
+    name: "${friendly_name} Phase A daily output power H"
+    address: 0x02B4
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02b5_phase_a_daily_output_power_l
+    name: "${friendly_name} Phase A daily output power L"
+    address: 0x02B5
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02b6_phase_a_output_power_h
+    name: "${friendly_name} Phase A output power H"
+    address: 0x02B6
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02b7_phase_a_output_power_l
+    name: "${friendly_name} Phase A output power L"
+    address: 0x02B7
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02b8_phase_a_total_output_power_h
+    name: "${friendly_name} Phase A total output power H"
+    address: 0x02B8
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02b9_phase_a_total_output_power_l
+    name: "${friendly_name} Phase A total output power L"
+    address: 0x02B9
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02ba_b_phase_inverter_voltage
+    name: "${friendly_name} B-phase inverter voltage"
+    address: 0x02BA
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "V"
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02bb_b_phase_inverter_frequency
+    name: "${friendly_name} B-phase inverter frequency"
+    address: 0x02BB
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "Hz"
+    device_class: frequency
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02bc_b_phase_inverter_current
+    name: "${friendly_name} B-phase inverter current"
+    address: 0x02BC
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "A"
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02bd_phase_b_dc_component
+    name: "${friendly_name} Phase B DC component"
+    address: 0x02BD
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "mV"
+    accuracy_decimals: 0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02c0_b_phase_daily_feeder_power_h
+    name: "${friendly_name} B-phase daily feeder power H"
+    address: 0x02C0
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02c1_b_phase_daily_feeder_power_l
+    name: "${friendly_name} B-phase daily feeder power L"
+    address: 0x02C1
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02c2_b_phase_monthly_feeder_power_h
+    name: "${friendly_name} B-phase monthly feeder power H"
+    address: 0x02C2
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02c3_b_phase_monthly_feeder_power_l
+    name: "${friendly_name} B-phase monthly feeder power L"
+    address: 0x02C3
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02c4_b_phase_total_grid_power_h
+    name: "${friendly_name} B-phase total grid power H"
+    address: 0x02C4
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02c5_b_phase_total_power_supply_l
+    name: "${friendly_name} B-phase total power supply L"
+    address: 0x02C5
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02ca_c_phase_inverter_voltage
+    name: "${friendly_name} C-phase inverter voltage"
+    address: 0x02CA
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "V"
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02cb_c_phase_inverter_frequency
+    name: "${friendly_name} C-phase inverter frequency"
+    address: 0x02CB
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "Hz"
+    device_class: frequency
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02cc_c_phase_inverter_current
+    name: "${friendly_name} C-phase inverter current"
+    address: 0x02CC
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "A"
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02cd_c_phase_dc_component
+    name: "${friendly_name} C-phase DC component"
+    address: 0x02CD
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "mV"
+    accuracy_decimals: 0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02d0_c_phase_daily_feeder_power_h
+    name: "${friendly_name} C-phase daily feeder power H"
+    address: 0x02D0
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02d1_c_phase_daily_feeder_power_l
+    name: "${friendly_name} C-phase daily feeder power L"
+    address: 0x02D1
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02d2_c_phase_monthly_feeder_power_h
+    name: "${friendly_name} C-phase monthly feeder power H"
+    address: 0x02D2
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02d3_c_phase_monthly_power_supply_l
+    name: "${friendly_name} C-phase monthly power supply L"
+    address: 0x02D3
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02d4_c_phase_total_grid_power_h
+    name: "${friendly_name} C-phase total grid power H"
+    address: 0x02D4
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: inv_02d5_c_phase_total_grid_power_l
+    name: "${friendly_name} C-phase total grid power L"
+    address: 0x02D5
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 0
+    filters:
+      - multiply: 10.0

@@ -1,0 +1,69 @@
+# Generated from CVTE_Modbus_v1.20 - simplex.xlsx. Do not edit by hand.
+# Source worksheet: WF_NTC
+sensor:
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: ntc_0330_pv_temperature
+    name: "${friendly_name} PV temperature"
+    address: 0x0330
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "°C"
+    device_class: temperature
+    state_class: measurement
+    accuracy_decimals: 0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: ntc_0331_inv_temperature
+    name: "${friendly_name} INV temperature"
+    address: 0x0331
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "°C"
+    device_class: temperature
+    state_class: measurement
+    accuracy_decimals: 0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: ntc_0332_chg_temperature
+    name: "${friendly_name} CHG temperature"
+    address: 0x0332
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "°C"
+    device_class: temperature
+    state_class: measurement
+    accuracy_decimals: 0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: ntc_0333_chg2_temperature
+    name: "${friendly_name} CHG2 temperature"
+    address: 0x0333
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "°C"
+    device_class: temperature
+    state_class: measurement
+    accuracy_decimals: 0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: ntc_0334_ambient_temperature
+    name: "${friendly_name} Ambient temperature"
+    address: 0x0334
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "°C"
+    device_class: temperature
+    state_class: measurement
+    accuracy_decimals: 0
+  - platform: modbus_controller
+    modbus_controller_id: easun_sms
+    id: ntc_0335_dis_chg_temperature
+    name: "${friendly_name} DIS_CHG temperature"
+    address: 0x0335
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "°C"
+    device_class: temperature
+    state_class: measurement
+    accuracy_decimals: 0

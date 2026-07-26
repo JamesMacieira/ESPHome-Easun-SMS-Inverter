@@ -1,0 +1,410 @@
+sensor:
+
+#
+# RAW STATUS
+#
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv_total_tracking_status_raw
+    internal: true
+    address: 0x0265
+    register_type: holding
+    value_type: U_WORD
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv_total_recharge_state_raw
+    internal: true
+    address: 0x0266
+    register_type: holding
+    value_type: U_WORD
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv1_tracking_status_raw
+    internal: true
+    address: 0x0273
+    register_type: holding
+    value_type: U_WORD
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv1_recharge_state_raw
+    internal: true
+    address: 0x0274
+    register_type: holding
+    value_type: U_WORD
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv2_tracking_status_raw
+    internal: true
+    address: 0x0283
+    register_type: holding
+    value_type: U_WORD
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv2_recharge_state_raw
+    internal: true
+    address: 0x0284
+    register_type: holding
+    value_type: U_WORD
+
+#
+# TOTAL PV
+#
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv_total_voltage
+    name: "PV Total Voltage"
+    address: 0x0260
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: V
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv_total_current
+    name: "PV Total Current"
+    address: 0x0261
+    register_count: 2
+    register_type: holding
+    value_type: U_DWORD
+    unit_of_measurement: A
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv_total_power
+    name: "PV Total Power"
+    address: 0x0263
+    register_count: 2
+    register_type: holding
+    value_type: U_DWORD
+    unit_of_measurement: W
+    device_class: power
+    state_class: measurement
+
+#
+# TOTAL ENERGY
+#
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv_daily_energy
+    name: "PV Daily Energy"
+    address: 0x0267
+    register_count: 2
+    register_type: holding
+    value_type: U_DWORD
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv_monthly_energy
+    name: "PV Monthly Energy"
+    address: 0x0269
+    register_count: 2
+    register_type: holding
+    value_type: U_DWORD
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv_yearly_energy
+    name: "PV Yearly Energy"
+    address: 0x026B
+    register_count: 2
+    register_type: holding
+    value_type: U_DWORD
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv_total_energy
+    name: "PV Total Energy"
+    address: 0x026D
+    register_count: 2
+    register_type: holding
+    value_type: U_DWORD
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+
+#
+# PV1
+#
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv1_voltage
+    name: "PV1 Voltage"
+    address: 0x0270
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: V
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 1
+    filters: [{multiply: 0.1}]
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv1_current
+    name: "PV1 Current"
+    address: 0x0271
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: A
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 2
+    filters: [{multiply: 0.01}]
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv1_power
+    name: "PV1 Power"
+    address: 0x0272
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: W
+    device_class: power
+    state_class: measurement
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv1_daily_energy
+    name: "PV1 Daily Energy"
+    address: 0x0275
+    register_count: 2
+    register_type: holding
+    value_type: U_DWORD
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+    filters: [{multiply: 0.01}]
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv1_monthly_energy
+    name: "PV1 Monthly Energy"
+    address: 0x0277
+    register_count: 2
+    register_type: holding
+    value_type: U_DWORD
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+    filters: [{multiply: 0.01}]
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv1_yearly_energy
+    name: "PV1 Yearly Energy"
+    address: 0x0279
+    register_count: 2
+    register_type: holding
+    value_type: U_DWORD
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+    filters: [{multiply: 0.01}]
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv1_total_energy
+    name: "PV1 Total Energy"
+    address: 0x027B
+    register_count: 2
+    register_type: holding
+    value_type: U_DWORD
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+    filters: [{multiply: 0.01}]
+
+#
+# PV2
+#
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv2_voltage
+    name: "PV2 Voltage"
+    address: 0x0280
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: V
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 1
+    filters: [{multiply: 0.1}]
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv2_current
+    name: "PV2 Current"
+    address: 0x0281
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: A
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 2
+    filters: [{multiply: 0.01}]
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv2_power
+    name: "PV2 Power"
+    address: 0x0282
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: W
+    device_class: power
+    state_class: measurement
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv2_daily_energy
+    name: "PV2 Daily Energy"
+    address: 0x0285
+    register_count: 2
+    register_type: holding
+    value_type: U_DWORD
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+    filters: [{multiply: 0.01}]
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv2_monthly_energy
+    name: "PV2 Monthly Energy"
+    address: 0x0287
+    register_count: 2
+    register_type: holding
+    value_type: U_DWORD
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+    filters: [{multiply: 0.01}]
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv2_yearly_energy
+    name: "PV2 Yearly Energy"
+    address: 0x0289
+    register_count: 2
+    register_type: holding
+    value_type: U_DWORD
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+    filters: [{multiply: 0.01}]
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv2_total_energy
+    name: "PV2 Total Energy"
+    address: 0x028B
+    register_count: 2
+    register_type: holding
+    value_type: U_DWORD
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+    filters: [{multiply: 0.01}]
+
+text_sensor:
+
+  - platform: template
+    id: pv_total_tracking_status
+    name: "PV Total Tracking Status"
+    lambda: |-
+      switch ((uint16_t)id(pv_total_tracking_status_raw).state) {
+        case 0: return {"Idle"};
+        case 1: return {"MPPT"};
+        default: return {"Unknown"};
+      }
+
+  - platform: template
+    id: pv_total_recharge_state
+    name: "PV Total Recharge State"
+    lambda: |-
+      switch ((uint16_t)id(pv_total_recharge_state_raw).state) {
+        case 0: return {"Disabled"};
+        case 1: return {"Charging"};
+        default: return {"Unknown"};
+      }
+
+  - platform: template
+    id: pv1_tracking_status
+    name: "PV1 Tracking Status"
+    lambda: |-
+      switch ((uint16_t)id(pv1_tracking_status_raw).state) {
+        case 0: return {"Idle"};
+        case 1: return {"MPPT"};
+        default: return {"Unknown"};
+      }
+
+  - platform: template
+    id: pv1_recharge_state
+    name: "PV1 Recharge State"
+    lambda: |-
+      switch ((uint16_t)id(pv1_recharge_state_raw).state) {
+        case 0: return {"Disabled"};
+        case 1: return {"Charging"};
+        default: return {"Unknown"};
+      }
+
+  - platform: template
+    id: pv2_tracking_status
+    name: "PV2 Tracking Status"
+    lambda: |-
+      switch ((uint16_t)id(pv2_tracking_status_raw).state) {
+        case 0: return {"Idle"};
+        case 1: return {"MPPT"};
+        default: return {"Unknown"};
+      }
+
+  - platform: template
+    id: pv2_recharge_state
+    name: "PV2 Recharge State"
+    lambda: |-
+      switch ((uint16_t)id(pv2_recharge_state_raw).state) {
+        case 0: return {"Disabled"};
+        case 1: return {"Charging"};
+        default: return {"Unknown"};
+      }

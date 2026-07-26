@@ -1,0 +1,613 @@
+###############################################################################
+# WF_Simplify
+# Faults / Alarms
+###############################################################################
+
+sensor:
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: fault_code_1
+    name: "Fault Code 1"
+    address: 0x0046
+    register_type: holding
+    value_type: U_WORD
+    entity_category: diagnostic
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: fault_code_2
+    name: "Fault Code 2"
+    address: 0x0047
+    register_type: holding
+    value_type: U_WORD
+    entity_category: diagnostic
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: alarm_code_1
+    name: "Alarm code 1"
+    address: 0x0048
+    register_type: holding
+    value_type: U_WORD
+    entity_category: diagnostic
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: alarm_code_2
+    name: "Alarm code 2"
+    address: 0x0049
+    register_type: holding
+    value_type: U_WORD
+    entity_category: diagnostic
+
+binary_sensor:
+  - platform: template
+    name: "Mains soft start failure"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(fault_code_1).state & (1 << 0));
+
+  - platform: template
+    name: "Overtemperature"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(fault_code_1).state & (1 << 4));
+
+  - platform: template
+    name: "Inverter soft start failure"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(fault_code_1).state & (1 << 8));
+
+  - platform: template
+    name: "Inverter overvoltage"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(fault_code_1).state & (1 << 9));
+
+  - platform: template
+    name: "Inverter undervoltage"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(fault_code_1).state & (1 << 10));
+
+  - platform: template
+    name: "Inverter short circuit"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(fault_code_1).state & (1 << 11));
+
+  - platform: template
+    name: "Negative power protection"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(fault_code_1).state & (1 << 12));
+
+  - platform: template
+    name: "Overload failure"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(fault_code_1).state & (1 << 13));
+
+  - platform: template
+    name: "Unit model and hardware incompatibility"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(fault_code_1).state & (1 << 14));
+
+  - platform: template
+    name: "No bootloader"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(fault_code_1).state & (1 << 15));
+
+  - platform: template
+    name: "Programming in progress"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(fault_code_2).state & (1 << 0));
+
+  - platform: template
+    name: "Photovoltaic reverse connection"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(fault_code_2).state & (1 << 1));
+
+  - platform: template
+    name: "Parallel serial number abnormal"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(fault_code_2).state & (1 << 2));
+
+  - platform: template
+    name: "Parallel communication abnormal"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(fault_code_2).state & (1 << 3));
+
+  - platform: template
+    name: "Excessive voltage difference between parallel batteries"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(fault_code_2).state & (1 << 4));
+
+  - platform: template
+    name: "Excessive voltage difference between parallel mains"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(fault_code_2).state & (1 << 5));
+
+  - platform: template
+    name: "Excessive frequency difference between parallel mains"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(fault_code_2).state & (1 << 6));
+
+  - platform: template
+    name: "Phase loss in parallel setting"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(fault_code_2).state & (1 << 7));
+
+  - platform: template
+    name: "Loss of parallel output synchronization"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(fault_code_2).state & (1 << 8));
+
+  - platform: template
+    name: "MCU fault"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(fault_code_2).state & (1 << 10));
+
+  - platform: template
+    name: "Reserved"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(fault_code_2).state & (1 << 11));
+
+  - platform: template
+    name: "Inverter load abnormal"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(fault_code_2).state & (1 << 12));
+
+  - platform: template
+    name: "Charger short circuit"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(alarm_code_1).state & (1 << 3));
+
+  - platform: template
+    name: "Reserved"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(alarm_code_1).state & (1 << 4));
+
+  - platform: template
+    name: "Overtemperature"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(alarm_code_1).state & (1 << 7));
+
+  - platform: template
+    name: "Fan stalled"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(alarm_code_1).state & (1 << 8));
+
+  - platform: template
+    name: "EEPROM fault"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(alarm_code_1).state & (1 << 9));
+
+  - platform: template
+    name: "Overload"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(alarm_code_1).state & (1 << 10));
+
+  - platform: template
+    name: "Generator waveform abnormal"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(alarm_code_1).state & (1 << 11));
+
+  - platform: template
+    name: "Weak PV energy"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(alarm_code_1).state & (1 << 12));
+
+  - platform: template
+    name: "Parallel synchronization signal lost"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(alarm_code_1).state & (1 << 13));
+
+  - platform: template
+    name: "Parallel setting phase loss"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(alarm_code_1).state & (1 << 14));
+
+  - platform: template
+    name: "Parallel version incompatible"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(alarm_code_1).state & (1 << 15));
+
+  - platform: template
+    name: "Parallel communication error"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(alarm_code_2).state & (1 << 0));
+
+  - platform: template
+    name: "Excessive voltage difference or frequency in parallel operation"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(alarm_code_2).state & (1 << 1));
+
+  - platform: template
+    name: "Low SOC shutdown"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(alarm_code_2).state & (1 << 2));
+
+  - platform: template
+    name: "Low SOC alarm"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(alarm_code_2).state & (1 << 3));
+
+  - platform: template
+    name: "Excessive battery voltage difference or not connected in parallel operation"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(alarm_code_2).state & (1 << 4));
+
+  - platform: template
+    name: "Generator overload"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(alarm_code_2).state & (1 << 7));
+
+  - platform: template
+    name: "Generator undervoltage"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(alarm_code_2).state & (1 << 8));
+
+  - platform: template
+    name: "Generator overvoltage"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(alarm_code_2).state & (1 << 9));
+
+  - platform: template
+    name: "CT reverse connection"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(alarm_code_2).state & (1 << 10));
+
+  - platform: template
+    name: "Unstable mains power"
+    device_class: problem
+    lambda: |-
+      return ((uint16_t) id(alarm_code_2).state & (1 << 11));
+
+###############################################################################
+# Battery
+###############################################################################
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: battery_positive_voltage
+    name: "Battery Positive Voltage"
+    address: 0x0080
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: V
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: battery_positive_current
+    name: "Battery Positive Current"
+    address: 0x0081
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: A
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: battery_negative_voltage
+    name: "Battery Negative Voltage"
+    address: 0x0082
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: V
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: battery_negative_current
+    name: "Battery Negative Current"
+    address: 0x0083
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: A
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: battery_capacity
+    name: "Battery Capacity"
+    address: 0x0084
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "%"
+    device_class: battery
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: battery_power
+    name: "Battery Power"
+    address: 0x0085
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: W
+    device_class: power
+    state_class: measurement
+
+    ###############################################################################
+# BMS
+###############################################################################
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: bms_voltage
+    name: "BMS Voltage"
+    address: 0x0088
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: V
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: bms_current
+    name: "BMS Current"
+    address: 0x0089
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: A
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: bms_soc
+    name: "BMS SOC"
+    address: 0x008A
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "%"
+    device_class: battery
+    state_class: measurement
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: bms_temperature
+    name: "BMS Temperature"
+    address: 0x008B
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "°C"
+    device_class: temperature
+    state_class: measurement
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: bms_cv_voltage
+    name: "BMS CV Voltage"
+    address: 0x008C
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: V
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: bms_rated_capacity
+    name: "BMS Rated Capacity"
+    address: 0x008D
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: mAh
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: bms_remaining_capacity
+    name: "BMS Remaining Capacity"
+    address: 0x008E
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: mAh
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: bms_communication_status
+    name: "BMS Communication Status"
+    address: 0x008F
+    register_type: holding
+    value_type: U_WORD
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: lithium_network_status
+    name: "Lithium Network Status"
+    address: 0x0090
+    register_type: holding
+    value_type: U_WORD
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: bms_failure
+    name: "BMS Failure"
+    address: 0x0091
+    register_type: holding
+    value_type: U_WORD
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: bms_alarm
+    name: "BMS Alarm"
+    address: 0x0092
+    register_type: holding
+    value_type: U_WORD
+
+###############################################################################
+# PV
+###############################################################################
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv1_voltage
+    name: "PV1 Voltage"
+    address: 0x0096
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: V
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv1_current
+    name: "PV1 Current"
+    address: 0x0097
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: A
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv1_power
+    name: "PV1 Power"
+    address: 0x0098
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: W
+    device_class: power
+    state_class: measurement
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv2_voltage
+    name: "PV2 Voltage"
+    address: 0x0099
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: V
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv2_current
+    name: "PV2 Current"
+    address: 0x009A
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: A
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv2_power
+    name: "PV2 Power"
+    address: 0x009B
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: W
+    device_class: power
+    state_class: measurement
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv_energy_today
+    name: "PV Energy Today"
+    address: 0x009C
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.1
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv_energy_total
+    name: "PV Energy Total"
+    address: 0x009D
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.1    
