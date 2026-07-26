@@ -221,8 +221,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_daily_energy
-    name: "Phase B Daily Energy"
+    id: phase_b_inverter_daily_energy
+    name: "Phase B Inverter Daily Energy"
     address: 0x02C0
     register_count: 2
     register_type: holding
@@ -234,8 +234,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_monthly_energy
-    name: "Phase B Monthly Energy"
+    id: phase_b_inverter_monthly_energy
+    name: "Phase B Inverter Monthly Energy"
     address: 0x02C2
     register_count: 2
     register_type: holding
@@ -247,8 +247,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_total_energy
-    name: "Phase B Total Energy"
+    id: phase_b_inverter_total_energy
+    name: "Phase B Inverter Total Energy"
     address: 0x02C4
     register_count: 2
     register_type: holding
@@ -312,8 +312,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_daily_energy
-    name: "Phase C Daily Energy"
+    id: phase_c_inverter_daily_energy
+    name: "Phase C Inverter Daily Energy"
     address: 0x02D0
     register_count: 2
     register_type: holding
@@ -325,8 +325,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_monthly_energy
-    name: "Phase C Monthly Energy"
+    id: phase_c_inverter_monthly_energy
+    name: "Phase C Inverter Monthly Energy"
     address: 0x02D2
     register_count: 2
     register_type: holding
@@ -338,8 +338,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_total_energy
-    name: "Phase C Total Energy"
+    id: phase_c_inverter_total_energy
+    name: "Phase C Inverter Total Energy"
     address: 0x02D4
     register_count: 2
     register_type: holding

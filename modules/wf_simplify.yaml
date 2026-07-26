@@ -266,8 +266,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_load_percentage
-    name: "Phase A Load Percentage"
+    id: simplify_phase_a_load_percentage
+    name: "Simplified Phase A Load Percentage"
     address: 0x005D
     register_type: holding
     value_type: S_WORD
@@ -453,8 +453,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_load_percentage
-    name: "Phase B Load Percentage"
+    id: simplify_phase_b_load_percentage
+    name: "Simplified Phase B Load Percentage"
     address: 0x006D
     register_type: holding
     value_type: S_WORD
@@ -640,8 +640,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_load_percentage
-    name: "Phase C Load Percentage"
+    id: simplify_phase_c_load_percentage
+    name: "Simplified Phase C Load Percentage"
     address: 0x007D
     register_type: holding
     value_type: S_WORD
@@ -770,8 +770,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_soc
-    name: "BMS SOC"
+    id: simplify_bms_soc
+    name: "Simplified BMS SOC"
     address: 0x008A
     register_type: holding
     value_type: S_WORD
@@ -781,8 +781,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_temperature2
-    name: "BMS Temperature2"
+    id: simplify_bms_temperature
+    name: "Simplified BMS Temperature"
     address: 0x008B
     register_type: holding
     value_type: S_WORD
@@ -815,8 +815,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_current_capacity
-    name: "BMS Current Capacity"
+    id: simplify_bms_current_capacity
+    name: "Simplified BMS Current Capacity"
     address: 0x008E
     register_type: holding
     value_type: U_WORD
@@ -824,8 +824,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_communication_status
-    name: "BMS Communication Status"
+    id: simplify_bms_communication_status
+    name: "Simplified BMS Communication Status"
     address: 0x008F
     register_type: holding
     value_type: U_WORD
@@ -860,8 +860,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: pv1_voltage
-    name: "PV1 Voltage"
+    id: simplify_pv1_voltage
+    name: "Simplified PV1 Voltage"
     address: 0x0096
     register_type: holding
     value_type: S_WORD
@@ -874,8 +874,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: pv1_current
-    name: "PV1 Current"
+    id: simplify_pv1_current
+    name: "Simplified PV1 Current"
     address: 0x0097
     register_type: holding
     value_type: S_WORD
@@ -888,8 +888,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: pv1_power
-    name: "PV1 Power"
+    id: simplify_pv1_power
+    name: "Simplified PV1 Power"
     address: 0x0098
     register_type: holding
     value_type: S_WORD
@@ -899,8 +899,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: pv2_voltage
-    name: "PV2 Voltage"
+    id: simplify_pv2_voltage
+    name: "Simplified PV2 Voltage"
     address: 0x0099
     register_type: holding
     value_type: S_WORD
@@ -913,8 +913,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: pv2_current
-    name: "PV2 Current"
+    id: simplify_pv2_current
+    name: "Simplified PV2 Current"
     address: 0x009A
     register_type: holding
     value_type: S_WORD
@@ -927,8 +927,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: pv2_power
-    name: "PV2 Power"
+    id: simplify_pv2_power
+    name: "Simplified PV2 Power"
     address: 0x009B
     register_type: holding
     value_type: S_WORD
@@ -1069,7 +1069,7 @@ binary_sensor:
     lambda: 'return ((uint16_t)id(fault_code_2).state & (1 << 3));'
 
   - platform: template
-    name: "Parallel Battery Voltage Difference"
+    name: "Fault: Parallel Battery Voltage Difference"
     device_class: problem
     lambda: 'return ((uint16_t)id(fault_code_2).state & (1 << 4));'
 
@@ -1212,7 +1212,7 @@ binary_sensor:
     lambda: 'return ((uint16_t)id(alarm_code_2).state & (1 << 3));'
 
   - platform: template
-    name: "Parallel Battery Voltage Difference"
+    name: "Alarm: Parallel Battery Voltage Difference"
     device_class: problem
     lambda: 'return ((uint16_t)id(alarm_code_2).state & (1 << 4));'
 

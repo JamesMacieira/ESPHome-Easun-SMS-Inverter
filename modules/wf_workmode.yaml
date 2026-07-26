@@ -41,10 +41,10 @@ text_sensor:
 ###############################################################################
 
   - platform: template
-    id: output_priority
-    name: "Output Priority"
+    id: workmode_output_priority
+    name: "Work Mode Output Priority"
     lambda: |-
-      switch ((uint16_t)id(output_priority_raw).state) {
+      switch ((uint16_t)id(workmode_output_priority_raw).state) {
         case 0: return {"GBP"};
         case 1: return {"PGB"};
         case 2: return {"PBG"};
@@ -110,7 +110,7 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: output_priority_raw
+    id: workmode_output_priority_raw
     internal: true
     address: 0x0142
     register_type: holding
