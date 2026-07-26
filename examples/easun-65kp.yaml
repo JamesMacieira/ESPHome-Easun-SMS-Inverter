@@ -44,8 +44,8 @@ ota:
     password: "xxxxxxxxxxxxxx"
 
 wifi:
-  ssid: !secret wifi_ssid
-  password: !secret wifi_password
+  ssid: xxxxxxx
+  password: xxxxxxx
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
@@ -80,12 +80,8 @@ modbus_controller:
 
 packages:
 
-  easun_sns:
-
+  easun_sms:
     url: https://github.com/JamesMacieira/ESPHome-Easun-SMS-Inverter$0
-
     ref: main
-
     files:
-
-      - easun_sns.yaml
+      - easun_sms.yaml

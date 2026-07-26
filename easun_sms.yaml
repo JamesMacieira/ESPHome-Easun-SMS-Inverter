@@ -1,41 +1,12 @@
 packages:
 
-  simplify:
-    url: local
-    files: [wf_simplify.yaml]
-
-  workmode:
-    url: local
-    files: [wf_workmode.yaml]
-
-  bat:
-    url: local
-    files: [wf_bat.yaml]
-
-  bms:
-    url: local
-    files: [wf_bms.yaml]
-
-  op:
-    url: local
-    files: [wf_op.yaml]
-
-  pv:
-    url: local
-    files: [wf_pv.yaml]
-
-  inv:
-    url: local
-    files: [wf_inv.yaml]
-
-  thermal:
-    url: local
-    files: [wf_thermal.yaml]
-
-  userset_ro:
-    url: local
-    files: [wf_userset_ro.yaml]
-
-  userset_rw:
-    url: local
-    files: [wf_userset_rw.yaml]
+  simplify: !include modules/wf_simplify.yaml
+  workmode: !include modules/wf_workmode.yaml
+  bat: !include modules/wf_bat.yaml
+  bms: !include modules/wf_bms.yaml
+  op: !include modules/wf_op.yaml
+  pv: !include modules/wf_pv.yaml
+  inv: !include modules/wf_inv.yaml
+  thermal: !include modules/wf_thermal.yaml
+  userset_ro: !include modules/wf_userset_ro.yaml
+  userset_rw: !include modules/wf_userset_rw.yaml
