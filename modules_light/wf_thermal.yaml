@@ -41,74 +41,74 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: pv_temperature
-    name: "PV Temperature"
+    id: temperature_pv
+    name: "Temperature PV"
     address: 0x0330
     register_type: holding
     value_type: S_WORD
     unit_of_measurement: "°C"
     device_class: temperature
     state_class: measurement
-    accuracy_decimals: 1
+    accuracy_decimals: 2
     filters:
       - multiply: 0.1
 
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: inverter_temperature
-    name: "Inverter Temperature"
+    id: temperature_inverter
+    name: "Temperature Inverter"
     address: 0x0331
     register_type: holding
     value_type: S_WORD
     unit_of_measurement: "°C"
     device_class: temperature
     state_class: measurement
-    accuracy_decimals: 1
+    accuracy_decimals: 2
     filters:
       - multiply: 0.1
 
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: charger_temperature
-    name: "Charger Temperature"
+    id: temperature_charger
+    name: "Temperature Charger"
     address: 0x0332
     register_type: holding
     value_type: S_WORD
     unit_of_measurement: "°C"
     device_class: temperature
     state_class: measurement
-    accuracy_decimals: 1
+    accuracy_decimals: 2
     filters:
       - multiply: 0.1
 
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: charger2_temperature
-    name: "Charger 2 Temperature"
+    id: temperature_charger2
+    name: "Temperature Charger 2"
     address: 0x0333
     register_type: holding
     value_type: S_WORD
     unit_of_measurement: "°C"
     device_class: temperature
     state_class: measurement
-    accuracy_decimals: 1
+    accuracy_decimals: 2
     filters:
       - multiply: 0.1
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: ambient_temperature
-    name: "Ambient Temperature"
+    id: temperature_ambient
+    name: "Temperature Ambient"
     address: 0x0334
     register_type: holding
     value_type: S_WORD
     unit_of_measurement: "°C"
     device_class: temperature
     state_class: measurement
-    accuracy_decimals: 1
+    accuracy_decimals: 2
     filters:
       - multiply: 0.1
 

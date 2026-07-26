@@ -1,24 +1,32 @@
+text_sensor:
+
+  - platform: template
+    id: pv1_tracking_status
+    name: "PV1 Tracking Status"
+    lambda: |-
+      switch ((uint16_t)id(pv1_tracking_status_raw).state) {
+        case 0: return {"Idle"};
+        case 1: return {"MPPT"};
+        default: return {"Unknown"};
+      }
+
+  - platform: template
+    id: pv1_recharge_state
+    name: "PV1 Recharge State"
+    lambda: |-
+      switch ((uint16_t)id(pv1_recharge_state_raw).state) {
+        case 0: return {"Disabled"};
+        case 1: return {"Charging"};
+        default: return {"Unknown"};
+      }
+
+
+
 sensor:
 
 #
 # RAW STATUS
 #
-
-  - platform: modbus_controller
-    modbus_controller_id: sms_0
-    id: pv_total_tracking_status_raw
-    internal: true
-    address: 0x0265
-    register_type: holding
-    value_type: U_WORD
-
-  - platform: modbus_controller
-    modbus_controller_id: sms_0
-    id: pv_total_recharge_state_raw
-    internal: true
-    address: 0x0266
-    register_type: holding
-    value_type: U_WORD
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
@@ -36,21 +44,7 @@ sensor:
     register_type: holding
     value_type: U_WORD
 
-  - platform: modbus_controller
-    modbus_controller_id: sms_0
-    id: pv2_tracking_status_raw
-    internal: true
-    address: 0x0283
-    register_type: holding
-    value_type: U_WORD
 
-  - platform: modbus_controller
-    modbus_controller_id: sms_0
-    id: pv2_recharge_state_raw
-    internal: true
-    address: 0x0284
-    register_type: holding
-    value_type: U_WORD
 
 #
 # TOTAL PV
@@ -163,64 +157,3 @@ sensor:
 
 
 
-text_sensor:
-
-  - platform: template
-    id: pv_total_tracking_status
-    name: "PV Total Tracking Status"
-    lambda: |-
-      switch ((uint16_t)id(pv_total_tracking_status_raw).state) {
-        case 0: return {"Idle"};
-        case 1: return {"MPPT"};
-        default: return {"Unknown"};
-      }
-
-  - platform: template
-    id: pv_total_recharge_state
-    name: "PV Total Recharge State"
-    lambda: |-
-      switch ((uint16_t)id(pv_total_recharge_state_raw).state) {
-        case 0: return {"Disabled"};
-        case 1: return {"Charging"};
-        default: return {"Unknown"};
-      }
-
-  - platform: template
-    id: pv1_tracking_status
-    name: "PV1 Tracking Status"
-    lambda: |-
-      switch ((uint16_t)id(pv1_tracking_status_raw).state) {
-        case 0: return {"Idle"};
-        case 1: return {"MPPT"};
-        default: return {"Unknown"};
-      }
-
-  - platform: template
-    id: pv1_recharge_state
-    name: "PV1 Recharge State"
-    lambda: |-
-      switch ((uint16_t)id(pv1_recharge_state_raw).state) {
-        case 0: return {"Disabled"};
-        case 1: return {"Charging"};
-        default: return {"Unknown"};
-      }
-
-  - platform: template
-    id: pv2_tracking_status
-    name: "PV2 Tracking Status"
-    lambda: |-
-      switch ((uint16_t)id(pv2_tracking_status_raw).state) {
-        case 0: return {"Idle"};
-        case 1: return {"MPPT"};
-        default: return {"Unknown"};
-      }
-
-  - platform: template
-    id: pv2_recharge_state
-    name: "PV2 Recharge State"
-    lambda: |-
-      switch ((uint16_t)id(pv2_recharge_state_raw).state) {
-        case 0: return {"Disabled"};
-        case 1: return {"Charging"};
-        default: return {"Unknown"};
-      }

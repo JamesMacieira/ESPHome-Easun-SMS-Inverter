@@ -36,21 +36,7 @@ text_sensor:
         default: return {"Unknown"};
       }
 
-###############################################################################
-# Output Priority
-###############################################################################
 
-  - platform: template
-    id: workmode_output_priority
-    name: "Work Mode Output Priority"
-    lambda: |-
-      switch ((uint16_t)id(workmode_output_priority_raw).state) {
-        case 0: return {"GBP"};
-        case 1: return {"PGB"};
-        case 2: return {"PBG"};
-        case 3: return {"MKP"};
-        default: return {"Unknown"};
-      }
 
 ###############################################################################
 # Charging Priority
@@ -105,14 +91,6 @@ sensor:
     id: parallel_mode_raw
     internal: true
     address: 0x0141
-    register_type: holding
-    value_type: U_WORD
-
-  - platform: modbus_controller
-    modbus_controller_id: sms_0
-    id: workmode_output_priority_raw
-    internal: true
-    address: 0x0142
     register_type: holding
     value_type: U_WORD
 
