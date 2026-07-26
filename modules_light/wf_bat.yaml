@@ -1,0 +1,127 @@
+###############################################################################
+# WF_BAT
+###############################################################################
+
+text_sensor:
+
+  - platform: template
+    id: battery_type
+    name: "Battery Type"
+    lambda: |-
+      switch ((uint16_t)id(battery_type_raw).state) {
+        case 0: return {"Lead Acid"};
+        case 1: return {"Flooded"};
+        case 2: return {"Ternary Lithium"};
+        case 3: return {"LiFePO4"};
+        case 4: return {"Custom"};
+        default: return {"Unknown"};
+      }
+
+  - platform: template
+    id: charging_status
+    name: "Charging Status"
+    lambda: |-
+      switch ((uint16_t)id(charging_status_raw).state) {
+        case 0: return {"Not Charging"};
+        case 1: return {"CC/CV"};
+        case 2: return {"Float"};
+        case 3: return {"Equalization"};
+        default: return {"Unknown"};
+      }
+
+sensor:
+
+#
+# RAW
+#
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: battery_type_raw
+    internal: true
+    address: 0x0150
+    register_type: holding
+    value_type: U_WORD
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: charging_status_raw
+    internal: true
+    address: 0x0176
+    register_type: holding
+    value_type: U_WORD
+
+#
+# Battery
+#
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: battery_percentage
+    name: "Battery Percentage"
+    address: 0x0152
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "%"
+    device_class: battery
+    state_class: measurement
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: positive_bus_voltage
+    name: "Positive Bus Voltage"
+    address: 0x0154
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: V
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: positive_battery_voltage
+    name: "Positive Battery Voltage"
+    address: 0x0155
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: V
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: positive_battery_discharge_current
+    name: "Positive Battery Discharge Current"
+    address: 0x0156
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: A
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - lambda: |-
+          return x < 0.0f ? -x : 0.0f;
+      - multiply: 0.1
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: positive_battery_charge_current
+    name: "Positive Battery Charge Current"
+    address: 0x0157
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: A
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - lambda: |-
+          return x > 0.0f ? x : 0.0f;
+      - multiply: 0.1

@@ -1,0 +1,51 @@
+###############################################################################
+# WF_OP
+###############################################################################
+
+text_sensor:
+
+  - platform: template
+    id: output_priority
+    name: "Output Priority"
+    lambda: |-
+      switch ((uint16_t)id(output_priority_raw).state) {
+        case 0: return {"GPB Grid>Solar>Battery"};
+        case 1: return {"PGB Solar>Grid>Battery"};
+        case 2: return {"PBG Solar>Battery>Grid"};
+        case 3: return {"MKS"};
+        default: return {"Unknown"};
+      }
+
+  - platform: template
+    id: operating_mode
+    name: "Operating Mode"
+    lambda: |-
+      switch ((uint16_t)id(operating_mode_raw).state) {
+        case 0: return {"APP"};
+        case 1: return {"UPS"};
+        case 2: return {"GEN"};
+        default: return {"Unknown"};
+      }
+
+sensor:
+
+###############################################################################
+# RAW
+###############################################################################
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: output_priority_raw
+    internal: true
+    address: 0x0210
+    register_type: holding
+    value_type: U_WORD
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: operating_mode_raw
+    internal: true
+    address: 0x0211
+    register_type: holding
+    value_type: U_WORD
+

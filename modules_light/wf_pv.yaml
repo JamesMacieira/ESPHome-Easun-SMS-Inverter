@@ -1,0 +1,226 @@
+sensor:
+
+#
+# RAW STATUS
+#
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv_total_tracking_status_raw
+    internal: true
+    address: 0x0265
+    register_type: holding
+    value_type: U_WORD
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv_total_recharge_state_raw
+    internal: true
+    address: 0x0266
+    register_type: holding
+    value_type: U_WORD
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv1_tracking_status_raw
+    internal: true
+    address: 0x0273
+    register_type: holding
+    value_type: U_WORD
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv1_recharge_state_raw
+    internal: true
+    address: 0x0274
+    register_type: holding
+    value_type: U_WORD
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv2_tracking_status_raw
+    internal: true
+    address: 0x0283
+    register_type: holding
+    value_type: U_WORD
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv2_recharge_state_raw
+    internal: true
+    address: 0x0284
+    register_type: holding
+    value_type: U_WORD
+
+#
+# TOTAL PV
+#
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv_total_voltage
+    name: "PV Total Voltage"
+    address: 0x0260
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: V
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv_total_current
+    name: "PV Total Current"
+    address: 0x0261
+    register_count: 2
+    register_type: holding
+    value_type: U_DWORD
+    unit_of_measurement: A
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv_total_power
+    name: "PV Total Power"
+    address: 0x0263
+    register_count: 2
+    register_type: holding
+    value_type: U_DWORD
+    unit_of_measurement: W
+    device_class: power
+    state_class: measurement
+
+#
+# TOTAL ENERGY
+#
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv_daily_energy
+    name: "PV Daily Energy"
+    address: 0x0267
+    register_count: 2
+    register_type: holding
+    value_type: U_DWORD
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv_monthly_energy
+    name: "PV Monthly Energy"
+    address: 0x0269
+    register_count: 2
+    register_type: holding
+    value_type: U_DWORD
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv_yearly_energy
+    name: "PV Yearly Energy"
+    address: 0x026B
+    register_count: 2
+    register_type: holding
+    value_type: U_DWORD
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: pv_total_energy
+    name: "PV Total Energy"
+    address: 0x026D
+    register_count: 2
+    register_type: holding
+    value_type: U_DWORD
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+
+
+
+text_sensor:
+
+  - platform: template
+    id: pv_total_tracking_status
+    name: "PV Total Tracking Status"
+    lambda: |-
+      switch ((uint16_t)id(pv_total_tracking_status_raw).state) {
+        case 0: return {"Idle"};
+        case 1: return {"MPPT"};
+        default: return {"Unknown"};
+      }
+
+  - platform: template
+    id: pv_total_recharge_state
+    name: "PV Total Recharge State"
+    lambda: |-
+      switch ((uint16_t)id(pv_total_recharge_state_raw).state) {
+        case 0: return {"Disabled"};
+        case 1: return {"Charging"};
+        default: return {"Unknown"};
+      }
+
+  - platform: template
+    id: pv1_tracking_status
+    name: "PV1 Tracking Status"
+    lambda: |-
+      switch ((uint16_t)id(pv1_tracking_status_raw).state) {
+        case 0: return {"Idle"};
+        case 1: return {"MPPT"};
+        default: return {"Unknown"};
+      }
+
+  - platform: template
+    id: pv1_recharge_state
+    name: "PV1 Recharge State"
+    lambda: |-
+      switch ((uint16_t)id(pv1_recharge_state_raw).state) {
+        case 0: return {"Disabled"};
+        case 1: return {"Charging"};
+        default: return {"Unknown"};
+      }
+
+  - platform: template
+    id: pv2_tracking_status
+    name: "PV2 Tracking Status"
+    lambda: |-
+      switch ((uint16_t)id(pv2_tracking_status_raw).state) {
+        case 0: return {"Idle"};
+        case 1: return {"MPPT"};
+        default: return {"Unknown"};
+      }
+
+  - platform: template
+    id: pv2_recharge_state
+    name: "PV2 Recharge State"
+    lambda: |-
+      switch ((uint16_t)id(pv2_recharge_state_raw).state) {
+        case 0: return {"Disabled"};
+        case 1: return {"Charging"};
+        default: return {"Unknown"};
+      }
