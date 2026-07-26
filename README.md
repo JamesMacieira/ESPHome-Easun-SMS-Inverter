@@ -61,11 +61,7 @@ Add this package to a device configuration that already defines the `uart`,
 
 ```yaml
 packages:
-  easun_sms:
-    url: https://github.com/JamesMacieira/ESPHome-Easun-SMS-Inverter
-    ref: main
-    files:
-      - easun_sms.yaml
+  easun_sms: github://JamesMacieira/ESPHome-Easun-SMS-Inverter/easun_sms.yaml@main
 ```
 
 See `examples/easun-65kp.yaml` for a complete starting configuration.
