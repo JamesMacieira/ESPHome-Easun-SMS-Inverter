@@ -64,6 +64,8 @@ packages:
   easun_sms: github://JamesMacieira/ESPHome-Easun-SMS-Inverter/easun_sms.yaml@main
 ```
 
+With 285 Sensors
+
 See `examples/easun-65kp.yaml` for a complete starting configuration.
 Factory, calibration, drive-test, OTA, and writable user-setting registers are
 intentionally not published as Home Assistant controls until validated on real
