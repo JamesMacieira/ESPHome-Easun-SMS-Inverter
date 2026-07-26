@@ -781,7 +781,7 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_temperature
+    id: bms_temperature2
     name: "BMS Temperature2"
     address: 0x008B
     register_type: holding
