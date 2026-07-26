@@ -11,6 +11,7 @@ text_sensor:
   - platform: template
     id: output_mode
     name: "Output Mode"
+    entity_category: diagnostic
     lambda: |-
       switch ((uint16_t)id(output_mode_raw).state) {
         case 0: return {"APP"};
@@ -26,6 +27,7 @@ text_sensor:
   - platform: template
     id: parallel_mode
     name: "Parallel Mode"
+    entity_category: diagnostic
     lambda: |-
       switch ((uint16_t)id(parallel_mode_raw).state) {
         case 0: return {"Single Phase"};
@@ -45,6 +47,7 @@ text_sensor:
   - platform: template
     id: charging_priority
     name: "Charging Priority"
+    entity_category: diagnostic
     lambda: |-
       switch ((uint16_t)id(charging_priority_raw).state) {
         case 0: return {"PNG"};
@@ -60,6 +63,7 @@ text_sensor:
   - platform: template
     id: operating_state
     name: "Operating State"
+    entity_category: diagnostic
     lambda: |-
       switch ((uint16_t)id(state_machine_raw).state) {
         case 0: return {"Power On"};
@@ -109,3 +113,4 @@ sensor:
     address: 0x0144
     register_type: holding
     value_type: U_WORD
+  

@@ -3,6 +3,7 @@ text_sensor:
   - platform: template
     name: "Fault Code 1 Status"
     update_interval: 2s
+    entity_category: diagnostic
     lambda: |-
       const uint16_t code = (uint16_t) id(fault_code_1).state;
       if (code & (1 << 0)) return {"Mains soft start failure"};
@@ -26,6 +27,7 @@ text_sensor:
   - platform: template
     name: "Fault Code 2 Status"
     update_interval: 2s
+    entity_category: diagnostic
     lambda: |-
       const uint16_t code = (uint16_t) id(fault_code_2).state;
       if (code & (1 << 0)) return {"Programming in progress"};
@@ -45,6 +47,7 @@ text_sensor:
   - platform: template
     name: "Alarm Code 1 Status"
     update_interval: 2s
+    entity_category: diagnostic
     lambda: |-
       const uint16_t code = (uint16_t) id(alarm_code_1).state;
       if (code & (1 << 0)) return {"Battery not connected"};
@@ -67,6 +70,7 @@ text_sensor:
   - platform: template
     name: "Alarm Code 2 Status"
     update_interval: 2s
+    entity_category: diagnostic
     lambda: |-
       const uint16_t code = (uint16_t) id(alarm_code_2).state;
       if (code & (1 << 0)) return {"Parallel communication error"};
