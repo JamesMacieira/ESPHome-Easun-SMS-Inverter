@@ -1,295 +1,87 @@
-binary_sensor:
-
-#
-# Fault Code 1 (0x0046)
-#
+text_sensor:
 
   - platform: template
-    name: "Mains Soft Start Failure"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 0));'
+    name: "Fault Code 1 Status"
+    update_interval: 2s
+    lambda: |-
+      const uint16_t code = (uint16_t) id(fault_code_1).state;
+      if (code & (1 << 0)) return {"Mains soft start failure"};
+      if (code & (1 << 1)) return {"Bus overvoltage"};
+      if (code & (1 << 2)) return {"Bus undervoltage"};
+      if (code & (1 << 3)) return {"Battery overcurrent"};
+      if (code & (1 << 4)) return {"Overtemperature"};
+      if (code & (1 << 5)) return {"Battery overvoltage"};
+      if (code & (1 << 6)) return {"Battery soft start failure"};
+      if (code & (1 << 7)) return {"Bus short circuit"};
+      if (code & (1 << 8)) return {"Inverter soft start failure"};
+      if (code & (1 << 9)) return {"Inverter overvoltage"};
+      if (code & (1 << 10)) return {"Inverter undervoltage"};
+      if (code & (1 << 11)) return {"Inverter short circuit"};
+      if (code & (1 << 12)) return {"Negative power protection"};
+      if (code & (1 << 13)) return {"Overload failure"};
+      if (code & (1 << 14)) return {"Unit model and hardware incompatibility"};
+      if (code & (1 << 15)) return {"No bootloader"};
+      return {"OK"};
 
   - platform: template
-    name: "Bus Overvoltage"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 1));'
+    name: "Fault Code 2 Status"
+    update_interval: 2s
+    lambda: |-
+      const uint16_t code = (uint16_t) id(fault_code_2).state;
+      if (code & (1 << 0)) return {"Programming in progress"};
+      if (code & (1 << 1)) return {"Photovoltaic reverse connection"};
+      if (code & (1 << 2)) return {"Parallel serial number abnormal"};
+      if (code & (1 << 3)) return {"Parallel communication abnormal"};
+      if (code & (1 << 4)) return {"Excessive voltage difference between parallel batteries"};
+      if (code & (1 << 5)) return {"Excessive voltage difference between parallel mains"};
+      if (code & (1 << 6)) return {"Excessive frequency difference between parallel mains"};
+      if (code & (1 << 7)) return {"Phase loss in parallel setting"};
+      if (code & (1 << 8)) return {"Loss of parallel output synchronization"};
+      if (code & (1 << 9)) return {"BMS fault"};
+      if (code & (1 << 10)) return {"MCU fault"};
+      if (code & (1 << 12)) return {"Inverter load abnormal"};
+      return {"OK"};
 
   - platform: template
-    name: "Bus Undervoltage"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 2));'
+    name: "Alarm Code 1 Status"
+    update_interval: 2s
+    lambda: |-
+      const uint16_t code = (uint16_t) id(alarm_code_1).state;
+      if (code & (1 << 0)) return {"Battery not connected"};
+      if (code & (1 << 1)) return {"Battery undervoltage"};
+      if (code & (1 << 2)) return {"Battery low voltage"};
+      if (code & (1 << 3)) return {"Charger short circuit"};
+      if (code & (1 << 5)) return {"Battery overcharge"};
+      if (code & (1 << 6)) return {"BMS lost"};
+      if (code & (1 << 7)) return {"Overtemperature"};
+      if (code & (1 << 8)) return {"Fan stalled"};
+      if (code & (1 << 9)) return {"EEPROM fault"};
+      if (code & (1 << 10)) return {"Overload"};
+      if (code & (1 << 11)) return {"Generator waveform abnormal"};
+      if (code & (1 << 12)) return {"Weak PV energy"};
+      if (code & (1 << 13)) return {"Parallel synchronization signal lost"};
+      if (code & (1 << 14)) return {"Parallel setting phase loss"};
+      if (code & (1 << 15)) return {"Parallel version incompatible"};
+      return {"OK"};
 
   - platform: template
-    name: "Battery Overcurrent"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 3));'
-
-  - platform: template
-    name: "Overtemperature"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 4));'
-
-  - platform: template
-    name: "Battery Overvoltage"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 5));'
-
-  - platform: template
-    name: "Battery Soft Start Failure"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 6));'
-
-  - platform: template
-    name: "Bus Short Circuit"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 7));'
-
-  - platform: template
-    name: "Inverter Soft Start Failure"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 8));'
-
-  - platform: template
-    name: "Inverter Overvoltage"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 9));'
-
-  - platform: template
-    name: "Inverter Undervoltage"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 10));'
-
-  - platform: template
-    name: "Inverter Short Circuit"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 11));'
-
-  - platform: template
-    name: "Negative Power Protection"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 12));'
-
-  - platform: template
-    name: "Overload Failure"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 13));'
-
-  - platform: template
-    name: "Hardware Incompatible"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 14));'
-
-  - platform: template
-    name: "Bootloader Missing"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 15));'
-
-#
-# Fault Code 2 (0x0047)
-#
-
-  - platform: template
-    name: "Programming In Progress"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_2).state & (1 << 0));'
-
-  - platform: template
-    name: "PV Reverse Connection"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_2).state & (1 << 1));'
-
-  - platform: template
-    name: "Parallel Serial Number Error"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_2).state & (1 << 2));'
-
-  - platform: template
-    name: "Parallel Communication Error"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_2).state & (1 << 3));'
-
-  - platform: template
-    name: "Fault: Parallel Battery Voltage Difference"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_2).state & (1 << 4));'
-
-  - platform: template
-    name: "Parallel Grid Voltage Difference"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_2).state & (1 << 5));'
-
-  - platform: template
-    name: "Parallel Grid Frequency Difference"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_2).state & (1 << 6));'
-
-  - platform: template
-    name: "Parallel Phase Loss"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_2).state & (1 << 7));'
-
-  - platform: template
-    name: "Parallel Output Synchronization Lost"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_2).state & (1 << 8));'
-
-  - platform: template
-    name: "BMS Fault"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_2).state & (1 << 9));'
-
-  - platform: template
-    name: "MCU Fault"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_2).state & (1 << 10));'
-
-  - platform: template
-    name: "Inverter Load Abnormal"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_2).state & (1 << 12));'
-
-#
-# Alarm Code 1 (0x0048)
-#
-
-  - platform: template
-    name: "Battery Not Connected"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 0));'
-
-  - platform: template
-    name: "Battery Undervoltage"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 1));'
-
-  - platform: template
-    name: "Battery Low Voltage"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 2));'
-
-  - platform: template
-    name: "Charger Short Circuit"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 3));'
-
-  - platform: template
-    name: "Battery Overcharge"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 5));'
-
-  - platform: template
-    name: "BMS Lost"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 6));'
-
-  - platform: template
-    name: "Overtemperature Alarm"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 7));'
-
-  - platform: template
-    name: "Fan Stalled"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 8));'
-
-  - platform: template
-    name: "EEPROM Fault"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 9));'
-
-  - platform: template
-    name: "Overload Alarm"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 10));'
-
-  - platform: template
-    name: "Generator Waveform Abnormal"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 11));'
-
-  - platform: template
-    name: "Weak PV Energy"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 12));'
-
-  - platform: template
-    name: "Parallel Synchronization Lost"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 13));'
-
-  - platform: template
-    name: "Parallel Phase Loss Alarm"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 14));'
-
-  - platform: template
-    name: "Parallel Version Incompatible"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 15));'
-
-#
-# Alarm Code 2 (0x0049)
-#
-
-  - platform: template
-    name: "Parallel Communication Alarm"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_2).state & (1 << 0));'
-
-  - platform: template
-    name: "Parallel Voltage Or Frequency Difference"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_2).state & (1 << 1));'
-
-  - platform: template
-    name: "Low SOC Shutdown"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_2).state & (1 << 2));'
-
-  - platform: template
-    name: "Low SOC Alarm"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_2).state & (1 << 3));'
-
-  - platform: template
-    name: "Alarm: Parallel Battery Voltage Difference"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_2).state & (1 << 4));'
-
-  - platform: template
-    name: "Battery Short Circuit"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_2).state & (1 << 5));'
-
-  - platform: template
-    name: "Battery Below Start Voltage"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_2).state & (1 << 6));'
-
-  - platform: template
-    name: "Generator Overload"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_2).state & (1 << 7));'
-
-  - platform: template
-    name: "Generator Undervoltage"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_2).state & (1 << 8));'
-
-  - platform: template
-    name: "Generator Overvoltage"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_2).state & (1 << 9));'
-
-  - platform: template
-    name: "CT Reverse Connection"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_2).state & (1 << 10));'
-
-  - platform: template
-    name: "Unstable Grid Power"
-    device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_2).state & (1 << 11));'
+    name: "Alarm Code 2 Status"
+    update_interval: 2s
+    lambda: |-
+      const uint16_t code = (uint16_t) id(alarm_code_2).state;
+      if (code & (1 << 0)) return {"Parallel communication error"};
+      if (code & (1 << 1)) return {"Excessive voltage difference or frequency in parallel operation"};
+      if (code & (1 << 2)) return {"Low SOC shutdown"};
+      if (code & (1 << 3)) return {"Low SOC alarm"};
+      if (code & (1 << 4)) return {"Excessive battery voltage difference or not connected in parallel operation"};
+      if (code & (1 << 5)) return {"Battery short circuit"};
+      if (code & (1 << 6)) return {"Battery voltage below starting voltage"};
+      if (code & (1 << 7)) return {"Generator overload"};
+      if (code & (1 << 8)) return {"Generator undervoltage"};
+      if (code & (1 << 9)) return {"Generator overvoltage"};
+      if (code & (1 << 10)) return {"CT reverse connection"};
+      if (code & (1 << 11)) return {"Unstable mains power"};
+      return {"OK"};
 
 
 sensor:
@@ -465,4 +257,3 @@ sensor:
     device_class: apparent_power
     state_class: measurement
 
- 
