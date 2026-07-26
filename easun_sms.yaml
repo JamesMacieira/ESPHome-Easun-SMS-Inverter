@@ -5,7 +5,7 @@ packages:
   simplify: !include modules/wf_simplify.yaml
   workmode: !include modules/wf_workmode.yaml
   bat: !include modules/wf_bat.yaml
-  bms: !include modules/wf_bms.yaml
+  #bms: !include modules/wf_bms.yaml
   op: !include modules/wf_op.yaml
   pv: !include modules/wf_pv.yaml
   inv: !include modules/wf_inv.yaml
