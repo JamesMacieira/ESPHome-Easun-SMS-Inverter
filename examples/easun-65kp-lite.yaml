@@ -80,7 +80,7 @@ modbus_controller:
     address: 0x01
     modbus_id: modbus_0
     setup_priority: -10
-    update_interval: 15s
+    update_interval: 2s
     command_throttle: 150ms
     
 
