@@ -13,8 +13,26 @@ select:
       "PV > Battery > Grid (PBG)": 2
       "MKS": 3
     write_lambda: |-
-      easun_sms::write_and_verify(id(sms_0), item, 0x4102,
-          static_cast<uint16_t>(value), x);
+      const uint16_t requested = static_cast<uint16_t>(value);
+      const auto requested_state = x;
+      auto *controller = id(sms_0);
+      auto command = esphome::modbus_controller::ModbusCommandItem::create_write_multiple_command(
+          controller, 0x4102, 1, std::vector<uint16_t>{requested});
+      command.on_data_func = [controller, item, requested, requested_state](auto type, uint16_t address, const auto &data) {
+        controller->on_write_register_response(type, address, data);
+        auto readback = esphome::modbus_controller::ModbusCommandItem::create_read_command(
+            controller, esphome::modbus_controller::ModbusRegisterType::HOLDING, address, 1,
+            [item, requested, requested_state](auto, uint16_t read_address, const auto &response) {
+              if (response.size() >= 2 && ((uint16_t(response[0]) << 8 | response[1]) == requested)) {
+                item->publish_state(requested_state);
+                ESP_LOGI("easun_sms", "Write confirmed by inverter for register 0x%04X", read_address);
+              } else {
+                ESP_LOGE("easun_sms", "Readback mismatch for register 0x%04X", read_address);
+              }
+            });
+        controller->queue_command(readback);
+      };
+      controller->queue_command(command);
       return {};
     entity_category: config
 
@@ -30,8 +48,26 @@ select:
       "Only PV (OPV)": 1
       "PV First (PVF)": 2
     write_lambda: |-
-      easun_sms::write_and_verify(id(sms_0), item, 0x4104,
-          static_cast<uint16_t>(value), x);
+      const uint16_t requested = static_cast<uint16_t>(value);
+      const auto requested_state = x;
+      auto *controller = id(sms_0);
+      auto command = esphome::modbus_controller::ModbusCommandItem::create_write_multiple_command(
+          controller, 0x4104, 1, std::vector<uint16_t>{requested});
+      command.on_data_func = [controller, item, requested, requested_state](auto type, uint16_t address, const auto &data) {
+        controller->on_write_register_response(type, address, data);
+        auto readback = esphome::modbus_controller::ModbusCommandItem::create_read_command(
+            controller, esphome::modbus_controller::ModbusRegisterType::HOLDING, address, 1,
+            [item, requested, requested_state](auto, uint16_t read_address, const auto &response) {
+              if (response.size() >= 2 && ((uint16_t(response[0]) << 8 | response[1]) == requested)) {
+                item->publish_state(requested_state);
+                ESP_LOGI("easun_sms", "Write confirmed by inverter for register 0x%04X", read_address);
+              } else {
+                ESP_LOGE("easun_sms", "Readback mismatch for register 0x%04X", read_address);
+              }
+            });
+        controller->queue_command(readback);
+      };
+      controller->queue_command(command);
       return {};
     entity_category: config
 
@@ -57,8 +93,26 @@ select:
       "110 A": 11
       "120 A": 12
     write_lambda: |-
-      easun_sms::write_and_verify(id(sms_0), item, 0x4106,
-          static_cast<uint16_t>(value), x);
+      const uint16_t requested = static_cast<uint16_t>(value);
+      const auto requested_state = x;
+      auto *controller = id(sms_0);
+      auto command = esphome::modbus_controller::ModbusCommandItem::create_write_multiple_command(
+          controller, 0x4106, 1, std::vector<uint16_t>{requested});
+      command.on_data_func = [controller, item, requested, requested_state](auto type, uint16_t address, const auto &data) {
+        controller->on_write_register_response(type, address, data);
+        auto readback = esphome::modbus_controller::ModbusCommandItem::create_read_command(
+            controller, esphome::modbus_controller::ModbusRegisterType::HOLDING, address, 1,
+            [item, requested, requested_state](auto, uint16_t read_address, const auto &response) {
+              if (response.size() >= 2 && ((uint16_t(response[0]) << 8 | response[1]) == requested)) {
+                item->publish_state(requested_state);
+                ESP_LOGI("easun_sms", "Write confirmed by inverter for register 0x%04X", read_address);
+              } else {
+                ESP_LOGE("easun_sms", "Readback mismatch for register 0x%04X", read_address);
+              }
+            });
+        controller->queue_command(readback);
+      };
+      controller->queue_command(command);
       return {};
     entity_category: config
 
@@ -73,8 +127,18 @@ number:
     value_type: U_WORD
     use_write_multiple: true
     write_lambda: |-
-      easun_sms::write_and_verify(id(sms_0), item, 0x4105,
-          static_cast<uint16_t>(x), x);
+      const uint16_t requested = static_cast<uint16_t>(x);
+      const auto requested_state = x;
+      auto *controller = id(sms_0);
+      auto command = esphome::modbus_controller::ModbusCommandItem::create_write_multiple_command(controller, 0x4105, 1, std::vector<uint16_t>{requested});
+      command.on_data_func = [controller, item, requested, requested_state](auto type, uint16_t address, const auto &data) {
+        controller->on_write_register_response(type, address, data);
+        auto readback = esphome::modbus_controller::ModbusCommandItem::create_read_command(controller, esphome::modbus_controller::ModbusRegisterType::HOLDING, address, 1, [item, requested, requested_state](auto, uint16_t read_address, const auto &response) {
+          if (response.size() >= 2 && ((uint16_t(response[0]) << 8 | response[1]) == requested)) { item->publish_state(requested_state); ESP_LOGI("easun_sms", "Write confirmed by inverter for register 0x%04X", read_address); } else { ESP_LOGE("easun_sms", "Readback mismatch for register 0x%04X", read_address); }
+        });
+        controller->queue_command(readback);
+      };
+      controller->queue_command(command);
       return {};
     min_value: 2
     max_value: 120
@@ -91,8 +155,18 @@ number:
     use_write_multiple: true
     lambda: return x * 0.1f;
     write_lambda: |-
-      easun_sms::write_and_verify(id(sms_0), item, 0x4108,
-          static_cast<uint16_t>(lroundf(x * 10.0f)), x);
+      const uint16_t requested = static_cast<uint16_t>(lroundf(x * 10.0f));
+      const auto requested_state = x;
+      auto *controller = id(sms_0);
+      auto command = esphome::modbus_controller::ModbusCommandItem::create_write_multiple_command(controller, 0x4108, 1, std::vector<uint16_t>{requested});
+      command.on_data_func = [controller, item, requested, requested_state](auto type, uint16_t address, const auto &data) {
+        controller->on_write_register_response(type, address, data);
+        auto readback = esphome::modbus_controller::ModbusCommandItem::create_read_command(controller, esphome::modbus_controller::ModbusRegisterType::HOLDING, address, 1, [item, requested, requested_state](auto, uint16_t read_address, const auto &response) {
+          if (response.size() >= 2 && ((uint16_t(response[0]) << 8 | response[1]) == requested)) { item->publish_state(requested_state); ESP_LOGI("easun_sms", "Write confirmed by inverter for register 0x%04X", read_address); } else { ESP_LOGE("easun_sms", "Readback mismatch for register 0x%04X", read_address); }
+        });
+        controller->queue_command(readback);
+      };
+      controller->queue_command(command);
       return {};
     min_value: 42
     max_value: 54
@@ -109,8 +183,18 @@ number:
     use_write_multiple: true
     lambda: return x * 0.1f;
     write_lambda: |-
-      easun_sms::write_and_verify(id(sms_0), item, 0x4109,
-          static_cast<uint16_t>(lroundf(x * 10.0f)), x);
+      const uint16_t requested = static_cast<uint16_t>(lroundf(x * 10.0f));
+      const auto requested_state = x;
+      auto *controller = id(sms_0);
+      auto command = esphome::modbus_controller::ModbusCommandItem::create_write_multiple_command(controller, 0x4109, 1, std::vector<uint16_t>{requested});
+      command.on_data_func = [controller, item, requested, requested_state](auto type, uint16_t address, const auto &data) {
+        controller->on_write_register_response(type, address, data);
+        auto readback = esphome::modbus_controller::ModbusCommandItem::create_read_command(controller, esphome::modbus_controller::ModbusRegisterType::HOLDING, address, 1, [item, requested, requested_state](auto, uint16_t read_address, const auto &response) {
+          if (response.size() >= 2 && ((uint16_t(response[0]) << 8 | response[1]) == requested)) { item->publish_state(requested_state); ESP_LOGI("easun_sms", "Write confirmed by inverter for register 0x%04X", read_address); } else { ESP_LOGE("easun_sms", "Readback mismatch for register 0x%04X", read_address); }
+        });
+        controller->queue_command(readback);
+      };
+      controller->queue_command(command);
       return {};
     min_value: 40
     max_value: 48
@@ -127,8 +211,18 @@ number:
     use_write_multiple: true
     lambda: return x * 0.1f;
     write_lambda: |-
-      easun_sms::write_and_verify(id(sms_0), item, 0x410C,
-          static_cast<uint16_t>(lroundf(x * 10.0f)), x);
+      const uint16_t requested = static_cast<uint16_t>(lroundf(x * 10.0f));
+      const auto requested_state = x;
+      auto *controller = id(sms_0);
+      auto command = esphome::modbus_controller::ModbusCommandItem::create_write_multiple_command(controller, 0x410C, 1, std::vector<uint16_t>{requested});
+      command.on_data_func = [controller, item, requested, requested_state](auto type, uint16_t address, const auto &data) {
+        controller->on_write_register_response(type, address, data);
+        auto readback = esphome::modbus_controller::ModbusCommandItem::create_read_command(controller, esphome::modbus_controller::ModbusRegisterType::HOLDING, address, 1, [item, requested, requested_state](auto, uint16_t read_address, const auto &response) {
+          if (response.size() >= 2 && ((uint16_t(response[0]) << 8 | response[1]) == requested)) { item->publish_state(requested_state); ESP_LOGI("easun_sms", "Write confirmed by inverter for register 0x%04X", read_address); } else { ESP_LOGE("easun_sms", "Readback mismatch for register 0x%04X", read_address); }
+        });
+        controller->queue_command(readback);
+      };
+      controller->queue_command(command);
       return {};
     min_value: 40
     max_value: 52
@@ -145,8 +239,18 @@ number:
     use_write_multiple: true
     lambda: return x * 0.1f;
     write_lambda: |-
-      easun_sms::write_and_verify(id(sms_0), item, 0x410D,
-          static_cast<uint16_t>(lroundf(x * 10.0f)), x);
+      const uint16_t requested = static_cast<uint16_t>(lroundf(x * 10.0f));
+      const auto requested_state = x;
+      auto *controller = id(sms_0);
+      auto command = esphome::modbus_controller::ModbusCommandItem::create_write_multiple_command(controller, 0x410D, 1, std::vector<uint16_t>{requested});
+      command.on_data_func = [controller, item, requested, requested_state](auto type, uint16_t address, const auto &data) {
+        controller->on_write_register_response(type, address, data);
+        auto readback = esphome::modbus_controller::ModbusCommandItem::create_read_command(controller, esphome::modbus_controller::ModbusRegisterType::HOLDING, address, 1, [item, requested, requested_state](auto, uint16_t read_address, const auto &response) {
+          if (response.size() >= 2 && ((uint16_t(response[0]) << 8 | response[1]) == requested)) { item->publish_state(requested_state); ESP_LOGI("easun_sms", "Write confirmed by inverter for register 0x%04X", read_address); } else { ESP_LOGE("easun_sms", "Readback mismatch for register 0x%04X", read_address); }
+        });
+        controller->queue_command(readback);
+      };
+      controller->queue_command(command);
       return {};
     min_value: 46
     max_value: 58
@@ -162,8 +266,18 @@ number:
     value_type: U_WORD
     use_write_multiple: true
     write_lambda: |-
-      easun_sms::write_and_verify(id(sms_0), item, 0x4120,
-          static_cast<uint16_t>(x), x);
+      const uint16_t requested = static_cast<uint16_t>(x);
+      const auto requested_state = x;
+      auto *controller = id(sms_0);
+      auto command = esphome::modbus_controller::ModbusCommandItem::create_write_multiple_command(controller, 0x4120, 1, std::vector<uint16_t>{requested});
+      command.on_data_func = [controller, item, requested, requested_state](auto type, uint16_t address, const auto &data) {
+        controller->on_write_register_response(type, address, data);
+        auto readback = esphome::modbus_controller::ModbusCommandItem::create_read_command(controller, esphome::modbus_controller::ModbusRegisterType::HOLDING, address, 1, [item, requested, requested_state](auto, uint16_t read_address, const auto &response) {
+          if (response.size() >= 2 && ((uint16_t(response[0]) << 8 | response[1]) == requested)) { item->publish_state(requested_state); ESP_LOGI("easun_sms", "Write confirmed by inverter for register 0x%04X", read_address); } else { ESP_LOGE("easun_sms", "Readback mismatch for register 0x%04X", read_address); }
+        });
+        controller->queue_command(readback);
+      };
+      controller->queue_command(command);
       return {};
     min_value: 5
     max_value: 50
@@ -179,8 +293,18 @@ number:
     value_type: U_WORD
     use_write_multiple: true
     write_lambda: |-
-      easun_sms::write_and_verify(id(sms_0), item, 0x4121,
-          static_cast<uint16_t>(x), x);
+      const uint16_t requested = static_cast<uint16_t>(x);
+      const auto requested_state = x;
+      auto *controller = id(sms_0);
+      auto command = esphome::modbus_controller::ModbusCommandItem::create_write_multiple_command(controller, 0x4121, 1, std::vector<uint16_t>{requested});
+      command.on_data_func = [controller, item, requested, requested_state](auto type, uint16_t address, const auto &data) {
+        controller->on_write_register_response(type, address, data);
+        auto readback = esphome::modbus_controller::ModbusCommandItem::create_read_command(controller, esphome::modbus_controller::ModbusRegisterType::HOLDING, address, 1, [item, requested, requested_state](auto, uint16_t read_address, const auto &response) {
+          if (response.size() >= 2 && ((uint16_t(response[0]) << 8 | response[1]) == requested)) { item->publish_state(requested_state); ESP_LOGI("easun_sms", "Write confirmed by inverter for register 0x%04X", read_address); } else { ESP_LOGE("easun_sms", "Readback mismatch for register 0x%04X", read_address); }
+        });
+        controller->queue_command(readback);
+      };
+      controller->queue_command(command);
       return {};
     min_value: 10
     max_value: 90
@@ -196,8 +320,18 @@ number:
     value_type: U_WORD
     use_write_multiple: true
     write_lambda: |-
-      easun_sms::write_and_verify(id(sms_0), item, 0x4122,
-          static_cast<uint16_t>(x), x);
+      const uint16_t requested = static_cast<uint16_t>(x);
+      const auto requested_state = x;
+      auto *controller = id(sms_0);
+      auto command = esphome::modbus_controller::ModbusCommandItem::create_write_multiple_command(controller, 0x4122, 1, std::vector<uint16_t>{requested});
+      command.on_data_func = [controller, item, requested, requested_state](auto type, uint16_t address, const auto &data) {
+        controller->on_write_register_response(type, address, data);
+        auto readback = esphome::modbus_controller::ModbusCommandItem::create_read_command(controller, esphome::modbus_controller::ModbusRegisterType::HOLDING, address, 1, [item, requested, requested_state](auto, uint16_t read_address, const auto &response) {
+          if (response.size() >= 2 && ((uint16_t(response[0]) << 8 | response[1]) == requested)) { item->publish_state(requested_state); ESP_LOGI("easun_sms", "Write confirmed by inverter for register 0x%04X", read_address); } else { ESP_LOGE("easun_sms", "Readback mismatch for register 0x%04X", read_address); }
+        });
+        controller->queue_command(readback);
+      };
+      controller->queue_command(command);
       return {};
     min_value: 10
     max_value: 100
