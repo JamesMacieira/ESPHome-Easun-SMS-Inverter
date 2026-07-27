@@ -6,12 +6,12 @@ select:
     address: 0x4102
     skip_updates: 19
     value_type: U_WORD
+    use_write_multiple: true
     optionsmap:
       "Grid > PV > Battery (GPB)": 0
       "PV > Grid > Battery (PGB)": 1
       "PV > Battery > Grid (PBG)": 2
       "MKS": 3
-    optimistic: true
     entity_category: config
 
   - platform: modbus_controller
@@ -20,11 +20,11 @@ select:
     address: 0x4104
     skip_updates: 19
     value_type: U_WORD
+    use_write_multiple: true
     optionsmap:
       "PV and Grid (PNG)": 0
       "Only PV (OPV)": 1
       "PV First (PVF)": 2
-    optimistic: true
     entity_category: config
 
   - platform: modbus_controller
@@ -33,6 +33,7 @@ select:
     address: 0x4106
     skip_updates: 19
     value_type: U_WORD
+    use_write_multiple: true
     optionsmap:
       "2 A": 0
       "10 A": 1
@@ -47,7 +48,6 @@ select:
       "100 A": 10
       "110 A": 11
       "120 A": 12
-    optimistic: true
     entity_category: config
 
 
@@ -59,6 +59,7 @@ number:
     address: 0x4105
     skip_updates: 19
     value_type: U_WORD
+    use_write_multiple: true
     min_value: 2
     max_value: 120
     step: 1
@@ -71,6 +72,7 @@ number:
     address: 0x4108
     skip_updates: 19
     value_type: U_WORD
+    use_write_multiple: true
     lambda: return x * 0.1f;
     write_lambda: |-
       payload.push_back((uint16_t) lroundf(x * 10.0f));
@@ -87,6 +89,7 @@ number:
     address: 0x4109
     skip_updates: 19
     value_type: U_WORD
+    use_write_multiple: true
     lambda: return x * 0.1f;
     write_lambda: |-
       payload.push_back((uint16_t) lroundf(x * 10.0f));
@@ -103,6 +106,7 @@ number:
     address: 0x410C
     skip_updates: 19
     value_type: U_WORD
+    use_write_multiple: true
     lambda: return x * 0.1f;
     write_lambda: |-
       payload.push_back((uint16_t) lroundf(x * 10.0f));
@@ -119,6 +123,7 @@ number:
     address: 0x410D
     skip_updates: 19
     value_type: U_WORD
+    use_write_multiple: true
     lambda: return x * 0.1f;
     write_lambda: |-
       payload.push_back((uint16_t) lroundf(x * 10.0f));
@@ -135,6 +140,7 @@ number:
     address: 0x4120
     skip_updates: 19
     value_type: U_WORD
+    use_write_multiple: true
     min_value: 5
     max_value: 50
     step: 1
@@ -147,6 +153,7 @@ number:
     address: 0x4121
     skip_updates: 19
     value_type: U_WORD
+    use_write_multiple: true
     min_value: 10
     max_value: 90
     step: 1
@@ -159,6 +166,7 @@ number:
     address: 0x4122
     skip_updates: 19
     value_type: U_WORD
+    use_write_multiple: true
     min_value: 10
     max_value: 100
     step: 1
