@@ -1,0 +1,13 @@
+﻿# telemetry modules for the Easun SMS CVTE protocol.
+# Writable user settings non critical
+
+packages:
+  simplify: !include modules_build_setup/wf_simplify.yaml
+  workmode: !include modules_build_setup/wf_workmode.yaml
+  bat: !include modules_build_setup/wf_bat.yaml
+  bms: !include modules_build_setup/wf_bms.yaml
+  op: !include modules_build_setup/wf_op.yaml
+  pv: !include modules_build_setup/wf_pv.yaml
+  inv: !include modules_build_setup/wf_inv.yaml
+  thermal: !include modules_build_setup/wf_thermal.yaml
+  userset: !include modules_build_setup/wf_userset.yaml

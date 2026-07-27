@@ -106,7 +106,8 @@ sensor:
     state_class: measurement
     accuracy_decimals: 1
     filters:
-      - lambda: return x < 0.0f ? -x : 0.0f;
+      - lambda: |-
+          return x < 0.0f ? -x : 0.0f;
       - multiply: 0.1
 
   - platform: modbus_controller
@@ -121,7 +122,8 @@ sensor:
     state_class: measurement
     accuracy_decimals: 1
     filters:
-      - lambda: return x > 0.0f ? x : 0.0f;
+      - lambda: |-
+          return x > 0.0f ? x : 0.0f;
       - multiply: 0.1
 
   - platform: modbus_controller

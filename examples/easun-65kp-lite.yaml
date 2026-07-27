@@ -1,9 +1,8 @@
 # This is an example configuration file for the Easun 6.5KP inverter using the ESPHome framework.
-# It is designed to be used with the easun_sms.yaml package, which provides safe, read-only 
-#telemetry modules for the Easun SMS CVTE protocol.
-# the all packages contein 285 sensor, some of them are repeated, but they are used in different modules, 
-# so they are not duplicated in the final configuration and some dont return any value.
-
+# It is designed to be used with the easun_sms_lite.yaml package, which provides safe, 
+#read-only telemetry modules and simple congiguration for the Easun SMS CVTE protocol.
+# the all packages contein 60 sensors, and was optimided for single inverter use with 
+# essencial telemetry and configuration.
 
 substitutions:
   name: easun_65kp
@@ -86,4 +85,4 @@ modbus_controller:
     
 
 packages:
-  easun_sms: github://JamesMacieira/ESPHome-Easun-SMS-Inverter/easun_sms.yaml@main
+  easun_sms: github://JamesMacieira/ESPHome-Easun-SMS-Inverter/easun_sms_lite.yaml@main

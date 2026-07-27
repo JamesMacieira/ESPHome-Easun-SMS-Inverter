@@ -1,5 +1,5 @@
-﻿# Safe, read-only telemetry modules for the Easun SMS CVTE protocol.
-# Writable user settings are deliberately restricted.
+﻿# telemetry modules for the Easun SMS CVTE protocol.
+# Writable user settings non critical
 
 packages:
   battery: !include modules_lite/battery.yaml
