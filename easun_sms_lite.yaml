@@ -1,6 +1,10 @@
 ﻿# telemetry modules for the Easun SMS CVTE protocol.
 # Writable user settings non critical
 
+esphome:
+  includes:
+    - modules_lite/userset_readback.h
+
 packages:
   battery: !include modules_lite/battery.yaml
   counters: !include modules_lite/counters.yaml
@@ -8,5 +12,3 @@ packages:
   pv: !include modules_lite/pv.yaml
   setup: !include modules_lite/setup.yaml
   states: !include modules_lite/states.yaml
-  
-  

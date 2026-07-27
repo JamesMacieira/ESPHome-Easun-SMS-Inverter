@@ -12,6 +12,10 @@ select:
       "PV > Grid > Battery (PGB)": 1
       "PV > Battery > Grid (PBG)": 2
       "MKS": 3
+    write_lambda: |-
+      easun_sms::write_and_verify(id(sms_0), item, 0x4102,
+          static_cast<uint16_t>(value), x);
+      return {};
     entity_category: config
 
   - platform: modbus_controller
@@ -25,6 +29,10 @@ select:
       "PV and Grid (PNG)": 0
       "Only PV (OPV)": 1
       "PV First (PVF)": 2
+    write_lambda: |-
+      easun_sms::write_and_verify(id(sms_0), item, 0x4104,
+          static_cast<uint16_t>(value), x);
+      return {};
     entity_category: config
 
   - platform: modbus_controller
@@ -48,6 +56,10 @@ select:
       "100 A": 10
       "110 A": 11
       "120 A": 12
+    write_lambda: |-
+      easun_sms::write_and_verify(id(sms_0), item, 0x4106,
+          static_cast<uint16_t>(value), x);
+      return {};
     entity_category: config
 
 
@@ -60,6 +72,10 @@ number:
     skip_updates: 19
     value_type: U_WORD
     use_write_multiple: true
+    write_lambda: |-
+      easun_sms::write_and_verify(id(sms_0), item, 0x4105,
+          static_cast<uint16_t>(x), x);
+      return {};
     min_value: 2
     max_value: 120
     step: 1
@@ -75,8 +91,9 @@ number:
     use_write_multiple: true
     lambda: return x * 0.1f;
     write_lambda: |-
-      payload.push_back((uint16_t) lroundf(x * 10.0f));
-      return x;
+      easun_sms::write_and_verify(id(sms_0), item, 0x4108,
+          static_cast<uint16_t>(lroundf(x * 10.0f)), x);
+      return {};
     min_value: 42
     max_value: 54
     step: 0.1
@@ -92,8 +109,9 @@ number:
     use_write_multiple: true
     lambda: return x * 0.1f;
     write_lambda: |-
-      payload.push_back((uint16_t) lroundf(x * 10.0f));
-      return x;
+      easun_sms::write_and_verify(id(sms_0), item, 0x4109,
+          static_cast<uint16_t>(lroundf(x * 10.0f)), x);
+      return {};
     min_value: 40
     max_value: 48
     step: 0.1
@@ -109,8 +127,9 @@ number:
     use_write_multiple: true
     lambda: return x * 0.1f;
     write_lambda: |-
-      payload.push_back((uint16_t) lroundf(x * 10.0f));
-      return x;
+      easun_sms::write_and_verify(id(sms_0), item, 0x410C,
+          static_cast<uint16_t>(lroundf(x * 10.0f)), x);
+      return {};
     min_value: 40
     max_value: 52
     step: 0.1
@@ -126,8 +145,9 @@ number:
     use_write_multiple: true
     lambda: return x * 0.1f;
     write_lambda: |-
-      payload.push_back((uint16_t) lroundf(x * 10.0f));
-      return x;
+      easun_sms::write_and_verify(id(sms_0), item, 0x410D,
+          static_cast<uint16_t>(lroundf(x * 10.0f)), x);
+      return {};
     min_value: 46
     max_value: 58
     step: 0.1
@@ -141,6 +161,10 @@ number:
     skip_updates: 19
     value_type: U_WORD
     use_write_multiple: true
+    write_lambda: |-
+      easun_sms::write_and_verify(id(sms_0), item, 0x4120,
+          static_cast<uint16_t>(x), x);
+      return {};
     min_value: 5
     max_value: 50
     step: 1
@@ -154,6 +178,10 @@ number:
     skip_updates: 19
     value_type: U_WORD
     use_write_multiple: true
+    write_lambda: |-
+      easun_sms::write_and_verify(id(sms_0), item, 0x4121,
+          static_cast<uint16_t>(x), x);
+      return {};
     min_value: 10
     max_value: 90
     step: 1
@@ -167,6 +195,10 @@ number:
     skip_updates: 19
     value_type: U_WORD
     use_write_multiple: true
+    write_lambda: |-
+      easun_sms::write_and_verify(id(sms_0), item, 0x4122,
+          static_cast<uint16_t>(x), x);
+      return {};
     min_value: 10
     max_value: 100
     step: 1
