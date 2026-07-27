@@ -7,6 +7,7 @@ binary_sensor:
   - platform: template
     id: fan_fault
     name: "Fan Fault"
+    entity_category: diagnostic
     device_class: problem
     lambda: |-
       return id(fan_status_raw).state != 0;
@@ -34,6 +35,7 @@ sensor:
     address: 0x0321
     register_type: holding
     value_type: U_WORD
+    entity_category: diagnostic
 
 ###############################################################################
 # Temperatures
@@ -49,7 +51,7 @@ sensor:
     unit_of_measurement: "°C"
     device_class: temperature
     state_class: measurement
-    accuracy_decimals: 2
+    accuracy_decimals: 1
     filters:
       - multiply: 0.1
 
@@ -64,7 +66,7 @@ sensor:
     unit_of_measurement: "°C"
     device_class: temperature
     state_class: measurement
-    accuracy_decimals: 2
+    accuracy_decimals: 1
     filters:
       - multiply: 0.1
 
@@ -79,7 +81,7 @@ sensor:
     unit_of_measurement: "°C"
     device_class: temperature
     state_class: measurement
-    accuracy_decimals: 2
+    accuracy_decimals: 1
     filters:
       - multiply: 0.1
 
@@ -94,7 +96,7 @@ sensor:
     unit_of_measurement: "°C"
     device_class: temperature
     state_class: measurement
-    accuracy_decimals: 2
+    accuracy_decimals: 1
     filters:
       - multiply: 0.1
 
@@ -108,7 +110,7 @@ sensor:
     unit_of_measurement: "°C"
     device_class: temperature
     state_class: measurement
-    accuracy_decimals: 2
+    accuracy_decimals: 1
     filters:
       - multiply: 0.1
 

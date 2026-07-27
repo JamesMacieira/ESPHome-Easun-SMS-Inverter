@@ -49,3 +49,144 @@ sensor:
     register_type: holding
     value_type: U_WORD
 
+
+###############################################################################
+# Phase A
+###############################################################################
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: phase_a_output_voltage
+    name: "Phase A Output Voltage"
+    address: 0x0218
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "V"
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 1
+    filters: [{multiply: 0.1}]
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: phase_a_output_frequency
+    name: "Phase A Output Frequency"
+    address: 0x0219
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "Hz"
+    device_class: frequency
+    state_class: measurement
+    accuracy_decimals: 2
+    filters: [{multiply: 0.01}]
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: phase_a_output_current
+    name: "Phase A Output Current"
+    address: 0x021A
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "A"
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 2
+    filters: [{multiply: 0.01}]
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: phase_a_output_active_power
+    name: "Phase A Output Active Power"
+    address: 0x021C
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: phase_a_output_apparent_power
+    name: "Phase A Output Apparent Power"
+    address: 0x021D
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "VA"
+    device_class: apparent_power
+    state_class: measurement
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: phase_a_load_percentage
+    name: "Phase A Load Percentage"
+    address: 0x0220
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "%"
+    state_class: measurement
+    accuracy_decimals: 1
+    filters: [{multiply: 0.1}]
+
+###############################################################################
+# Phase A Energy Counters
+###############################################################################
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: phase_a_output_daily_energy
+    name: "Phase A Output Daily Energy"
+    address: 0x0221
+    register_count: 2
+    register_type: holding
+    value_type: U_DWORD
+    unit_of_measurement: "kWh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: phase_a_output_monthly_energy
+    name: "Phase A Output Monthly Energy"
+    address: 0x0223
+    register_count: 2
+    register_type: holding
+    value_type: U_DWORD
+    unit_of_measurement: "kWh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: phase_a_output_yearly_energy
+    name: "Phase A Output Yearly Energy"
+    address: 0x0225
+    register_count: 2
+    register_type: holding
+    value_type: U_DWORD
+    unit_of_measurement: "kWh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: phase_a_output_total_energy
+    name: "Phase A Output Total Energy"
+    address: 0x0227
+    register_count: 2
+    register_type: holding
+    value_type: U_DWORD
+    unit_of_measurement: "kWh"
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01

@@ -146,8 +146,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_grid_voltage
-    name: "Phase A Grid Voltage"
+    id: phase_a_mains_voltage
+    name: "Phase A Mains Voltage"
     address: 0x0050
     register_type: holding
     value_type: S_WORD
@@ -160,8 +160,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_grid_current
-    name: "Phase A Grid Current"
+    id: phase_a_mains_current
+    name: "Phase A Mains Current"
     address: 0x0051
     register_type: holding
     value_type: S_WORD
@@ -174,8 +174,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_grid_frequency
-    name: "Phase A Grid Frequency"
+    id: phase_a_mains_frequency
+    name: "Phase A Mains Frequency"
     address: 0x0052
     register_type: holding
     value_type: S_WORD
@@ -188,76 +188,11 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_grid_power
-    name: "Phase A Grid Power"
+    id: phase_a_mains_power
+    name: "Phase A Mains Power"
     address: 0x0053
     register_type: holding
     value_type: S_WORD
     unit_of_measurement: "W"
     device_class: power
     state_class: measurement
-
-  - platform: modbus_controller
-    modbus_controller_id: sms_0
-    id: phase_a_load_voltage
-    name: "Phase A Load Voltage"
-    address: 0x0058
-    register_type: holding
-    value_type: S_WORD
-    unit_of_measurement: "V"
-    device_class: voltage
-    state_class: measurement
-    accuracy_decimals: 1
-    filters:
-      - multiply: 0.1
-
-  - platform: modbus_controller
-    modbus_controller_id: sms_0
-    id: phase_a_load_current
-    name: "Phase A Load Current"
-    address: 0x0059
-    register_type: holding
-    value_type: S_WORD
-    unit_of_measurement: "A"
-    device_class: current
-    state_class: measurement
-    accuracy_decimals: 2
-    filters:
-      - multiply: 0.01
-
-  - platform: modbus_controller
-    modbus_controller_id: sms_0
-    id: phase_a_load_frequency
-    name: "Phase A Load Frequency"
-    address: 0x005A
-    register_type: holding
-    value_type: S_WORD
-    unit_of_measurement: "Hz"
-    device_class: frequency
-    state_class: measurement
-    accuracy_decimals: 2
-    filters:
-      - multiply: 0.01
-
-  - platform: modbus_controller
-    modbus_controller_id: sms_0
-    id: phase_a_load_active_power
-    name: "Phase A Load Active Power"
-    address: 0x005B
-    register_type: holding
-    value_type: S_WORD
-    unit_of_measurement: "W"
-    device_class: power
-    state_class: measurement
-
-  - platform: modbus_controller
-    modbus_controller_id: sms_0
-    id: phase_a_load_apparent_power
-    name: "Phase A Load Apparent Power"
-    address: 0x005C
-    register_type: holding
-    value_type: S_WORD
-    unit_of_measurement: "VA"
-    device_class: apparent_power
-    state_class: measurement
-
