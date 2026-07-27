@@ -1,0 +1,131 @@
+ sensor:
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: mains_voltage
+    name: "Mains Voltage"
+    address: 0x0050
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "V"
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: mains_current
+    name: "Mains Current"
+    address: 0x0051
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "A"
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: mains_frequency
+    name: "Mains Frequency"
+    address: 0x0052
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "Hz"
+    device_class: frequency
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: mains_power
+    name: "Mains Power"
+    address: 0x0053
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: load_voltage
+    name: "Load Voltage"
+    address: 0x0058
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "V"
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: load_current
+    name: "Load Current"
+    address: 0x0059
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "A"
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: load_frequency
+    name: "Load Frequency"
+    address: 0x005A
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "Hz"
+    device_class: frequency
+    state_class: measurement
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: load_active_power
+    name: "Load Active Power"
+    address: 0x005B
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: load_apparent_power
+    name: "Load Apparent Power"
+    address: 0x005C
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "VA"
+    device_class: apparent_power
+    state_class: measurement
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    id: load_percentage
+    name: "Load Percentage"
+    address: 0x005D
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "%"
+    state_class: measurement
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1

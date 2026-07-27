@@ -3,6 +3,7 @@ text_sensor:
   - platform: template
     id: pv1_tracking_status
     name: "PV1 Tracking Status"
+    entity_category: diagnostic
     lambda: |-
       switch ((uint16_t)id(pv1_tracking_status_raw).state) {
         case 0: return {"Idle"};
@@ -13,6 +14,7 @@ text_sensor:
   - platform: template
     id: pv1_recharge_state
     name: "PV1 Recharge State"
+    entity_category: diagnostic
     lambda: |-
       switch ((uint16_t)id(pv1_recharge_state_raw).state) {
         case 0: return {"Disabled"};
@@ -31,19 +33,19 @@ sensor:
   - platform: modbus_controller
     modbus_controller_id: sms_0
     id: pv1_tracking_status_raw
-    internal: true
+    name: "PV1 Tracking Status RAW"
     address: 0x0273
     register_type: holding
-    value_type: U_WORD
+    value_type: S_WORD
     entity_category: diagnostic
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
     id: pv1_recharge_state_raw
-    internal: true
+    name: "PV1 Recharge State RAW"
     address: 0x0274
     register_type: holding
-    value_type: U_WORD
+    value_type: S_WORD
     entity_category: diagnostic
 
 

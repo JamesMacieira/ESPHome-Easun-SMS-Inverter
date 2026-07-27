@@ -7,8 +7,8 @@ binary_sensor:
   - platform: template
     id: fan_fault
     name: "Fan Fault"
-    entity_category: diagnostic
     device_class: problem
+    entity_category: diagnostic
     lambda: |-
       return id(fan_status_raw).state != 0;
 

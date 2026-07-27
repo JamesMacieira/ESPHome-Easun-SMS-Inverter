@@ -1,0 +1,155 @@
+select:
+ 
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Output Priority Setting"
+    address: 0x4102
+    value_type: U_WORD
+    optionsmap:
+      "Grid > PV > Battery (GPB)": 0
+      "PV > Grid > Battery (PGB)": 1
+      "PV > Battery > Grid (PBG)": 2
+      "MKS": 3
+    optimistic: true
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Charging Priority Setting"
+    address: 0x4104
+    value_type: U_WORD
+    optionsmap:
+      "PV and Grid (PNG)": 0
+      "Only PV (OPV)": 1
+      "PV First (PVF)": 2
+    optimistic: true
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Maximum Charging Current Setting"
+    address: 0x4106
+    value_type: U_WORD
+    optionsmap:
+      "2 A": 0
+      "10 A": 1
+      "20 A": 2
+      "30 A": 3
+      "40 A": 4
+      "50 A": 5
+      "60 A": 6
+      "70 A": 7
+      "80 A": 8
+      "90 A": 9
+      "100 A": 10
+      "110 A": 11
+      "120 A": 12
+    optimistic: true
+    entity_category: config
+
+
+number:
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "AC Charging Current Setting"
+    address: 0x4105
+    value_type: U_WORD
+    min_value: 2
+    max_value: 120
+    step: 1
+    unit_of_measurement: A
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Battery Low Voltage Alarm Setting"
+    address: 0x4108
+    value_type: U_WORD
+    lambda: return x * 0.1f;
+    write_lambda: |-
+      payload.push_back((uint16_t) lroundf(x * 10.0f));
+      return x;
+    min_value: 42
+    max_value: 54
+    step: 0.1
+    unit_of_measurement: V
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Battery Shutdown Voltage Setting"
+    address: 0x4109
+    value_type: U_WORD
+    lambda: return x * 0.1f;
+    write_lambda: |-
+      payload.push_back((uint16_t) lroundf(x * 10.0f));
+      return x;
+    min_value: 40
+    max_value: 48
+    step: 0.1
+    unit_of_measurement: V
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Battery To AC Voltage Setting"
+    address: 0x410C
+    value_type: U_WORD
+    lambda: return x * 0.1f;
+    write_lambda: |-
+      payload.push_back((uint16_t) lroundf(x * 10.0f));
+      return x;
+    min_value: 40
+    max_value: 52
+    step: 0.1
+    unit_of_measurement: V
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Return To Battery Voltage Setting"
+    address: 0x410D
+    value_type: U_WORD
+    lambda: return x * 0.1f;
+    write_lambda: |-
+      payload.push_back((uint16_t) lroundf(x * 10.0f));
+      return x;
+    min_value: 46
+    max_value: 58
+    step: 0.1
+    unit_of_measurement: V
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Low SOC Shutdown Setting"
+    address: 0x4120
+    value_type: U_WORD
+    min_value: 5
+    max_value: 50
+    step: 1
+    unit_of_measurement: "%"
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Battery SOC Setting"
+    address: 0x4121
+    value_type: U_WORD
+    min_value: 10
+    max_value: 90
+    step: 1
+    unit_of_measurement: "%"
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "SOC To AC Power Setting"
+    address: 0x4122
+    value_type: U_WORD
+    min_value: 10
+    max_value: 100
+    step: 1
+    unit_of_measurement: "%"
+    entity_category: config

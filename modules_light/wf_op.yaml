@@ -50,7 +50,8 @@ sensor:
     device_class: voltage
     state_class: measurement
     accuracy_decimals: 1
-    filters: [{multiply: 0.1}]
+    filters:
+      - multiply: 0.01
 
   - platform: modbus_controller
     modbus_controller_id: sms_0

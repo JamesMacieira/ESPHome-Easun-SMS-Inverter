@@ -1,0 +1,12 @@
+﻿# Safe, read-only telemetry modules for the Easun SMS CVTE protocol.
+# Writable user settings are deliberately restricted.
+
+packages:
+  battery: !include modules_lite/battery.yaml
+  counters: !include modules_lite/counters.yaml
+  inverter: !include modules_lite/inverter.yaml
+  pv: !include modules_lite/pv.yaml
+  setup: !include modules_lite/setup.yaml
+  states: !include modules_lite/states.yaml
+  
+  
