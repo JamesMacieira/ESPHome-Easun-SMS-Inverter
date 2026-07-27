@@ -4,6 +4,7 @@ select:
     modbus_controller_id: sms_0
     name: "Output Priority Setting"
     address: 0x4102
+    skip_updates: 19
     value_type: U_WORD
     optionsmap:
       "Grid > PV > Battery (GPB)": 0
@@ -17,6 +18,7 @@ select:
     modbus_controller_id: sms_0
     name: "Charging Priority Setting"
     address: 0x4104
+    skip_updates: 19
     value_type: U_WORD
     optionsmap:
       "PV and Grid (PNG)": 0
@@ -29,6 +31,7 @@ select:
     modbus_controller_id: sms_0
     name: "Maximum Charging Current Setting"
     address: 0x4106
+    skip_updates: 19
     value_type: U_WORD
     optionsmap:
       "2 A": 0
@@ -54,6 +57,7 @@ number:
     modbus_controller_id: sms_0
     name: "AC Charging Current Setting"
     address: 0x4105
+    skip_updates: 19
     value_type: U_WORD
     min_value: 2
     max_value: 120
@@ -65,6 +69,7 @@ number:
     modbus_controller_id: sms_0
     name: "Battery Low Voltage Alarm Setting"
     address: 0x4108
+    skip_updates: 19
     value_type: U_WORD
     lambda: return x * 0.1f;
     write_lambda: |-
@@ -80,6 +85,7 @@ number:
     modbus_controller_id: sms_0
     name: "Battery Shutdown Voltage Setting"
     address: 0x4109
+    skip_updates: 19
     value_type: U_WORD
     lambda: return x * 0.1f;
     write_lambda: |-
@@ -95,6 +101,7 @@ number:
     modbus_controller_id: sms_0
     name: "Battery To AC Voltage Setting"
     address: 0x410C
+    skip_updates: 19
     value_type: U_WORD
     lambda: return x * 0.1f;
     write_lambda: |-
@@ -110,6 +117,7 @@ number:
     modbus_controller_id: sms_0
     name: "Return To Battery Voltage Setting"
     address: 0x410D
+    skip_updates: 19
     value_type: U_WORD
     lambda: return x * 0.1f;
     write_lambda: |-
@@ -125,6 +133,7 @@ number:
     modbus_controller_id: sms_0
     name: "Low SOC Shutdown Setting"
     address: 0x4120
+    skip_updates: 19
     value_type: U_WORD
     min_value: 5
     max_value: 50
@@ -136,6 +145,7 @@ number:
     modbus_controller_id: sms_0
     name: "Battery SOC Setting"
     address: 0x4121
+    skip_updates: 19
     value_type: U_WORD
     min_value: 10
     max_value: 90
@@ -147,6 +157,7 @@ number:
     modbus_controller_id: sms_0
     name: "SOC To AC Power Setting"
     address: 0x4122
+    skip_updates: 19
     value_type: U_WORD
     min_value: 10
     max_value: 100
