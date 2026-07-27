@@ -4,17 +4,14 @@
 
 sensor:
 
-
 ###############################################################################
 # Phase A
 ###############################################################################
 
- 
-
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_daily_input_energy
-    name: "Phase A Daily Input Energy"
+    id: phase_a_input_energy_daily
+    name: "Phase A Input Energy Daily"
     address: 0x02AE
     register_count: 2
     register_type: holding
@@ -26,8 +23,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_monthly_input_energy
-    name: "Phase A Monthly Input Energy"
+    id: phase_a_input_energy_monthly
+    name: "Phase A Input Energy Monthly"
     address: 0x02B0
     register_count: 2
     register_type: holding
@@ -39,8 +36,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_total_input_energy
-    name: "Phase A Total Input Energy"
+    id: phase_a_input_energy_total
+    name: "Phase A Input Energy Total"
     address: 0x02B2
     register_count: 2
     register_type: holding
@@ -52,8 +49,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_daily_output_energy
-    name: "Phase A Daily Output Energy"
+    id: phase_a_output_energy_daily
+    name: "Phase A Output Energy Daily"
     address: 0x02B4
     register_count: 2
     register_type: holding
@@ -65,8 +62,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_monthly_output_energy
-    name: "Phase A Monthly Output Energy"
+    id: phase_a_output_energy_monthly
+    name: "Phase A Output Energy Monthly"
     address: 0x02B6
     register_count: 2
     register_type: holding
@@ -78,8 +75,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_total_output_energy
-    name: "Phase A Total Output Energy"
+    id: phase_a_output_energy_total
+    name: "Phase A Output Energy Total"
     address: 0x02B8
     register_count: 2
     register_type: holding

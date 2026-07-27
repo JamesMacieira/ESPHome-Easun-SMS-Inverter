@@ -1,0 +1,442 @@
+###############################################################################
+# WF_UserSet - writable inverter configuration (CVTE Modbus v1.20 simplex)
+#
+# IMPORTANT: The manufacturer permits only one setting per transaction and
+# requires more than 500 ms between consecutive setting writes. Do not change
+# multiple entities at once from Home Assistant automations.
+#
+# All settings below use a single holding-register write (Modbus function 6).
+###############################################################################
+
+select:
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Output Voltage Setting"
+    address: 0x4100
+    value_type: U_WORD
+    optionsmap:
+      "208 V": 0
+      "220 V": 1
+      "230 V": 2
+      "240 V": 3
+    optimistic: true
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Output Frequency Setting"
+    address: 0x4101
+    value_type: U_WORD
+    optionsmap:
+      "50 Hz": 0
+      "60 Hz": 1
+    optimistic: true
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Output Priority Setting"
+    address: 0x4102
+    value_type: U_WORD
+    optionsmap:
+      "Grid > PV > Battery (GPB)": 0
+      "PV > Grid > Battery (PGB)": 1
+      "PV > Battery > Grid (PBG)": 2
+      "MKS": 3
+    optimistic: true
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Operating Mode Setting"
+    address: 0x4103
+    value_type: U_WORD
+    optionsmap:
+      "APP": 0
+      "UPS": 1
+    optimistic: true
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Charging Priority Setting"
+    address: 0x4104
+    value_type: U_WORD
+    optionsmap:
+      "PV and Grid (PNG)": 0
+      "Only PV (OPV)": 1
+      "PV First (PVF)": 2
+    optimistic: true
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Maximum Charging Current Setting"
+    address: 0x4106
+    value_type: U_WORD
+    optionsmap:
+      "2 A": 0
+      "10 A": 1
+      "20 A": 2
+      "30 A": 3
+      "40 A": 4
+      "50 A": 5
+      "60 A": 6
+      "70 A": 7
+      "80 A": 8
+      "90 A": 9
+      "100 A": 10
+      "110 A": 11
+      "120 A": 12
+    optimistic: true
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Battery Type Setting"
+    address: 0x4107
+    value_type: U_WORD
+    optionsmap:
+      "Lead-acid": 0
+      "Flooded": 1
+      "Ternary lithium": 2
+      "LiFePO4": 3
+      "Custom": 4
+    optimistic: true
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Parallel Mode Setting"
+    address: 0x4110
+    value_type: U_WORD
+    optionsmap:
+      "Single phase": 0
+      "Single phase parallel": 1
+      "Three phase A": 2
+      "Three phase B": 3
+      "Three phase C": 4
+    optimistic: true
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "BMS Protocol Setting"
+    address: 0x411E
+    value_type: U_WORD
+    optionsmap:
+      "Disabled": 0
+      "CVTE": 1
+      "Growatt": 2
+      "Sun & Moon": 3
+      "Power": 4
+      "Tower": 5
+      "Peicheng": 6
+    optimistic: true
+    entity_category: config
+
+switch:
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Equalization Charging Enabled"
+    register_type: holding
+    address: 0x4112
+    bitmask: 1
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Generator Enabled"
+    register_type: holding
+    address: 0x411A
+    bitmask: 1
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Charging Disabled"
+    register_type: holding
+    address: 0x4124
+    bitmask: 1
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Backlight Auto Off"
+    register_type: holding
+    address: 0x4125
+    bitmask: 1
+    entity_category: config
+
+number:
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "AC Charging Current Setting"
+    address: 0x4105
+    value_type: U_WORD
+    min_value: 2
+    max_value: 120
+    step: 1
+    unit_of_measurement: A
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Battery Low Voltage Alarm Setting"
+    address: 0x4108
+    value_type: U_WORD
+    lambda: return x * 0.1f;
+    write_lambda: |-
+      payload.push_back((uint16_t) lroundf(x * 10.0f));
+      return x;
+    min_value: 42
+    max_value: 54
+    step: 0.1
+    unit_of_measurement: V
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Battery Shutdown Voltage Setting"
+    address: 0x4109
+    value_type: U_WORD
+    lambda: return x * 0.1f;
+    write_lambda: |-
+      payload.push_back((uint16_t) lroundf(x * 10.0f));
+      return x;
+    min_value: 40
+    max_value: 48
+    step: 0.1
+    unit_of_measurement: V
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Constant Voltage Charge Setting"
+    address: 0x410A
+    value_type: U_WORD
+    lambda: return x * 0.1f;
+    write_lambda: |-
+      payload.push_back((uint16_t) lroundf(x * 10.0f));
+      return x;
+    min_value: 48
+    max_value: 60
+    step: 0.1
+    unit_of_measurement: V
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Float Charge Voltage Setting"
+    address: 0x410B
+    value_type: U_WORD
+    lambda: return x * 0.1f;
+    write_lambda: |-
+      payload.push_back((uint16_t) lroundf(x * 10.0f));
+      return x;
+    min_value: 48
+    max_value: 60
+    step: 0.1
+    unit_of_measurement: V
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Battery To AC Voltage Setting"
+    address: 0x410C
+    value_type: U_WORD
+    lambda: return x * 0.1f;
+    write_lambda: |-
+      payload.push_back((uint16_t) lroundf(x * 10.0f));
+      return x;
+    min_value: 40
+    max_value: 52
+    step: 0.1
+    unit_of_measurement: V
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Return To Battery Voltage Setting"
+    address: 0x410D
+    value_type: U_WORD
+    lambda: return x * 0.1f;
+    write_lambda: |-
+      payload.push_back((uint16_t) lroundf(x * 10.0f));
+      return x;
+    min_value: 46
+    max_value: 58
+    step: 0.1
+    unit_of_measurement: V
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Mains Low Voltage Setting"
+    address: 0x410E
+    value_type: U_WORD
+    min_value: 90
+    max_value: 200
+    step: 1
+    unit_of_measurement: V
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Mains High Voltage Setting"
+    address: 0x410F
+    value_type: U_WORD
+    min_value: 264
+    max_value: 280
+    step: 1
+    unit_of_measurement: V
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Parallel Serial Number Setting"
+    address: 0x4111
+    value_type: U_WORD
+    min_value: 0
+    max_value: 14
+    step: 1
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Equalization Voltage Setting"
+    address: 0x4113
+    value_type: U_WORD
+    lambda: return x * 0.1f;
+    write_lambda: |-
+      payload.push_back((uint16_t) lroundf(x * 10.0f));
+      return x;
+    min_value: 48
+    max_value: 60
+    step: 0.1
+    unit_of_measurement: V
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Equalization Charge Time Setting"
+    address: 0x4114
+    value_type: U_WORD
+    min_value: 5
+    max_value: 900
+    step: 5
+    unit_of_measurement: min
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Equalization Delay Time Setting"
+    address: 0x4115
+    value_type: U_WORD
+    min_value: 5
+    max_value: 900
+    step: 5
+    unit_of_measurement: min
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Equalization Interval Setting"
+    address: 0x4116
+    value_type: U_WORD
+    min_value: 1
+    max_value: 90
+    step: 1
+    unit_of_measurement: d
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Dual Output Cutoff Voltage Setting"
+    address: 0x4118
+    value_type: U_WORD
+    lambda: return x * 0.1f;
+    write_lambda: |-
+      payload.push_back((uint16_t) lroundf(x * 10.0f));
+      return x;
+    min_value: 44
+    max_value: 60
+    step: 0.1
+    unit_of_measurement: V
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Generator Rated Power Setting"
+    address: 0x411B
+    value_type: U_WORD
+    lambda: return x * 0.1f;
+    write_lambda: |-
+      payload.push_back((uint16_t) lroundf(x * 10.0f));
+      return x;
+    min_value: 0
+    max_value: 6.5
+    step: 0.1
+    unit_of_measurement: kW
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Generator Maximum Power Setting"
+    address: 0x411C
+    value_type: U_WORD
+    lambda: return x * 0.1f;
+    write_lambda: |-
+      payload.push_back((uint16_t) lroundf(x * 10.0f));
+      return x;
+    min_value: 0
+    max_value: 6.5
+    step: 0.1
+    unit_of_measurement: kW
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "BMS ID Setting"
+    address: 0x411F
+    value_type: U_WORD
+    min_value: 0
+    max_value: 15
+    step: 1
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Low SOC Shutdown Setting"
+    address: 0x4120
+    value_type: U_WORD
+    min_value: 5
+    max_value: 50
+    step: 1
+    unit_of_measurement: "%"
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "Battery SOC Setting"
+    address: 0x4121
+    value_type: U_WORD
+    min_value: 10
+    max_value: 90
+    step: 1
+    unit_of_measurement: "%"
+    entity_category: config
+
+  - platform: modbus_controller
+    modbus_controller_id: sms_0
+    name: "SOC To AC Power Setting"
+    address: 0x4122
+    value_type: U_WORD
+    min_value: 10
+    max_value: 100
+    step: 1
+    unit_of_measurement: "%"
+    entity_category: config

@@ -10,3 +10,4 @@ packages:
   pv: !include modules/wf_pv.yaml
   inv: !include modules/wf_inv.yaml
   thermal: !include modules/wf_thermal.yaml
+  userset: !include modules/wf_userset.yaml

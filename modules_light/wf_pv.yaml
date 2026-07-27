@@ -35,6 +35,7 @@ sensor:
     address: 0x0273
     register_type: holding
     value_type: U_WORD
+    entity_category: diagnostic
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
@@ -43,6 +44,7 @@ sensor:
     address: 0x0274
     register_type: holding
     value_type: U_WORD
+    entity_category: diagnostic
 
 
 

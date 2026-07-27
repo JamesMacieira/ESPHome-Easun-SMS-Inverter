@@ -5,19 +5,6 @@
 text_sensor:
 
   - platform: template
-    id: battery_type
-    name: "Battery Type"
-    lambda: |-
-      switch ((uint16_t)id(battery_type_raw).state) {
-        case 0: return {"Lead Acid"};
-        case 1: return {"Flooded"};
-        case 2: return {"Ternary Lithium"};
-        case 3: return {"LiFePO4"};
-        case 4: return {"Custom"};
-        default: return {"Unknown"};
-      }
-
-  - platform: template
     id: charging_status
     name: "Charging Status"
     lambda: |-
@@ -50,6 +37,7 @@ sensor:
     address: 0x0176
     register_type: holding
     value_type: U_WORD
+    entity_category: diagnostic
 
 #
 # Battery
@@ -68,8 +56,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: positive_bus_voltage
-    name: "Positive Bus Voltage"
+    id: bus_voltage
+    name: "Bus Voltage"
     address: 0x0154
     register_type: holding
     value_type: S_WORD
@@ -82,8 +70,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: positive_battery_voltage
-    name: "Positive Battery Voltage"
+    id: battery_voltage
+    name: "Battery Voltage"
     address: 0x0155
     register_type: holding
     value_type: S_WORD
@@ -96,8 +84,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: positive_battery_discharge_current
-    name: "Positive Battery Discharge Current"
+    id: battery_discharge_current
+    name: "Battery Discharge Current"
     address: 0x0156
     register_type: holding
     value_type: S_WORD
@@ -112,8 +100,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: positive_battery_charge_current
-    name: "Positive Battery Charge Current"
+    id: battery_charge_current
+    name: "Battery Charge Current"
     address: 0x0157
     register_type: holding
     value_type: S_WORD
@@ -126,15 +114,3 @@ sensor:
           return x > 0.0f ? x : 0.0f;
       - multiply: 0.1
 
-  - platform: modbus_controller
-    modbus_controller_id: sms_0
-    id: positive_battery_power
-    name: "Positive Battery Power"
-    address: 0x015E
-    register_type: holding
-    value_type: U_WORD
-    unit_of_measurement: W
-    device_class: power
-    state_class: measurement
-    filters:
-      - multiply: 10
