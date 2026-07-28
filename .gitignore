@@ -14,3 +14,6 @@ __pycache__/
 
 # Logs
 *.log
+
+# Microsoft Excel temporary lock files
+~$*.xls*
