@@ -53,15 +53,6 @@ text_sensor:
         default: return {"Unknown"};
       }
 
-  - platform: template
-    id: pv1_recharge_state
-    name: "PV1 Recharge State"
-    lambda: |-
-      switch ((uint16_t)id(pv1_recharge_state_raw).state) {
-        case 0: return {"Disabled"};
-        case 1: return {"Charging"};
-        default: return {"Unknown"};
-      }
 
 
   - platform: template
@@ -198,15 +189,6 @@ sensor:
     id: pv1_tracking_status_raw
     name: "PV1 Tracking Status RAW"
     address: 0x0273
-    register_type: holding
-    value_type: S_WORD
-    entity_category: diagnostic
-
-  - platform: modbus_controller
-    modbus_controller_id: sms_0
-    id: pv1_recharge_state_raw
-    name: "PV1 Recharge State RAW"
-    address: 0x0274
     register_type: holding
     value_type: S_WORD
     entity_category: diagnostic

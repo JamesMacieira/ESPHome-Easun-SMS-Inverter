@@ -8,3 +8,4 @@ packages:
   pv: !include modules_lite/pv.yaml
   setup: !include modules_lite/setup.yaml
   states: !include modules_lite/states.yaml
+  time: !include modules_lite/time.yaml
