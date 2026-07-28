@@ -127,3 +127,18 @@ sensor:
     register_type: holding
     value_type: U_WORD
     unit_of_measurement: "Ah"
+
+  - platform: template
+    id: battery_power
+    name: "Battery Power"
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+    icon: mdi:battery
+    accuracy_decimals: 0
+    update_interval: 15s
+    lambda: |-
+      if (isnan(id(battery_voltage).state) || isnan(id(battery_current).state)) {
+        return {};
+      }
+      return id(battery_voltage).state * id(battery_current).state;
