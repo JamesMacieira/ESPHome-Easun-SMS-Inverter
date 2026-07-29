@@ -47,14 +47,18 @@ text_sensor:
       }
 
   - platform: template
-    id: pv1_tracking_status
-    name: "PV1 Tracking Status"
+    id: pv_tracking_status
+    name: "PV Tracking Status"
     update_interval: 2s
     lambda: |-
       switch ((uint16_t)id(pv1_tracking_status_raw).state) {
-        case 0: return {"Idle"};
-        case 1: return {"MPPT"};
-        default: return {"Unknown"};
+      case 3: return {"MPPT Normal"};
+      case 7: return {"MPPT Normal (Alt)"};
+      case 35: return {"MPPT Tracking"};
+      case 39: return {"MPPT Tracking (Alt)"};
+      case 17: return {"Startup ?"};
+      case 21: return {"Shutdown ?"};
+      default: return {"Unknown"};
       }
 
 
