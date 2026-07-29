@@ -51,15 +51,13 @@ text_sensor:
     name: "PV Tracking Status"
     update_interval: 2s
     lambda: |-
-      switch ((uint16_t)id(pv1_tracking_status_raw).state) {
-      case 3: return {"MPPT Normal"};
-      case 7: return {"MPPT Normal (Alt)"};
-      case 35: return {"MPPT Tracking"};
-      case 39: return {"MPPT Tracking (Alt)"};
-      case 17: return {"Startup ?"};
-      case 21: return {"Shutdown ?"};
-      default: return {"Unknown"};
-      }
+      const uint16_t status = (uint16_t) id(pv1_tracking_status_raw).state;
+      // The inverter exposes a bit field: 0x04 alternates during normal
+      // operation, while 0x20 denotes an active MPPT search/adjustment.
+      if (status & 0x20) return {"MPPT Tracking"};
+      if (status & 0x10) return {"PV Inactive (Startup/Shutdown)"};
+      if (status & 0x01) return {"MPPT Normal"};
+      return {"Unknown"};
 
 
 
