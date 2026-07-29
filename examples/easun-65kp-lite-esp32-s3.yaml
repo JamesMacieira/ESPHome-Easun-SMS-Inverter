@@ -1,0 +1,95 @@
+# Example configuration for an Easun 6.5KP and an ESP32-S3-DevKitC-1.
+# This example targets the original DevKitC-1 RGB LED on GPIO48. DevKitC-1
+# v1.1 boards use GPIO38 instead; change rgb_led_pin if necessary.
+
+substitutions:
+  name: easun_65kp_s3
+  friendly_name: Easun 6.5KP S3
+  device_description: "Monitor an Easun iSolar SMS 6.5KW inverter via USB-A RS232 port"
+  tx_pin: GPIO16
+  rx_pin: GPIO17
+  rgb_led_pin: GPIO48
+
+esphome:
+  name: ${name}
+  friendly_name: ${friendly_name}
+  comment: ${device_description}
+  min_version: 2024.6.0
+  project:
+    name: "jamesmacieira.easun_sms"
+    version: 0.7.7
+  on_boot:
+    priority: -100
+    then:
+      - logger.log: "Sending inverter wakeup"
+      - uart.write:
+          id: uart_0
+          data: [0x01, 0xAA, 0x06, 0xDE, 0xA2]
+      - delay: 300ms
+
+esp32:
+  board: esp32-s3-devkitc-1
+  framework:
+    type: esp-idf
+
+logger:
+  level: DEBUG
+  baud_rate: 0
+
+api:
+  encryption:
+    key: "xxxxxxxxx"
+
+ota:
+  - platform: esphome
+    password: "xxxxxxxxxxxxxx"
+
+wifi:
+  ssid: xxxxxxx
+  password: xxxxxxx
+  ap:
+    ssid: "Easun-65Kp S3 Fallback Hotspot"
+    password: "xxxxxxxxxx"
+
+web_server:
+  port: 80
+
+uart:
+  id: uart_0
+  tx_pin: ${tx_pin}
+  rx_pin: ${rx_pin}
+  baud_rate: 9600
+  data_bits: 8
+  parity: NONE
+  stop_bits: 1
+
+modbus:
+  id: modbus_0
+  uart_id: uart_0
+  send_wait_time: 250ms
+
+modbus_controller:
+  - id: sms_0
+    address: 0x01
+    modbus_id: modbus_0
+    setup_priority: -10
+    update_interval: 2s
+    command_throttle: 150ms
+
+light:
+  - platform: esp32_rmt_led_strip
+    id: onboard_rgb_led
+    name: "Onboard RGB LED"
+    pin: ${rgb_led_pin}
+    num_leds: 1
+    chipset: ws2812
+    rgb_order: GRB
+    # Limits maximum electrical output to 20% even when Home Assistant uses
+    # the brightness slider at 100%.
+    color_correct: [20%, 20%, 20%]
+    default_transition_length: 0s
+    restore_mode: ALWAYS_OFF
+
+packages:
+  easun_sms: github://JamesMacieira/ESPHome-Easun-SMS-Inverter/easun_sms_lite.yaml@main
+  led_status: !include ../modules_lite/led_status.yaml
