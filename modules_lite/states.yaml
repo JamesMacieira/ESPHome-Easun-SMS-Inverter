@@ -5,7 +5,7 @@ text_sensor:
     name: "Charging Status"
     update_interval: 5s
     lambda: |-
-      switch ((uint16_t)id(charging_status_raw).state) {
+      switch ((uint16_t)id(charging_status_raw).state & 0x00FF) {
         case 0: return {"Not Charging"};
         case 1: return {"CC/CV"};
         case 2: return {"Float"};
