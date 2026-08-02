@@ -17,7 +17,7 @@ esphome:
   min_version: 2024.6.0
   project:
     name: "jamesmacieira.easun_sms"
-    version: 0.7.7
+    version: 1.0.0
   on_boot:
     priority: -100
     then:
@@ -91,5 +91,10 @@ light:
     restore_mode: ALWAYS_OFF
 
 packages:
-  easun_sms: github://JamesMacieira/ESPHome-Easun-SMS-Inverter/easun_sms_lite.yaml@main
+  easun_sms:
+    url: https://github.com/JamesMacieira/ESPHome-Easun-SMS-Inverter
+    files:
+      - easun_sms_lite.yaml
+    ref: main
+    refresh: 0s
   led_status: !include ../modules_lite/led_status.yaml

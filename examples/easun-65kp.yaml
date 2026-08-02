@@ -20,7 +20,7 @@ esphome:
   
   project:
     name: "jamesmacieira.easun_sms"
-    version: 0.1.2
+    version: 1.0.0
   
   on_boot:
     priority: -100
@@ -86,4 +86,9 @@ modbus_controller:
     
 
 packages:
-  easun_sms: github://JamesMacieira/ESPHome-Easun-SMS-Inverter/easun_sms.yaml@main
+  easun_sms:
+    url: https://github.com/JamesMacieira/ESPHome-Easun-SMS-Inverter
+    files:
+      - easun_sms.yaml
+    ref: main
+    refresh: 0s

@@ -3,6 +3,7 @@ text_sensor:
   - platform: template
     id: charging_status
     name: "Charging Status"
+    entity_category: diagnostic
     update_interval: 5s
     lambda: |-
       switch ((uint16_t)id(charging_status_raw).state & 0x00FF) {
@@ -16,6 +17,7 @@ text_sensor:
   - platform: template
     id: operating_state
     name: "Operating State"
+    entity_category: diagnostic
     update_interval: 5s
     lambda: |-
       switch ((uint16_t)id(state_machine_raw).state) {
@@ -36,6 +38,7 @@ text_sensor:
   - platform: template
     id: output_priority
     name: "Output Priority"
+    entity_category: diagnostic
     update_interval: 5s
     lambda: |-
       switch ((uint16_t)id(output_priority_raw).state) {
@@ -49,6 +52,7 @@ text_sensor:
   - platform: template
     id: pv_tracking_status
     name: "PV Tracking Status"
+    entity_category: diagnostic
     update_interval: 2s
     lambda: |-
       const uint16_t status = (uint16_t) id(pv1_tracking_status_raw).state;
@@ -168,7 +172,7 @@ sensor:
   - platform: modbus_controller
     modbus_controller_id: sms_0
     id: charging_status_raw
-    name: "Charging Status RAW"
+    internal: true
     skip_updates: 5
     address: 0x0176
     register_type: holding
@@ -196,7 +200,7 @@ sensor:
   - platform: modbus_controller
     modbus_controller_id: sms_0
     id: pv1_tracking_status_raw
-    name: "PV1 Tracking Status RAW"
+    internal: true
     skip_updates: 10
     address: 0x0273
     register_type: holding
@@ -264,6 +268,7 @@ sensor:
     value_type: U_WORD
     unit_of_measurement: "%"
     state_class: measurement
+    entity_category: diagnostic
 
 
 ###############################################################################
