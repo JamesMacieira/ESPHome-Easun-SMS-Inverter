@@ -2,7 +2,7 @@
 # Requires a light with id `onboard_rgb_led`; it does not add Modbus reads.
 
 globals:
-  - id: inverter_led_blink_phase
+  - id: ${name}_inverter_led_blink_phase
     type: bool
     restore_value: no
     initial_value: 'false'
@@ -11,23 +11,23 @@ binary_sensor:
   # ON only while the node is reachable through the native API. This covers
   # both Wi-Fi loss and a lost Home Assistant API connection.
   - platform: status
-    id: home_assistant_connected
+    id: ${name}_home_assistant_connected
     internal: true
     on_state:
       then:
-        - script.execute: update_inverter_led
+        - script.execute: ${name}_update_inverter_led
 
 script:
-  - id: update_inverter_led
+  - id: ${name}_update_inverter_led
     mode: restart
     then:
       - lambda: |-
-          const uint16_t fault_1 = static_cast<uint16_t>(id(fault_code_1).state);
-          const uint16_t fault_2 = static_cast<uint16_t>(id(fault_code_2).state);
-          const uint16_t alarm_1 = static_cast<uint16_t>(id(alarm_code_1).state);
-          const uint16_t alarm_2 = static_cast<uint16_t>(id(alarm_code_2).state);
-          const uint16_t operating_state = static_cast<uint16_t>(id(state_machine_raw).state);
-          const uint16_t tracking_status = static_cast<uint16_t>(id(pv1_tracking_status_raw).state);
+          const uint16_t fault_1 = static_cast<uint16_t>(id(${name}_fault_code_1).state);
+          const uint16_t fault_2 = static_cast<uint16_t>(id(${name}_fault_code_2).state);
+          const uint16_t alarm_1 = static_cast<uint16_t>(id(${name}_alarm_code_1).state);
+          const uint16_t alarm_2 = static_cast<uint16_t>(id(${name}_alarm_code_2).state);
+          const uint16_t operating_state = static_cast<uint16_t>(id(${name}_state_machine_raw).state);
+          const uint16_t tracking_status = static_cast<uint16_t>(id(${name}_pv1_tracking_status_raw).state);
 
           bool enabled = true;
           float red = 0.0f;
@@ -37,11 +37,11 @@ script:
 
           // Faults and alarms always override the normal operating colour.
           if (fault_1 != 0 || fault_2 != 0 || alarm_1 != 0 || alarm_2 != 0 || operating_state == 7) {
-            enabled = id(inverter_led_blink_phase);
+            enabled = id(${name}_inverter_led_blink_phase);
             red = 1.0f;
-          } else if (!id(home_assistant_connected).state) {
+          } else if (!id(${name}_home_assistant_connected).state) {
             // The native API status is off when Wi-Fi or Home Assistant is unavailable.
-            enabled = id(inverter_led_blink_phase);
+            enabled = id(${name}_inverter_led_blink_phase);
             red = 1.0f;
             green = 0.35f;
           } else {
@@ -56,7 +56,7 @@ script:
               case 4:  // Solar mode
                 if (tracking_status & 0x20) {
                   // Active MPPT search: alternate green and amber.
-                  red = id(inverter_led_blink_phase) ? 1.0f : 0.10f;
+                  red = id(${name}_inverter_led_blink_phase) ? 1.0f : 0.10f;
                   green = 1.0f;
                 } else {
                   green = 1.0f;
@@ -91,5 +91,5 @@ interval:
   # it does not schedule any extra Modbus command.
   - interval: 1s
     then:
-      - lambda: 'id(inverter_led_blink_phase) = !id(inverter_led_blink_phase);'
-      - script.execute: update_inverter_led
+      - lambda: 'id(${name}_inverter_led_blink_phase) = !id(${name}_inverter_led_blink_phase);'
+      - script.execute: ${name}_update_inverter_led

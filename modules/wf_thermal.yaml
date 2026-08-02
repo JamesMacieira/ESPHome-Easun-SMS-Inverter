@@ -5,11 +5,11 @@
 binary_sensor:
 
   - platform: template
-    id: fan_fault
-    name: "Fan Fault"
+    id: ${name}_fan_fault
+    name: "${name} Fan Fault"
     device_class: problem
     lambda: |-
-      return id(fan_status_raw).state != 0;
+      return id(${name}_fan_status_raw).state != 0;
 
 sensor:
 
@@ -19,8 +19,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: fan_speed
-    name: "Fan Speed"
+    id: ${name}_fan_speed
+    name: "${name} Fan Speed"
     address: 0x0320
     register_type: holding
     value_type: U_WORD
@@ -29,7 +29,7 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: fan_status_raw
+    id: ${name}_fan_status_raw
     internal: true
     address: 0x0321
     register_type: holding
@@ -41,8 +41,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: pv_temperature
-    name: "PV Temperature"
+    id: ${name}_pv_temperature
+    name: "${name} PV Temperature"
     address: 0x0330
     register_type: holding
     value_type: S_WORD
@@ -52,8 +52,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: inverter_temperature
-    name: "Inverter Temperature"
+    id: ${name}_inverter_temperature
+    name: "${name} Inverter Temperature"
     address: 0x0331
     register_type: holding
     value_type: S_WORD
@@ -63,8 +63,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: charger_temperature
-    name: "Charger Temperature"
+    id: ${name}_charger_temperature
+    name: "${name} Charger Temperature"
     address: 0x0332
     register_type: holding
     value_type: S_WORD
@@ -74,8 +74,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: charger2_temperature
-    name: "Charger 2 Temperature"
+    id: ${name}_charger2_temperature
+    name: "${name} Charger 2 Temperature"
     address: 0x0333
     register_type: holding
     value_type: S_WORD
@@ -85,8 +85,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: ambient_temperature
-    name: "Ambient Temperature"
+    id: ${name}_ambient_temperature
+    name: "${name} Ambient Temperature"
     address: 0x0334
     register_type: holding
     value_type: S_WORD
@@ -96,8 +96,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: discharge_temperature
-    name: "Discharge Temperature"
+    id: ${name}_discharge_temperature
+    name: "${name} Discharge Temperature"
     address: 0x0335
     register_type: holding
     value_type: S_WORD

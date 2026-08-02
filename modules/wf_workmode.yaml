@@ -9,10 +9,10 @@ text_sensor:
 ###############################################################################
 
   - platform: template
-    id: output_mode
-    name: "Output Mode"
+    id: ${name}_output_mode
+    name: "${name} Output Mode"
     lambda: |-
-      switch ((uint16_t)id(output_mode_raw).state) {
+      switch ((uint16_t)id(${name}_output_mode_raw).state) {
         case 0: return {"APP"};
         case 1: return {"UPS"};
         case 2: return {"GEN"};
@@ -24,10 +24,10 @@ text_sensor:
 ###############################################################################
 
   - platform: template
-    id: parallel_mode
-    name: "Parallel Mode"
+    id: ${name}_parallel_mode
+    name: "${name} Parallel Mode"
     lambda: |-
-      switch ((uint16_t)id(parallel_mode_raw).state) {
+      switch ((uint16_t)id(${name}_parallel_mode_raw).state) {
         case 0: return {"Single Phase"};
         case 1: return {"Single Phase Parallel"};
         case 2: return {"Three Phase A"};
@@ -41,10 +41,10 @@ text_sensor:
 ###############################################################################
 
   - platform: template
-    id: workmode_output_priority
-    name: "Work Mode Output Priority"
+    id: ${name}_workmode_output_priority
+    name: "${name} Work Mode Output Priority"
     lambda: |-
-      switch ((uint16_t)id(workmode_output_priority_raw).state) {
+      switch ((uint16_t)id(${name}_workmode_output_priority_raw).state) {
         case 0: return {"GBP"};
         case 1: return {"PGB"};
         case 2: return {"PBG"};
@@ -57,10 +57,10 @@ text_sensor:
 ###############################################################################
 
   - platform: template
-    id: charging_priority
-    name: "Charging Priority"
+    id: ${name}_charging_priority
+    name: "${name} Charging Priority"
     lambda: |-
-      switch ((uint16_t)id(charging_priority_raw).state) {
+      switch ((uint16_t)id(${name}_charging_priority_raw).state) {
         case 0: return {"PNG"};
         case 1: return {"OPV"};
         case 2: return {"PVF"};
@@ -72,10 +72,10 @@ text_sensor:
 ###############################################################################
 
   - platform: template
-    id: operating_state
-    name: "Operating State"
+    id: ${name}_operating_state
+    name: "${name} Operating State"
     lambda: |-
-      switch ((uint16_t)id(state_machine_raw).state) {
+      switch ((uint16_t)id(${name}_state_machine_raw).state) {
         case 0: return {"Power On"};
         case 1: return {"Initialization"};
         case 2: return {"Standby"};
@@ -94,7 +94,7 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: output_mode_raw
+    id: ${name}_output_mode_raw
     internal: true
     address: 0x0140
     register_type: holding
@@ -102,7 +102,7 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: parallel_mode_raw
+    id: ${name}_parallel_mode_raw
     internal: true
     address: 0x0141
     register_type: holding
@@ -110,7 +110,7 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: workmode_output_priority_raw
+    id: ${name}_workmode_output_priority_raw
     internal: true
     address: 0x0142
     register_type: holding
@@ -118,7 +118,7 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: charging_priority_raw
+    id: ${name}_charging_priority_raw
     internal: true
     address: 0x0143
     register_type: holding
@@ -126,7 +126,7 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: state_machine_raw
+    id: ${name}_state_machine_raw
     internal: true
     address: 0x0144
     register_type: holding

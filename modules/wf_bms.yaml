@@ -5,10 +5,10 @@
 text_sensor:
 
   - platform: template
-    id: bms_communication_status
-    name: "BMS Communication Status"
+    id: ${name}_bms_communication_status
+    name: "${name} BMS Communication Status"
     lambda: |-
-      switch ((uint16_t)id(bms_communication_status_raw).state) {
+      switch ((uint16_t)id(${name}_bms_communication_status_raw).state) {
         case 0: return {"ID Search"};
         case 1: return {"ID Remote Lock"};
         case 2: return {"ID Locked"};
@@ -23,7 +23,7 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_communication_status_raw
+    id: ${name}_bms_communication_status_raw
     internal: true
     address: 0x0191
     register_type: holding
@@ -35,8 +35,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_protocol
-    name: "BMS Communication Protocol"
+    id: ${name}_bms_protocol
+    name: "${name} BMS Communication Protocol"
     address: 0x0190
     register_type: holding
     value_type: U_WORD
@@ -44,8 +44,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_package_id
-    name: "BMS Package ID"
+    id: ${name}_bms_package_id
+    name: "${name} BMS Package ID"
     address: 0x0192
     register_type: holding
     value_type: U_WORD
@@ -57,8 +57,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_voltage
-    name: "BMS Voltage"
+    id: ${name}_bms_voltage
+    name: "${name} BMS Voltage"
     address: 0x0193
     register_type: holding
     value_type: S_WORD
@@ -71,8 +71,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_current
-    name: "BMS Current"
+    id: ${name}_bms_current
+    name: "${name} BMS Current"
     address: 0x0194
     register_type: holding
     value_type: S_WORD
@@ -85,8 +85,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_temperature
-    name: "BMS Temperature"
+    id: ${name}_bms_temperature
+    name: "${name} BMS Temperature"
     address: 0x0195
     register_type: holding
     value_type: S_WORD
@@ -96,8 +96,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_soc
-    name: "BMS SOC"
+    id: ${name}_bms_soc
+    name: "${name} BMS SOC"
     address: 0x0196
     register_type: holding
     value_type: S_WORD
@@ -107,8 +107,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_soh
-    name: "BMS SOH"
+    id: ${name}_bms_soh
+    name: "${name} BMS SOH"
     address: 0x0197
     register_type: holding
     value_type: S_WORD
@@ -121,8 +121,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_current_capacity
-    name: "BMS Current Capacity"
+    id: ${name}_bms_current_capacity
+    name: "${name} BMS Current Capacity"
     address: 0x0198
     register_type: holding
     value_type: U_WORD
@@ -132,8 +132,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_full_charge_capacity
-    name: "BMS Full Charge Capacity"
+    id: ${name}_bms_full_charge_capacity
+    name: "${name} BMS Full Charge Capacity"
     address: 0x0199
     register_type: holding
     value_type: U_WORD
@@ -147,8 +147,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_cv_point
-    name: "BMS CV Point"
+    id: ${name}_bms_cv_point
+    name: "${name} BMS CV Point"
     address: 0x019A
     register_type: holding
     value_type: S_WORD
@@ -159,8 +159,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_max_charge_current
-    name: "BMS Maximum Charge Current"
+    id: ${name}_bms_max_charge_current
+    name: "${name} BMS Maximum Charge Current"
     address: 0x019B
     register_type: holding
     value_type: S_WORD
@@ -171,8 +171,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_max_discharge_current
-    name: "BMS Maximum Discharge Current"
+    id: ${name}_bms_max_discharge_current
+    name: "${name} BMS Maximum Discharge Current"
     address: 0x019C
     register_type: holding
     value_type: S_WORD
@@ -187,8 +187,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_low_soc_alarm
-    name: "BMS Low SOC Alarm"
+    id: ${name}_bms_low_soc_alarm
+    name: "${name} BMS Low SOC Alarm"
     address: 0x019D
     register_type: holding
     value_type: S_WORD
@@ -196,8 +196,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_low_soc_shutdown
-    name: "BMS Low SOC Shutdown"
+    id: ${name}_bms_low_soc_shutdown
+    name: "${name} BMS Low SOC Shutdown"
     address: 0x019E
     register_type: holding
     value_type: S_WORD
@@ -209,8 +209,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_low_soc_switching_point
-    name: "BMS Low SOC Switching Point"
+    id: ${name}_bms_low_soc_switching_point
+    name: "${name} BMS Low SOC Switching Point"
     address: 0x019F
     register_type: holding
     value_type: S_WORD
@@ -222,8 +222,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_high_soc_cutoff_point
-    name: "BMS High SOC Cut Battery Power"
+    id: ${name}_bms_high_soc_cutoff_point
+    name: "${name} BMS High SOC Cut Battery Power"
     address: 0x01A0
     register_type: holding
     value_type: S_WORD
@@ -239,8 +239,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_alarm_register
-    name: "BMS Alarm Register"
+    id: ${name}_bms_alarm_register
+    name: "${name} BMS Alarm Register"
     address: 0x01A1
     register_type: holding
     value_type: U_WORD
@@ -248,8 +248,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_fault_register
-    name: "BMS Fault Register"
+    id: ${name}_bms_fault_register
+    name: "${name} BMS Fault Register"
     address: 0x01A2
     register_type: holding
     value_type: U_WORD

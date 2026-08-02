@@ -5,10 +5,10 @@
 text_sensor:
 
   - platform: template
-    id: battery_type
-    name: "Battery Type"
+    id: ${name}_battery_type
+    name: "${name} Battery Type"
     lambda: |-
-      switch ((uint16_t)id(battery_type_raw).state) {
+      switch ((uint16_t)id(${name}_battery_type_raw).state) {
         case 0: return {"Lead Acid"};
         case 1: return {"Flooded"};
         case 2: return {"Ternary Lithium"};
@@ -18,10 +18,10 @@ text_sensor:
       }
 
   - platform: template
-    id: charging_status
-    name: "Charging Status"
+    id: ${name}_charging_status
+    name: "${name} Charging Status"
     lambda: |-
-      switch ((uint16_t)id(charging_status_raw).state) {
+      switch ((uint16_t)id(${name}_charging_status_raw).state) {
         case 0: return {"Not Charging"};
         case 1: return {"CC/CV"};
         case 2: return {"Float"};
@@ -37,7 +37,7 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: battery_type_raw
+    id: ${name}_battery_type_raw
     internal: true
     address: 0x0150
     register_type: holding
@@ -45,7 +45,7 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: charging_status_raw
+    id: ${name}_charging_status_raw
     internal: true
     address: 0x0176
     register_type: holding
@@ -57,8 +57,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: battery_percentage
-    name: "Battery Percentage"
+    id: ${name}_battery_percentage
+    name: "${name} Battery Percentage"
     address: 0x0152
     register_type: holding
     value_type: S_WORD
@@ -68,8 +68,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: positive_bus_voltage
-    name: "Positive Bus Voltage"
+    id: ${name}_positive_bus_voltage
+    name: "${name} Positive Bus Voltage"
     address: 0x0154
     register_type: holding
     value_type: S_WORD
@@ -82,8 +82,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: positive_battery_voltage
-    name: "Positive Battery Voltage"
+    id: ${name}_positive_battery_voltage
+    name: "${name} Positive Battery Voltage"
     address: 0x0155
     register_type: holding
     value_type: S_WORD
@@ -96,8 +96,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: positive_battery_discharge_current
-    name: "Positive Battery Discharge Current"
+    id: ${name}_positive_battery_discharge_current
+    name: "${name} Positive Battery Discharge Current"
     address: 0x0156
     register_type: holding
     value_type: S_WORD
@@ -112,8 +112,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: positive_battery_charge_current
-    name: "Positive Battery Charge Current"
+    id: ${name}_positive_battery_charge_current
+    name: "${name} Positive Battery Charge Current"
     address: 0x0157
     register_type: holding
     value_type: S_WORD
@@ -128,8 +128,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: positive_overvoltage_alarm
-    name: "Positive Overvoltage Alarm Voltage"
+    id: ${name}_positive_overvoltage_alarm
+    name: "${name} Positive Overvoltage Alarm Voltage"
     address: 0x0158
     register_type: holding
     value_type: S_WORD
@@ -140,8 +140,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: positive_low_voltage_alarm
-    name: "Positive Low Voltage Alarm Voltage"
+    id: ${name}_positive_low_voltage_alarm
+    name: "${name} Positive Low Voltage Alarm Voltage"
     address: 0x0159
     register_type: holding
     value_type: S_WORD
@@ -152,8 +152,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: positive_output_cutoff_voltage
-    name: "Positive Output Cutoff Voltage"
+    id: ${name}_positive_output_cutoff_voltage
+    name: "${name} Positive Output Cutoff Voltage"
     address: 0x015C
     register_type: holding
     value_type: S_WORD
@@ -164,8 +164,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: positive_output_cutoff_time
-    name: "Positive Output Cutoff Time"
+    id: ${name}_positive_output_cutoff_time
+    name: "${name} Positive Output Cutoff Time"
     address: 0x015D
     register_type: holding
     value_type: U_WORD
@@ -173,8 +173,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: positive_battery_power
-    name: "Positive Battery Power"
+    id: ${name}_positive_battery_power
+    name: "${name} Positive Battery Power"
     address: 0x015E
     register_type: holding
     value_type: U_WORD
@@ -190,8 +190,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: negative_bus_voltage
-    name: "Negative Bus Voltage"
+    id: ${name}_negative_bus_voltage
+    name: "${name} Negative Bus Voltage"
     address: 0x0164
     register_type: holding
     value_type: S_WORD
@@ -204,8 +204,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: negative_battery_voltage
-    name: "Negative Battery Voltage"
+    id: ${name}_negative_battery_voltage
+    name: "${name} Negative Battery Voltage"
     address: 0x0165
     register_type: holding
     value_type: S_WORD
@@ -218,8 +218,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: negative_battery_discharge_current
-    name: "Negative Battery Discharge Current"
+    id: ${name}_negative_battery_discharge_current
+    name: "${name} Negative Battery Discharge Current"
     address: 0x0166
     register_type: holding
     value_type: S_WORD
@@ -232,8 +232,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: negative_battery_charge_current
-    name: "Negative Battery Charge Current"
+    id: ${name}_negative_battery_charge_current
+    name: "${name} Negative Battery Charge Current"
     address: 0x0167
     register_type: holding
     value_type: S_WORD
@@ -246,8 +246,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: negative_overvoltage_alarm
-    name: "Negative Overvoltage Alarm Voltage"
+    id: ${name}_negative_overvoltage_alarm
+    name: "${name} Negative Overvoltage Alarm Voltage"
     address: 0x0168
     register_type: holding
     value_type: S_WORD
@@ -258,8 +258,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: negative_low_voltage_alarm
-    name: "Negative Low Voltage Alarm Voltage"
+    id: ${name}_negative_low_voltage_alarm
+    name: "${name} Negative Low Voltage Alarm Voltage"
     address: 0x0169
     register_type: holding
     value_type: S_WORD
@@ -270,8 +270,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: negative_output_cutoff_voltage
-    name: "Negative Output Cutoff Voltage"
+    id: ${name}_negative_output_cutoff_voltage
+    name: "${name} Negative Output Cutoff Voltage"
     address: 0x016C
     register_type: holding
     value_type: S_WORD
@@ -282,8 +282,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: negative_output_cutoff_time
-    name: "Negative Output Cutoff Time"
+    id: ${name}_negative_output_cutoff_time
+    name: "${name} Negative Output Cutoff Time"
     address: 0x016D
     register_type: holding
     value_type: U_WORD
@@ -291,8 +291,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: negative_battery_power
-    name: "Negative Battery Power"
+    id: ${name}_negative_battery_power
+    name: "${name} Negative Battery Power"
     address: 0x016E
     register_type: holding
     value_type: U_WORD
@@ -308,8 +308,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: constant_voltage
-    name: "Constant Voltage Charging"
+    id: ${name}_constant_voltage
+    name: "${name} Constant Voltage Charging"
     address: 0x0177
     register_type: holding
     value_type: S_WORD
@@ -320,8 +320,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: float_voltage
-    name: "Float Charging Voltage"
+    id: ${name}_float_voltage
+    name: "${name} Float Charging Voltage"
     address: 0x0178
     register_type: holding
     value_type: S_WORD
@@ -332,8 +332,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: constant_current
-    name: "Constant Voltage Charging Current"
+    id: ${name}_constant_current
+    name: "${name} Constant Voltage Charging Current"
     address: 0x0179
     register_type: holding
     value_type: S_WORD
@@ -344,8 +344,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: float_current
-    name: "Float Charging Current"
+    id: ${name}_float_current
+    name: "${name} Float Charging Current"
     address: 0x017A
     register_type: holding
     value_type: S_WORD
@@ -356,8 +356,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: max_constant_current_time
-    name: "Maximum Constant Current Time"
+    id: ${name}_max_constant_current_time
+    name: "${name} Maximum Constant Current Time"
     address: 0x017B
     register_type: holding
     value_type: U_WORD
@@ -365,8 +365,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: max_constant_voltage_time
-    name: "Maximum Constant Voltage Time"
+    id: ${name}_max_constant_voltage_time
+    name: "${name} Maximum Constant Voltage Time"
     address: 0x017C
     register_type: holding
     value_type: U_WORD
@@ -374,8 +374,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: equalization_voltage
-    name: "Equalization Voltage"
+    id: ${name}_equalization_voltage
+    name: "${name} Equalization Voltage"
     address: 0x017E
     register_type: holding
     value_type: S_WORD
@@ -386,8 +386,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: equalization_time
-    name: "Equalization Time"
+    id: ${name}_equalization_time
+    name: "${name} Equalization Time"
     address: 0x017F
     register_type: holding
     value_type: U_WORD
@@ -395,8 +395,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: equalization_delay
-    name: "Equalization Delay"
+    id: ${name}_equalization_delay
+    name: "${name} Equalization Delay"
     address: 0x0180
     register_type: holding
     value_type: U_WORD
@@ -404,8 +404,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: equalization_interval
-    name: "Equalization Interval"
+    id: ${name}_equalization_interval
+    name: "${name} Equalization Interval"
     address: 0x0181
     register_type: holding
     value_type: U_WORD
@@ -413,8 +413,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: equalization_interval_counter
-    name: "Equalization Interval Counter"
+    id: ${name}_equalization_interval_counter
+    name: "${name} Equalization Interval Counter"
     address: 0x0183
     register_type: holding
     value_type: U_WORD

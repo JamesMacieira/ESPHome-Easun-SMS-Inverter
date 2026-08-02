@@ -1,12 +1,12 @@
 text_sensor:
 
   - platform: template
-    id: charging_status
-    name: "Charging Status"
+    id: ${name}_charging_status
+    name: "${name} Charging Status"
     entity_category: diagnostic
     update_interval: 5s
     lambda: |-
-      switch ((uint16_t)id(charging_status_raw).state & 0x00FF) {
+      switch ((uint16_t)id(${name}_charging_status_raw).state & 0x00FF) {
         case 0: return {"Not Charging"};
         case 1: return {"CC/CV"};
         case 2: return {"Float"};
@@ -15,12 +15,12 @@ text_sensor:
       }
 
   - platform: template
-    id: operating_state
-    name: "Operating State"
+    id: ${name}_operating_state
+    name: "${name} Operating State"
     entity_category: diagnostic
     update_interval: 5s
     lambda: |-
-      switch ((uint16_t)id(state_machine_raw).state) {
+      switch ((uint16_t)id(${name}_state_machine_raw).state) {
         case 0: return {"Power On"};
         case 1: return {"Initialization"};
         case 2: return {"Standby"};
@@ -36,12 +36,12 @@ text_sensor:
       }
 
   - platform: template
-    id: output_priority
-    name: "Output Priority"
+    id: ${name}_output_priority
+    name: "${name} Output Priority"
     entity_category: diagnostic
     update_interval: 5s
     lambda: |-
-      switch ((uint16_t)id(output_priority_raw).state) {
+      switch ((uint16_t)id(${name}_output_priority_raw).state) {
         case 0: return {"GPB Grid>Solar>Battery"};
         case 1: return {"PGB Solar>Grid>Battery"};
         case 2: return {"PBG Solar>Battery>Grid"};
@@ -50,12 +50,12 @@ text_sensor:
       }
 
   - platform: template
-    id: pv_tracking_status
-    name: "PV Tracking Status"
+    id: ${name}_pv_tracking_status
+    name: "${name} PV Tracking Status"
     entity_category: diagnostic
     update_interval: 2s
     lambda: |-
-      const uint16_t status = (uint16_t) id(pv1_tracking_status_raw).state;
+      const uint16_t status = (uint16_t) id(${name}_pv1_tracking_status_raw).state;
       // The inverter exposes a bit field: 0x04 alternates during normal
       // operation, while 0x20 denotes an active MPPT search/adjustment.
       if (status & 0x20) return {"MPPT Tracking"};
@@ -66,11 +66,11 @@ text_sensor:
 
 
   - platform: template
-    name: "Fault Code 1 Status"
+    name: "${name} Fault Code 1 Status"
     update_interval: 2s
     entity_category: diagnostic
     lambda: |-
-      const uint16_t code = (uint16_t) id(fault_code_1).state;
+      const uint16_t code = (uint16_t) id(${name}_fault_code_1).state;
       if (code & (1 << 0)) return {"Mains soft start failure"};
       if (code & (1 << 1)) return {"Bus overvoltage"};
       if (code & (1 << 2)) return {"Bus undervoltage"};
@@ -90,11 +90,11 @@ text_sensor:
       return {"No Fault"};
 
   - platform: template
-    name: "Fault Code 2 Status"
+    name: "${name} Fault Code 2 Status"
     update_interval: 2s
     entity_category: diagnostic
     lambda: |-
-      const uint16_t code = (uint16_t) id(fault_code_2).state;
+      const uint16_t code = (uint16_t) id(${name}_fault_code_2).state;
       if (code & (1 << 0)) return {"Programming in progress"};
       if (code & (1 << 1)) return {"Photovoltaic reverse connection"};
       if (code & (1 << 2)) return {"Parallel serial number abnormal"};
@@ -110,11 +110,11 @@ text_sensor:
       return {"No Fault"};
 
   - platform: template
-    name: "Alarm Code 1 Status"
+    name: "${name} Alarm Code 1 Status"
     update_interval: 2s
     entity_category: diagnostic
     lambda: |-
-      const uint16_t code = (uint16_t) id(alarm_code_1).state;
+      const uint16_t code = (uint16_t) id(${name}_alarm_code_1).state;
       if (code & (1 << 0)) return {"Battery not connected"};
       if (code & (1 << 1)) return {"Battery undervoltage"};
       if (code & (1 << 2)) return {"Battery low voltage"};
@@ -133,11 +133,11 @@ text_sensor:
       return {"No Alarm"};
 
   - platform: template
-    name: "Alarm Code 2 Status"
+    name: "${name} Alarm Code 2 Status"
     update_interval: 2s
     entity_category: diagnostic
     lambda: |-
-      const uint16_t code = (uint16_t) id(alarm_code_2).state;
+      const uint16_t code = (uint16_t) id(${name}_alarm_code_2).state;
       if (code & (1 << 0)) return {"Parallel communication error"};
       if (code & (1 << 1)) return {"Excessive voltage difference or frequency in parallel operation"};
       if (code & (1 << 2)) return {"Low SOC shutdown"};
@@ -155,10 +155,10 @@ text_sensor:
 binary_sensor:
 
   - platform: template
-    id: fan_status
-    name: "Fan Status"
+    id: ${name}_fan_status
+    name: "${name} Fan Status"
     lambda: |-
-      return (uint16_t) id(fan_status_raw).state != 0;
+      return (uint16_t) id(${name}_fan_status_raw).state != 0;
     device_class: problem
     entity_category: diagnostic
 
@@ -171,7 +171,7 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: charging_status_raw
+    id: ${name}_charging_status_raw
     internal: true
     skip_updates: 5
     address: 0x0176
@@ -181,7 +181,7 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: state_machine_raw
+    id: ${name}_state_machine_raw
     skip_updates: 5
     internal: true
     address: 0x0144
@@ -190,7 +190,7 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: output_priority_raw
+    id: ${name}_output_priority_raw
     skip_updates: 5
     internal: true
     address: 0x0210
@@ -199,7 +199,7 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: pv1_tracking_status_raw
+    id: ${name}_pv1_tracking_status_raw
     internal: true
     skip_updates: 10
     address: 0x0273
@@ -209,7 +209,7 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: fan_status_raw
+    id: ${name}_fan_status_raw
     skip_updates: 10
     internal: true
     address: 0x0321
@@ -219,7 +219,7 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: fault_code_1
+    id: ${name}_fault_code_1
     internal: true
     address: 0x0046
     register_type: holding
@@ -228,7 +228,7 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: fault_code_2
+    id: ${name}_fault_code_2
     internal: true
     address: 0x0047
     register_type: holding
@@ -237,7 +237,7 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: alarm_code_1
+    id: ${name}_alarm_code_1
     internal: true
     address: 0x0048
     register_type: holding
@@ -246,7 +246,7 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: alarm_code_2
+    id: ${name}_alarm_code_2
     internal: true
     address: 0x0049
     register_type: holding
@@ -261,8 +261,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: fan_speed
-    name: "Fan Speed"
+    id: ${name}_fan_speed
+    name: "${name} Fan Speed"
     address: 0x0320
     register_type: holding
     value_type: U_WORD
@@ -277,8 +277,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: temperature_pv
-    name: "Temperature PV"
+    id: ${name}_temperature_pv
+    name: "${name} Temperature PV"
     address: 0x0330
     register_type: holding
     value_type: S_WORD
@@ -292,8 +292,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: temperature_inverter
-    name: "Temperature Inverter"
+    id: ${name}_temperature_inverter
+    name: "${name} Temperature Inverter"
     address: 0x0331
     register_type: holding
     value_type: S_WORD
@@ -307,8 +307,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: temperature_charger
-    name: "Temperature Charger"
+    id: ${name}_temperature_charger
+    name: "${name} Temperature Charger"
     address: 0x0332
     register_type: holding
     value_type: S_WORD
@@ -322,8 +322,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: temperature_charger2
-    name: "Temperature Charger 2"
+    id: ${name}_temperature_charger2
+    name: "${name} Temperature Charger 2"
     address: 0x0333
     register_type: holding
     value_type: S_WORD
@@ -336,8 +336,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: temperature_ambient
-    name: "Temperature Ambient"
+    id: ${name}_temperature_ambient
+    name: "${name} Temperature Ambient"
     address: 0x0334
     register_type: holding
     value_type: S_WORD

@@ -6,9 +6,9 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: mains_energy_daily
+    id: ${name}_mains_energy_daily
     skip_updates: 10
-    name: "Mains Energy Daily"
+    name: "${name} Mains Energy Daily"
     address: 0x02AE
     register_count: 2
     register_type: holding
@@ -21,9 +21,9 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: mains_energy_monthly
+    id: ${name}_mains_energy_monthly
     skip_updates: 10
-    name: "Mains Energy Monthly"
+    name: "${name} Mains Energy Monthly"
     address: 0x02B0
     register_count: 2
     register_type: holding
@@ -36,9 +36,9 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: mains_energy_total
+    id: ${name}_mains_energy_total
     skip_updates: 10
-    name: "Mains Energy Total"
+    name: "${name} Mains Energy Total"
     address: 0x02B2
     register_count: 2
     register_type: holding
@@ -51,9 +51,9 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: load_energy_daily
+    id: ${name}_load_energy_daily
     skip_updates: 10
-    name: "Load Energy Daily"
+    name: "${name} Load Energy Daily"
     address: 0x02B4
     register_count: 2
     register_type: holding
@@ -66,9 +66,9 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: load_energy_monthly
+    id: ${name}_load_energy_monthly
     skip_updates: 10
-    name: "Load Energy Monthly"
+    name: "${name} Load Energy Monthly"
     address: 0x02B6
     register_count: 2
     register_type: holding
@@ -81,9 +81,9 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: load_energy_total
+    id: ${name}_load_energy_total
     skip_updates: 10
-    name: "Load Energy Total"
+    name: "${name} Load Energy Total"
     address: 0x02B8
     register_count: 2
     register_type: holding
@@ -100,9 +100,9 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: pv_energy_today
+    id: ${name}_pv_energy_today
     skip_updates: 10
-    name: "PV Energy Today"
+    name: "${name} PV Energy Today"
     address: 0x009C
     register_type: holding
     value_type: U_WORD
@@ -112,9 +112,9 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: pv_daily_energy
+    id: ${name}_pv_daily_energy
     skip_updates: 10
-    name: "PV Daily Energy"
+    name: "${name} PV Daily Energy"
     address: 0x0267
     register_count: 2
     register_type: holding
@@ -128,9 +128,9 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: pv_monthly_energy
+    id: ${name}_pv_monthly_energy
     skip_updates: 10
-    name: "PV Monthly Energy"
+    name: "${name} PV Monthly Energy"
     address: 0x0269
     register_count: 2
     register_type: holding
@@ -144,9 +144,9 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: pv_yearly_energy
+    id: ${name}_pv_yearly_energy
     skip_updates: 10
-    name: "PV Yearly Energy"
+    name: "${name} PV Yearly Energy"
     address: 0x026B
     register_count: 2
     register_type: holding
@@ -160,9 +160,9 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: pv_total_energy
+    id: ${name}_pv_total_energy
     skip_updates: 10
-    name: "PV Total Energy"
+    name: "${name} PV Total Energy"
     address: 0x026D
     register_count: 2
     register_type: holding

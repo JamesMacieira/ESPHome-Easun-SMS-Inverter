@@ -10,8 +10,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: inverter_voltage_setpoint
-    name: "Inverter Voltage Setpoint"
+    id: ${name}_inverter_voltage_setpoint
+    name: "${name} Inverter Voltage Setpoint"
     address: 0x02A0
     register_type: holding
     value_type: S_WORD
@@ -24,8 +24,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: inverter_frequency_setpoint
-    name: "Inverter Frequency Setpoint"
+    id: ${name}_inverter_frequency_setpoint
+    name: "${name} Inverter Frequency Setpoint"
     address: 0x02A1
     register_type: holding
     value_type: S_WORD
@@ -42,8 +42,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_inverter_voltage
-    name: "Phase A Inverter Voltage"
+    id: ${name}_phase_a_inverter_voltage
+    name: "${name} Phase A Inverter Voltage"
     address: 0x02AA
     register_type: holding
     value_type: S_WORD
@@ -55,8 +55,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_inverter_frequency
-    name: "Phase A Inverter Frequency"
+    id: ${name}_phase_a_inverter_frequency
+    name: "${name} Phase A Inverter Frequency"
     address: 0x02AB
     register_type: holding
     value_type: S_WORD
@@ -68,8 +68,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_inverter_current
-    name: "Phase A Inverter Current"
+    id: ${name}_phase_a_inverter_current
+    name: "${name} Phase A Inverter Current"
     address: 0x02AC
     register_type: holding
     value_type: S_WORD
@@ -81,8 +81,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_dc_component
-    name: "Phase A DC Component"
+    id: ${name}_phase_a_dc_component
+    name: "${name} Phase A DC Component"
     address: 0x02AD
     register_type: holding
     value_type: S_WORD
@@ -91,8 +91,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_daily_input_energy
-    name: "Phase A Daily Input Energy"
+    id: ${name}_phase_a_daily_input_energy
+    name: "${name} Phase A Daily Input Energy"
     address: 0x02AE
     register_count: 2
     register_type: holding
@@ -104,8 +104,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_monthly_input_energy
-    name: "Phase A Monthly Input Energy"
+    id: ${name}_phase_a_monthly_input_energy
+    name: "${name} Phase A Monthly Input Energy"
     address: 0x02B0
     register_count: 2
     register_type: holding
@@ -117,8 +117,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_total_input_energy
-    name: "Phase A Total Input Energy"
+    id: ${name}_phase_a_total_input_energy
+    name: "${name} Phase A Total Input Energy"
     address: 0x02B2
     register_count: 2
     register_type: holding
@@ -130,8 +130,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_daily_output_energy
-    name: "Phase A Daily Output Energy"
+    id: ${name}_phase_a_daily_output_energy
+    name: "${name} Phase A Daily Output Energy"
     address: 0x02B4
     register_count: 2
     register_type: holding
@@ -143,8 +143,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_monthly_output_energy
-    name: "Phase A Monthly Output Energy"
+    id: ${name}_phase_a_monthly_output_energy
+    name: "${name} Phase A Monthly Output Energy"
     address: 0x02B6
     register_count: 2
     register_type: holding
@@ -156,8 +156,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_total_output_energy
-    name: "Phase A Total Output Energy"
+    id: ${name}_phase_a_total_output_energy
+    name: "${name} Phase A Total Output Energy"
     address: 0x02B8
     register_count: 2
     register_type: holding
@@ -173,8 +173,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_inverter_voltage
-    name: "Phase B Inverter Voltage"
+    id: ${name}_phase_b_inverter_voltage
+    name: "${name} Phase B Inverter Voltage"
     address: 0x02BA
     register_type: holding
     value_type: S_WORD
@@ -186,8 +186,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_inverter_frequency
-    name: "Phase B Inverter Frequency"
+    id: ${name}_phase_b_inverter_frequency
+    name: "${name} Phase B Inverter Frequency"
     address: 0x02BB
     register_type: holding
     value_type: S_WORD
@@ -199,8 +199,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_inverter_current
-    name: "Phase B Inverter Current"
+    id: ${name}_phase_b_inverter_current
+    name: "${name} Phase B Inverter Current"
     address: 0x02BC
     register_type: holding
     value_type: S_WORD
@@ -212,8 +212,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_dc_component
-    name: "Phase B DC Component"
+    id: ${name}_phase_b_dc_component
+    name: "${name} Phase B DC Component"
     address: 0x02BD
     register_type: holding
     value_type: S_WORD
@@ -221,8 +221,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_inverter_daily_energy
-    name: "Phase B Inverter Daily Energy"
+    id: ${name}_phase_b_inverter_daily_energy
+    name: "${name} Phase B Inverter Daily Energy"
     address: 0x02C0
     register_count: 2
     register_type: holding
@@ -234,8 +234,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_inverter_monthly_energy
-    name: "Phase B Inverter Monthly Energy"
+    id: ${name}_phase_b_inverter_monthly_energy
+    name: "${name} Phase B Inverter Monthly Energy"
     address: 0x02C2
     register_count: 2
     register_type: holding
@@ -247,8 +247,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_inverter_total_energy
-    name: "Phase B Inverter Total Energy"
+    id: ${name}_phase_b_inverter_total_energy
+    name: "${name} Phase B Inverter Total Energy"
     address: 0x02C4
     register_count: 2
     register_type: holding
@@ -264,8 +264,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_inverter_voltage
-    name: "Phase C Inverter Voltage"
+    id: ${name}_phase_c_inverter_voltage
+    name: "${name} Phase C Inverter Voltage"
     address: 0x02CA
     register_type: holding
     value_type: S_WORD
@@ -277,8 +277,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_inverter_frequency
-    name: "Phase C Inverter Frequency"
+    id: ${name}_phase_c_inverter_frequency
+    name: "${name} Phase C Inverter Frequency"
     address: 0x02CB
     register_type: holding
     value_type: S_WORD
@@ -290,8 +290,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_inverter_current
-    name: "Phase C Inverter Current"
+    id: ${name}_phase_c_inverter_current
+    name: "${name} Phase C Inverter Current"
     address: 0x02CC
     register_type: holding
     value_type: S_WORD
@@ -303,8 +303,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_dc_component
-    name: "Phase C DC Component"
+    id: ${name}_phase_c_dc_component
+    name: "${name} Phase C DC Component"
     address: 0x02CD
     register_type: holding
     value_type: S_WORD
@@ -312,8 +312,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_inverter_daily_energy
-    name: "Phase C Inverter Daily Energy"
+    id: ${name}_phase_c_inverter_daily_energy
+    name: "${name} Phase C Inverter Daily Energy"
     address: 0x02D0
     register_count: 2
     register_type: holding
@@ -325,8 +325,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_inverter_monthly_energy
-    name: "Phase C Inverter Monthly Energy"
+    id: ${name}_phase_c_inverter_monthly_energy
+    name: "${name} Phase C Inverter Monthly Energy"
     address: 0x02D2
     register_count: 2
     register_type: holding
@@ -338,8 +338,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_inverter_total_energy
-    name: "Phase C Inverter Total Energy"
+    id: ${name}_phase_c_inverter_total_energy
+    name: "${name} Phase C Inverter Total Energy"
     address: 0x02D4
     register_count: 2
     register_type: holding

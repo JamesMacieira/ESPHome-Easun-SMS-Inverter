@@ -3,7 +3,7 @@
 # v1.1 boards use GPIO38 instead; change rgb_led_pin if necessary.
 
 substitutions:
-  name: easun_65kp_s3
+  name: easun
   friendly_name: Easun 6.5KP S3
   device_description: "Monitor an Easun iSolar SMS 6.5KW inverter via USB-A RS232 port"
   tx_pin: GPIO16

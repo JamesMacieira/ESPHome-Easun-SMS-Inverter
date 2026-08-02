@@ -5,10 +5,10 @@
 text_sensor:
 
   - platform: template
-    id: output_priority
-    name: "Output Priority"
+    id: ${name}_output_priority
+    name: "${name} Output Priority"
     lambda: |-
-      switch ((uint16_t)id(output_priority_raw).state) {
+      switch ((uint16_t)id(${name}_output_priority_raw).state) {
         case 0: return {"GPB"};
         case 1: return {"PGB"};
         case 2: return {"PBG"};
@@ -17,10 +17,10 @@ text_sensor:
       }
 
   - platform: template
-    id: operating_mode
-    name: "Operating Mode"
+    id: ${name}_operating_mode
+    name: "${name} Operating Mode"
     lambda: |-
-      switch ((uint16_t)id(operating_mode_raw).state) {
+      switch ((uint16_t)id(${name}_operating_mode_raw).state) {
         case 0: return {"APP"};
         case 1: return {"UPS"};
         case 2: return {"GEN"};
@@ -35,7 +35,7 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: output_priority_raw
+    id: ${name}_output_priority_raw
     internal: true
     address: 0x0210
     register_type: holding
@@ -43,7 +43,7 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: operating_mode_raw
+    id: ${name}_operating_mode_raw
     internal: true
     address: 0x0211
     register_type: holding
@@ -55,8 +55,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_output_voltage
-    name: "Phase A Output Voltage"
+    id: ${name}_phase_a_output_voltage
+    name: "${name} Phase A Output Voltage"
     address: 0x0218
     register_type: holding
     value_type: S_WORD
@@ -68,8 +68,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_output_frequency
-    name: "Phase A Output Frequency"
+    id: ${name}_phase_a_output_frequency
+    name: "${name} Phase A Output Frequency"
     address: 0x0219
     register_type: holding
     value_type: S_WORD
@@ -81,8 +81,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_output_current
-    name: "Phase A Output Current"
+    id: ${name}_phase_a_output_current
+    name: "${name} Phase A Output Current"
     address: 0x021A
     register_type: holding
     value_type: S_WORD
@@ -94,8 +94,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_small_output_current
-    name: "Phase A Small Output Current"
+    id: ${name}_phase_a_small_output_current
+    name: "${name} Phase A Small Output Current"
     address: 0x021B
     register_type: holding
     value_type: S_WORD
@@ -106,8 +106,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_output_active_power
-    name: "Phase A Output Active Power"
+    id: ${name}_phase_a_output_active_power
+    name: "${name} Phase A Output Active Power"
     address: 0x021C
     register_type: holding
     value_type: S_WORD
@@ -117,8 +117,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_output_apparent_power
-    name: "Phase A Output Apparent Power"
+    id: ${name}_phase_a_output_apparent_power
+    name: "${name} Phase A Output Apparent Power"
     address: 0x021D
     register_type: holding
     value_type: S_WORD
@@ -128,8 +128,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_load_percentage
-    name: "Phase A Load Percentage"
+    id: ${name}_phase_a_load_percentage
+    name: "${name} Phase A Load Percentage"
     address: 0x0220
     register_type: holding
     value_type: S_WORD
@@ -144,8 +144,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_output_voltage
-    name: "Phase B Output Voltage"
+    id: ${name}_phase_b_output_voltage
+    name: "${name} Phase B Output Voltage"
     address: 0x0230
     register_type: holding
     value_type: S_WORD
@@ -157,8 +157,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_output_frequency
-    name: "Phase B Output Frequency"
+    id: ${name}_phase_b_output_frequency
+    name: "${name} Phase B Output Frequency"
     address: 0x0231
     register_type: holding
     value_type: S_WORD
@@ -170,8 +170,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_output_current
-    name: "Phase B Output Current"
+    id: ${name}_phase_b_output_current
+    name: "${name} Phase B Output Current"
     address: 0x0232
     register_type: holding
     value_type: S_WORD
@@ -183,8 +183,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_small_output_current
-    name: "Phase B Small Output Current"
+    id: ${name}_phase_b_small_output_current
+    name: "${name} Phase B Small Output Current"
     address: 0x0233
     register_type: holding
     value_type: S_WORD
@@ -195,8 +195,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_output_active_power
-    name: "Phase B Output Active Power"
+    id: ${name}_phase_b_output_active_power
+    name: "${name} Phase B Output Active Power"
     address: 0x0234
     register_type: holding
     value_type: S_WORD
@@ -206,8 +206,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_output_apparent_power
-    name: "Phase B Output Apparent Power"
+    id: ${name}_phase_b_output_apparent_power
+    name: "${name} Phase B Output Apparent Power"
     address: 0x0235
     register_type: holding
     value_type: S_WORD
@@ -217,8 +217,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_load_percentage
-    name: "Phase B Load Percentage"
+    id: ${name}_phase_b_load_percentage
+    name: "${name} Phase B Load Percentage"
     address: 0x0238
     register_type: holding
     value_type: S_WORD
@@ -233,8 +233,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_output_voltage
-    name: "Phase C Output Voltage"
+    id: ${name}_phase_c_output_voltage
+    name: "${name} Phase C Output Voltage"
     address: 0x0248
     register_type: holding
     value_type: S_WORD
@@ -246,8 +246,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_output_frequency
-    name: "Phase C Output Frequency"
+    id: ${name}_phase_c_output_frequency
+    name: "${name} Phase C Output Frequency"
     address: 0x0249
     register_type: holding
     value_type: S_WORD
@@ -259,8 +259,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_output_current
-    name: "Phase C Output Current"
+    id: ${name}_phase_c_output_current
+    name: "${name} Phase C Output Current"
     address: 0x024A
     register_type: holding
     value_type: S_WORD
@@ -272,8 +272,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_small_output_current
-    name: "Phase C Small Output Current"
+    id: ${name}_phase_c_small_output_current
+    name: "${name} Phase C Small Output Current"
     address: 0x024B
     register_type: holding
     value_type: S_WORD
@@ -284,8 +284,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_output_active_power
-    name: "Phase C Output Active Power"
+    id: ${name}_phase_c_output_active_power
+    name: "${name} Phase C Output Active Power"
     address: 0x024C
     register_type: holding
     value_type: S_WORD
@@ -295,8 +295,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_output_apparent_power
-    name: "Phase C Output Apparent Power"
+    id: ${name}_phase_c_output_apparent_power
+    name: "${name} Phase C Output Apparent Power"
     address: 0x024D
     register_type: holding
     value_type: S_WORD
@@ -306,8 +306,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_load_percentage
-    name: "Phase C Load Percentage"
+    id: ${name}_phase_c_load_percentage
+    name: "${name} Phase C Load Percentage"
     address: 0x0250
     register_type: holding
     value_type: S_WORD
@@ -322,8 +322,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_daily_energy
-    name: "Phase A Daily Energy"
+    id: ${name}_phase_a_daily_energy
+    name: "${name} Phase A Daily Energy"
     address: 0x0221
     register_count: 2
     register_type: holding
@@ -337,8 +337,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_monthly_energy
-    name: "Phase A Monthly Energy"
+    id: ${name}_phase_a_monthly_energy
+    name: "${name} Phase A Monthly Energy"
     address: 0x0223
     register_count: 2
     register_type: holding
@@ -352,8 +352,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_yearly_energy
-    name: "Phase A Yearly Energy"
+    id: ${name}_phase_a_yearly_energy
+    name: "${name} Phase A Yearly Energy"
     address: 0x0225
     register_count: 2
     register_type: holding
@@ -367,8 +367,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_total_energy
-    name: "Phase A Total Energy"
+    id: ${name}_phase_a_total_energy
+    name: "${name} Phase A Total Energy"
     address: 0x0227
     register_count: 2
     register_type: holding
@@ -386,8 +386,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_daily_energy
-    name: "Phase B Daily Energy"
+    id: ${name}_phase_b_daily_energy
+    name: "${name} Phase B Daily Energy"
     address: 0x0239
     register_count: 2
     register_type: holding
@@ -401,8 +401,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_monthly_energy
-    name: "Phase B Monthly Energy"
+    id: ${name}_phase_b_monthly_energy
+    name: "${name} Phase B Monthly Energy"
     address: 0x023B
     register_count: 2
     register_type: holding
@@ -416,8 +416,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_yearly_energy
-    name: "Phase B Yearly Energy"
+    id: ${name}_phase_b_yearly_energy
+    name: "${name} Phase B Yearly Energy"
     address: 0x023D
     register_count: 2
     register_type: holding
@@ -431,8 +431,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_total_energy
-    name: "Phase B Total Energy"
+    id: ${name}_phase_b_total_energy
+    name: "${name} Phase B Total Energy"
     address: 0x023F
     register_count: 2
     register_type: holding
@@ -450,8 +450,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_daily_energy
-    name: "Phase C Daily Energy"
+    id: ${name}_phase_c_daily_energy
+    name: "${name} Phase C Daily Energy"
     address: 0x0251
     register_count: 2
     register_type: holding
@@ -465,8 +465,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_monthly_energy
-    name: "Phase C Monthly Energy"
+    id: ${name}_phase_c_monthly_energy
+    name: "${name} Phase C Monthly Energy"
     address: 0x0253
     register_count: 2
     register_type: holding
@@ -480,8 +480,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_yearly_energy
-    name: "Phase C Yearly Energy"
+    id: ${name}_phase_c_yearly_energy
+    name: "${name} Phase C Yearly Energy"
     address: 0x0255
     register_count: 2
     register_type: holding
@@ -495,8 +495,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_total_energy
-    name: "Phase C Total Energy"
+    id: ${name}_phase_c_total_energy
+    name: "${name} Phase C Total Energy"
     address: 0x0257
     register_count: 2
     register_type: holding

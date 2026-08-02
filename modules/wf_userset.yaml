@@ -12,7 +12,7 @@ select:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Output Voltage Setting"
+    name: "${name} Output Voltage Setting"
     address: 0x4100
     value_type: U_WORD
     optionsmap:
@@ -25,7 +25,7 @@ select:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Output Frequency Setting"
+    name: "${name} Output Frequency Setting"
     address: 0x4101
     value_type: U_WORD
     optionsmap:
@@ -36,7 +36,7 @@ select:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Output Priority Setting"
+    name: "${name} Output Priority Setting"
     address: 0x4102
     value_type: U_WORD
     optionsmap:
@@ -49,7 +49,7 @@ select:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Operating Mode Setting"
+    name: "${name} Operating Mode Setting"
     address: 0x4103
     value_type: U_WORD
     optionsmap:
@@ -60,7 +60,7 @@ select:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Charging Priority Setting"
+    name: "${name} Charging Priority Setting"
     address: 0x4104
     value_type: U_WORD
     optionsmap:
@@ -72,7 +72,7 @@ select:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Maximum Charging Current Setting"
+    name: "${name} Maximum Charging Current Setting"
     address: 0x4106
     value_type: U_WORD
     optionsmap:
@@ -94,7 +94,7 @@ select:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Battery Type Setting"
+    name: "${name} Battery Type Setting"
     address: 0x4107
     value_type: U_WORD
     optionsmap:
@@ -108,7 +108,7 @@ select:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Parallel Mode Setting"
+    name: "${name} Parallel Mode Setting"
     address: 0x4110
     value_type: U_WORD
     optionsmap:
@@ -122,7 +122,7 @@ select:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "BMS Protocol Setting"
+    name: "${name} BMS Protocol Setting"
     address: 0x411E
     value_type: U_WORD
     optionsmap:
@@ -140,7 +140,7 @@ switch:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Equalization Charging Enabled"
+    name: "${name} Equalization Charging Enabled"
     register_type: holding
     address: 0x4112
     bitmask: 1
@@ -148,7 +148,7 @@ switch:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Generator Enabled"
+    name: "${name} Generator Enabled"
     register_type: holding
     address: 0x411A
     bitmask: 1
@@ -156,7 +156,7 @@ switch:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Charging Disabled"
+    name: "${name} Charging Disabled"
     register_type: holding
     address: 0x4124
     bitmask: 1
@@ -164,7 +164,7 @@ switch:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Backlight Auto Off"
+    name: "${name} Backlight Auto Off"
     register_type: holding
     address: 0x4125
     bitmask: 1
@@ -174,7 +174,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "AC Charging Current Setting"
+    name: "${name} AC Charging Current Setting"
     address: 0x4105
     value_type: U_WORD
     min_value: 2
@@ -185,7 +185,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Battery Low Voltage Alarm Setting"
+    name: "${name} Battery Low Voltage Alarm Setting"
     address: 0x4108
     value_type: U_WORD
     lambda: return x * 0.1f;
@@ -200,7 +200,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Battery Shutdown Voltage Setting"
+    name: "${name} Battery Shutdown Voltage Setting"
     address: 0x4109
     value_type: U_WORD
     lambda: return x * 0.1f;
@@ -215,7 +215,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Constant Voltage Charge Setting"
+    name: "${name} Constant Voltage Charge Setting"
     address: 0x410A
     value_type: U_WORD
     lambda: return x * 0.1f;
@@ -230,7 +230,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Float Charge Voltage Setting"
+    name: "${name} Float Charge Voltage Setting"
     address: 0x410B
     value_type: U_WORD
     lambda: return x * 0.1f;
@@ -245,7 +245,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Battery To AC Voltage Setting"
+    name: "${name} Battery To AC Voltage Setting"
     address: 0x410C
     value_type: U_WORD
     lambda: return x * 0.1f;
@@ -260,7 +260,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Return To Battery Voltage Setting"
+    name: "${name} Return To Battery Voltage Setting"
     address: 0x410D
     value_type: U_WORD
     lambda: return x * 0.1f;
@@ -275,7 +275,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Mains Low Voltage Setting"
+    name: "${name} Mains Low Voltage Setting"
     address: 0x410E
     value_type: U_WORD
     min_value: 90
@@ -286,7 +286,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Mains High Voltage Setting"
+    name: "${name} Mains High Voltage Setting"
     address: 0x410F
     value_type: U_WORD
     min_value: 264
@@ -297,7 +297,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Parallel Serial Number Setting"
+    name: "${name} Parallel Serial Number Setting"
     address: 0x4111
     value_type: U_WORD
     min_value: 0
@@ -307,7 +307,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Equalization Voltage Setting"
+    name: "${name} Equalization Voltage Setting"
     address: 0x4113
     value_type: U_WORD
     lambda: return x * 0.1f;
@@ -322,7 +322,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Equalization Charge Time Setting"
+    name: "${name} Equalization Charge Time Setting"
     address: 0x4114
     value_type: U_WORD
     min_value: 5
@@ -333,7 +333,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Equalization Delay Time Setting"
+    name: "${name} Equalization Delay Time Setting"
     address: 0x4115
     value_type: U_WORD
     min_value: 5
@@ -344,7 +344,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Equalization Interval Setting"
+    name: "${name} Equalization Interval Setting"
     address: 0x4116
     value_type: U_WORD
     min_value: 1
@@ -355,7 +355,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Dual Output Cutoff Voltage Setting"
+    name: "${name} Dual Output Cutoff Voltage Setting"
     address: 0x4118
     value_type: U_WORD
     lambda: return x * 0.1f;
@@ -370,7 +370,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Generator Rated Power Setting"
+    name: "${name} Generator Rated Power Setting"
     address: 0x411B
     value_type: U_WORD
     lambda: return x * 0.1f;
@@ -385,7 +385,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Generator Maximum Power Setting"
+    name: "${name} Generator Maximum Power Setting"
     address: 0x411C
     value_type: U_WORD
     lambda: return x * 0.1f;
@@ -400,7 +400,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "BMS ID Setting"
+    name: "${name} BMS ID Setting"
     address: 0x411F
     value_type: U_WORD
     min_value: 0
@@ -410,7 +410,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Low SOC Shutdown Setting"
+    name: "${name} Low SOC Shutdown Setting"
     address: 0x4120
     value_type: U_WORD
     min_value: 5
@@ -421,7 +421,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Battery SOC Setting"
+    name: "${name} Battery SOC Setting"
     address: 0x4121
     value_type: U_WORD
     min_value: 10
@@ -432,7 +432,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "SOC To AC Power Setting"
+    name: "${name} SOC To AC Power Setting"
     address: 0x4122
     value_type: U_WORD
     min_value: 10

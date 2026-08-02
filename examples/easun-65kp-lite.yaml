@@ -5,7 +5,7 @@
 # essencial telemetry and configuration.
 
 substitutions:
-  name: easun_65kp
+  name: easun
   friendly_name: Easun 6.5KP
   device_description: "Monitor a Easun iSolar SMS 6.5KW inverter via USB-A RS232 port"
   tx_pin: GPIO16

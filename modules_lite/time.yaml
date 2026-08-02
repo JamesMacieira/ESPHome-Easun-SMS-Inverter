@@ -2,20 +2,20 @@
 # be written separately, with more than 500 ms between settings.
 
 globals:
-  - id: inverter_clock_synced_this_boot
+  - id: ${name}_inverter_clock_synced_this_boot
     type: bool
     restore_value: no
     initial_value: 'false'
 
 text_sensor:
   - platform: template
-    id: inverter_clock
-    name: "Inverter Date and Time"
+    id: ${name}_inverter_clock
+    name: "${name} Inverter Date and Time"
     icon: mdi:clock-outline
     entity_category: diagnostic
 
 script:
-  - id: read_inverter_clock
+  - id: ${name}_read_inverter_clock
     mode: single
     then:
       - lambda: |-
@@ -41,22 +41,22 @@ script:
 
                 char timestamp[20];
                 snprintf(timestamp, sizeof(timestamp), "%04u-%02u-%02u %02u:%02u:%02u", year + 2000, month, day, hour, minute, second);
-                id(inverter_clock).publish_state(timestamp);
+                id(${name}_inverter_clock).publish_state(timestamp);
                 ESP_LOGI("easun_sms", "Inverter clock readback: %s", timestamp);
               });
           controller->queue_command(readback);
 
-  - id: synchronize_inverter_clock
+  - id: ${name}_synchronize_inverter_clock
     mode: single
     then:
       - lambda: |-
-          auto now = id(inverter_ntp_time).now();
+          auto now = id(${name}_inverter_ntp_time).now();
           if (!now.is_valid()) {
             ESP_LOGW("easun_sms", "Inverter clock not synchronized: NTP time is invalid");
             return;
           }
 
-          id(inverter_clock_synced_this_boot) = true;
+          id(${name}_inverter_clock_synced_this_boot) = true;
           auto *controller = id(sms_0);
           // The normal Lite throttle is 150 ms. Raise it temporarily so the
           // six separate UserSet writes comply with the protocol's >500 ms rule.
@@ -81,7 +81,7 @@ script:
                 controller->on_write_register_response(type, address, data);
                 controller->set_command_throttle(150);
                 ESP_LOGI("easun_sms", "Inverter clock synchronized");
-                id(read_inverter_clock).execute();
+                id(${name}_read_inverter_clock).execute();
               };
             }
             controller->queue_command(command);
@@ -90,30 +90,30 @@ script:
 interval:
   - interval: 5min
     then:
-      - script.execute: read_inverter_clock
+      - script.execute: ${name}_read_inverter_clock
 
 time:
   - platform: sntp
-    id: inverter_ntp_time
+    id: ${name}_inverter_ntp_time
     timezone: Europe/Lisbon
     on_time_sync:
       then:
         - if:
             condition:
-              lambda: 'return !id(inverter_clock_synced_this_boot);'
+              lambda: 'return !id(${name}_inverter_clock_synced_this_boot);'
             then:
-              - script.execute: synchronize_inverter_clock
+              - script.execute: ${name}_synchronize_inverter_clock
     on_time:
       - seconds: 0
         minutes: 5
         hours: 3
         then:
-          - script.execute: synchronize_inverter_clock
+          - script.execute: ${name}_synchronize_inverter_clock
 
 button:
   - platform: template
-    name: "Synchronize Inverter Clock"
+    name: "${name} Synchronize Inverter Clock"
     icon: mdi:clock-sync
     entity_category: config
     on_press:
-      - script.execute: synchronize_inverter_clock
+      - script.execute: ${name}_synchronize_inverter_clock

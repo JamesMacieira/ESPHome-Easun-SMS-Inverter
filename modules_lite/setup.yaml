@@ -2,7 +2,7 @@ select:
  
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Output Priority Setting"
+    name: "${name} Output Priority Setting"
     address: 0x4102
     skip_updates: 19
     value_type: U_WORD
@@ -38,7 +38,7 @@ select:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Charging Priority Setting"
+    name: "${name} Charging Priority Setting"
     address: 0x4104
     skip_updates: 19
     value_type: U_WORD
@@ -73,7 +73,7 @@ select:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Maximum Charging Current Setting"
+    name: "${name} Maximum Charging Current Setting"
     address: 0x4106
     skip_updates: 19
     value_type: U_WORD
@@ -121,7 +121,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "AC Charging Current Setting"
+    name: "${name} AC Charging Current Setting"
     address: 0x4105
     skip_updates: 19
     value_type: U_WORD
@@ -148,7 +148,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Battery Low Voltage Alarm Setting"
+    name: "${name} Battery Low Voltage Alarm Setting"
     address: 0x4108
     skip_updates: 19
     value_type: U_WORD
@@ -176,7 +176,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Battery Shutdown Voltage Setting"
+    name: "${name} Battery Shutdown Voltage Setting"
     address: 0x4109
     skip_updates: 19
     value_type: U_WORD
@@ -204,7 +204,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Battery To AC Voltage Setting"
+    name: "${name} Battery To AC Voltage Setting"
     address: 0x410C
     skip_updates: 19
     value_type: U_WORD
@@ -232,7 +232,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Return To Battery Voltage Setting"
+    name: "${name} Return To Battery Voltage Setting"
     address: 0x410D
     skip_updates: 19
     value_type: U_WORD
@@ -260,7 +260,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Low SOC Shutdown Setting"
+    name: "${name} Low SOC Shutdown Setting"
     address: 0x4120
     skip_updates: 19
     value_type: U_WORD
@@ -287,7 +287,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "Battery SOC Setting"
+    name: "${name} Battery SOC Setting"
     address: 0x4121
     skip_updates: 19
     value_type: U_WORD
@@ -314,7 +314,7 @@ number:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    name: "SOC To AC Power Setting"
+    name: "${name} SOC To AC Power Setting"
     address: 0x4122
     skip_updates: 19
     value_type: U_WORD

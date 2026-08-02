@@ -6,8 +6,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: software_version
-    name: "Software Version"
+    id: ${name}_software_version
+    name: "${name} Software Version"
     address: 0x0040
     register_type: holding
     value_type: U_WORD
@@ -15,8 +15,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_connection_status
-    name: "BMS Connection Status"
+    id: ${name}_bms_connection_status
+    name: "${name} BMS Connection Status"
     address: 0x0041
     register_type: holding
     value_type: U_WORD
@@ -24,40 +24,40 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: state_machine_state
-    name: "State Machine State"
+    id: ${name}_state_machine_state
+    name: "${name} State Machine State"
     address: 0x0042
     register_type: holding
     value_type: U_WORD
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: energy_terminal_status
-    name: "Energy Terminal Status"
+    id: ${name}_energy_terminal_status
+    name: "${name} Energy Terminal Status"
     address: 0x0043
     register_type: holding
     value_type: U_WORD
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: energy_flow_state
-    name: "Energy Flow State"
+    id: ${name}_energy_flow_state
+    name: "${name} Energy Flow State"
     address: 0x0044
     register_type: holding
     value_type: U_WORD
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: parallel_operation
-    name: "Parallel Operation"
+    id: ${name}_parallel_operation
+    name: "${name} Parallel Operation"
     address: 0x0045
     register_type: holding
     value_type: U_WORD
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: fault_code_1
-    name: "Fault Code 1"
+    id: ${name}_fault_code_1
+    name: "${name} Fault Code 1"
     address: 0x0046
     register_type: holding
     value_type: U_WORD
@@ -65,8 +65,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: fault_code_2
-    name: "Fault Code 2"
+    id: ${name}_fault_code_2
+    name: "${name} Fault Code 2"
     address: 0x0047
     register_type: holding
     value_type: U_WORD
@@ -74,8 +74,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: alarm_code_1
-    name: "Alarm Code 1"
+    id: ${name}_alarm_code_1
+    name: "${name} Alarm Code 1"
     address: 0x0048
     register_type: holding
     value_type: U_WORD
@@ -83,8 +83,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: alarm_code_2
-    name: "Alarm Code 2"
+    id: ${name}_alarm_code_2
+    name: "${name} Alarm Code 2"
     address: 0x0049
     register_type: holding
     value_type: U_WORD
@@ -96,8 +96,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_mains_voltage
-    name: "Phase A Mains Voltage"
+    id: ${name}_phase_a_mains_voltage
+    name: "${name} Phase A Mains Voltage"
     address: 0x0050
     register_type: holding
     value_type: S_WORD
@@ -110,8 +110,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_mains_current
-    name: "Phase A Mains Current"
+    id: ${name}_phase_a_mains_current
+    name: "${name} Phase A Mains Current"
     address: 0x0051
     register_type: holding
     value_type: S_WORD
@@ -124,8 +124,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_mains_frequency
-    name: "Phase A Mains Frequency"
+    id: ${name}_phase_a_mains_frequency
+    name: "${name} Phase A Mains Frequency"
     address: 0x0052
     register_type: holding
     value_type: S_WORD
@@ -138,8 +138,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_mains_power
-    name: "Phase A Mains Power"
+    id: ${name}_phase_a_mains_power
+    name: "${name} Phase A Mains Power"
     address: 0x0053
     register_type: holding
     value_type: S_WORD
@@ -149,8 +149,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_generator_voltage
-    name: "Phase A Generator Voltage"
+    id: ${name}_phase_a_generator_voltage
+    name: "${name} Phase A Generator Voltage"
     address: 0x0054
     register_type: holding
     value_type: S_WORD
@@ -163,8 +163,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_generator_current
-    name: "Phase A Generator Current"
+    id: ${name}_phase_a_generator_current
+    name: "${name} Phase A Generator Current"
     address: 0x0055
     register_type: holding
     value_type: S_WORD
@@ -177,8 +177,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_generator_frequency
-    name: "Phase A Generator Frequency"
+    id: ${name}_phase_a_generator_frequency
+    name: "${name} Phase A Generator Frequency"
     address: 0x0056
     register_type: holding
     value_type: S_WORD
@@ -191,8 +191,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_generator_power
-    name: "Phase A Generator Power"
+    id: ${name}_phase_a_generator_power
+    name: "${name} Phase A Generator Power"
     address: 0x0057
     register_type: holding
     value_type: S_WORD
@@ -202,8 +202,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_load_voltage
-    name: "Phase A Load Voltage"
+    id: ${name}_phase_a_load_voltage
+    name: "${name} Phase A Load Voltage"
     address: 0x0058
     register_type: holding
     value_type: S_WORD
@@ -216,8 +216,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_load_current
-    name: "Phase A Load Current"
+    id: ${name}_phase_a_load_current
+    name: "${name} Phase A Load Current"
     address: 0x0059
     register_type: holding
     value_type: S_WORD
@@ -230,8 +230,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_load_frequency
-    name: "Phase A Load Frequency"
+    id: ${name}_phase_a_load_frequency
+    name: "${name} Phase A Load Frequency"
     address: 0x005A
     register_type: holding
     value_type: S_WORD
@@ -244,8 +244,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_load_active_power
-    name: "Phase A Load Active Power"
+    id: ${name}_phase_a_load_active_power
+    name: "${name} Phase A Load Active Power"
     address: 0x005B
     register_type: holding
     value_type: S_WORD
@@ -255,8 +255,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_a_load_apparent_power
-    name: "Phase A Load Apparent Power"
+    id: ${name}_phase_a_load_apparent_power
+    name: "${name} Phase A Load Apparent Power"
     address: 0x005C
     register_type: holding
     value_type: S_WORD
@@ -266,8 +266,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: simplify_phase_a_load_percentage
-    name: "Simplified Phase A Load Percentage"
+    id: ${name}_simplify_phase_a_load_percentage
+    name: "${name} Simplified Phase A Load Percentage"
     address: 0x005D
     register_type: holding
     value_type: S_WORD
@@ -283,8 +283,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_mains_voltage
-    name: "Phase B Mains Voltage"
+    id: ${name}_phase_b_mains_voltage
+    name: "${name} Phase B Mains Voltage"
     address: 0x0060
     register_type: holding
     value_type: S_WORD
@@ -297,8 +297,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_mains_current
-    name: "Phase B Mains Current"
+    id: ${name}_phase_b_mains_current
+    name: "${name} Phase B Mains Current"
     address: 0x0061
     register_type: holding
     value_type: S_WORD
@@ -311,8 +311,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_mains_frequency
-    name: "Phase B Mains Frequency"
+    id: ${name}_phase_b_mains_frequency
+    name: "${name} Phase B Mains Frequency"
     address: 0x0062
     register_type: holding
     value_type: S_WORD
@@ -325,8 +325,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_mains_power
-    name: "Phase B Mains Power"
+    id: ${name}_phase_b_mains_power
+    name: "${name} Phase B Mains Power"
     address: 0x0063
     register_type: holding
     value_type: S_WORD
@@ -336,8 +336,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_generator_voltage
-    name: "Phase B Generator Voltage"
+    id: ${name}_phase_b_generator_voltage
+    name: "${name} Phase B Generator Voltage"
     address: 0x0064
     register_type: holding
     value_type: S_WORD
@@ -350,8 +350,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_generator_current
-    name: "Phase B Generator Current"
+    id: ${name}_phase_b_generator_current
+    name: "${name} Phase B Generator Current"
     address: 0x0065
     register_type: holding
     value_type: S_WORD
@@ -364,8 +364,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_generator_frequency
-    name: "Phase B Generator Frequency"
+    id: ${name}_phase_b_generator_frequency
+    name: "${name} Phase B Generator Frequency"
     address: 0x0066
     register_type: holding
     value_type: S_WORD
@@ -378,8 +378,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_generator_power
-    name: "Phase B Generator Power"
+    id: ${name}_phase_b_generator_power
+    name: "${name} Phase B Generator Power"
     address: 0x0067
     register_type: holding
     value_type: S_WORD
@@ -389,8 +389,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_load_voltage
-    name: "Phase B Load Voltage"
+    id: ${name}_phase_b_load_voltage
+    name: "${name} Phase B Load Voltage"
     address: 0x0068
     register_type: holding
     value_type: S_WORD
@@ -403,8 +403,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_load_current
-    name: "Phase B Load Current"
+    id: ${name}_phase_b_load_current
+    name: "${name} Phase B Load Current"
     address: 0x0069
     register_type: holding
     value_type: S_WORD
@@ -417,8 +417,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_load_frequency
-    name: "Phase B Load Frequency"
+    id: ${name}_phase_b_load_frequency
+    name: "${name} Phase B Load Frequency"
     address: 0x006A
     register_type: holding
     value_type: S_WORD
@@ -431,8 +431,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_load_active_power
-    name: "Phase B Load Active Power"
+    id: ${name}_phase_b_load_active_power
+    name: "${name} Phase B Load Active Power"
     address: 0x006B
     register_type: holding
     value_type: S_WORD
@@ -442,8 +442,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_b_load_apparent_power
-    name: "Phase B Load Apparent Power"
+    id: ${name}_phase_b_load_apparent_power
+    name: "${name} Phase B Load Apparent Power"
     address: 0x006C
     register_type: holding
     value_type: S_WORD
@@ -453,8 +453,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: simplify_phase_b_load_percentage
-    name: "Simplified Phase B Load Percentage"
+    id: ${name}_simplify_phase_b_load_percentage
+    name: "${name} Simplified Phase B Load Percentage"
     address: 0x006D
     register_type: holding
     value_type: S_WORD
@@ -470,8 +470,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_mains_voltage
-    name: "Phase C Mains Voltage"
+    id: ${name}_phase_c_mains_voltage
+    name: "${name} Phase C Mains Voltage"
     address: 0x0070
     register_type: holding
     value_type: S_WORD
@@ -484,8 +484,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_mains_current
-    name: "Phase C Mains Current"
+    id: ${name}_phase_c_mains_current
+    name: "${name} Phase C Mains Current"
     address: 0x0071
     register_type: holding
     value_type: S_WORD
@@ -498,8 +498,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_mains_frequency
-    name: "Phase C Mains Frequency"
+    id: ${name}_phase_c_mains_frequency
+    name: "${name} Phase C Mains Frequency"
     address: 0x0072
     register_type: holding
     value_type: S_WORD
@@ -512,8 +512,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_mains_power
-    name: "Phase C Mains Power"
+    id: ${name}_phase_c_mains_power
+    name: "${name} Phase C Mains Power"
     address: 0x0073
     register_type: holding
     value_type: S_WORD
@@ -523,8 +523,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_generator_voltage
-    name: "Phase C Generator Voltage"
+    id: ${name}_phase_c_generator_voltage
+    name: "${name} Phase C Generator Voltage"
     address: 0x0074
     register_type: holding
     value_type: S_WORD
@@ -537,8 +537,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_generator_current
-    name: "Phase C Generator Current"
+    id: ${name}_phase_c_generator_current
+    name: "${name} Phase C Generator Current"
     address: 0x0075
     register_type: holding
     value_type: S_WORD
@@ -551,8 +551,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_generator_frequency
-    name: "Phase C Generator Frequency"
+    id: ${name}_phase_c_generator_frequency
+    name: "${name} Phase C Generator Frequency"
     address: 0x0076
     register_type: holding
     value_type: S_WORD
@@ -565,8 +565,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_generator_power
-    name: "Phase C Generator Power"
+    id: ${name}_phase_c_generator_power
+    name: "${name} Phase C Generator Power"
     address: 0x0077
     register_type: holding
     value_type: S_WORD
@@ -576,8 +576,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_load_voltage
-    name: "Phase C Load Voltage"
+    id: ${name}_phase_c_load_voltage
+    name: "${name} Phase C Load Voltage"
     address: 0x0078
     register_type: holding
     value_type: S_WORD
@@ -590,8 +590,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_load_current
-    name: "Phase C Load Current"
+    id: ${name}_phase_c_load_current
+    name: "${name} Phase C Load Current"
     address: 0x0079
     register_type: holding
     value_type: S_WORD
@@ -604,8 +604,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_load_frequency
-    name: "Phase C Load Frequency"
+    id: ${name}_phase_c_load_frequency
+    name: "${name} Phase C Load Frequency"
     address: 0x007A
     register_type: holding
     value_type: S_WORD
@@ -618,8 +618,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_load_active_power
-    name: "Phase C Load Active Power"
+    id: ${name}_phase_c_load_active_power
+    name: "${name} Phase C Load Active Power"
     address: 0x007B
     register_type: holding
     value_type: S_WORD
@@ -629,8 +629,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: phase_c_load_apparent_power
-    name: "Phase C Load Apparent Power"
+    id: ${name}_phase_c_load_apparent_power
+    name: "${name} Phase C Load Apparent Power"
     address: 0x007C
     register_type: holding
     value_type: S_WORD
@@ -640,8 +640,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: simplify_phase_c_load_percentage
-    name: "Simplified Phase C Load Percentage"
+    id: ${name}_simplify_phase_c_load_percentage
+    name: "${name} Simplified Phase C Load Percentage"
     address: 0x007D
     register_type: holding
     value_type: S_WORD
@@ -658,8 +658,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: battery_positive_voltage
-    name: "Battery Positive Voltage"
+    id: ${name}_battery_positive_voltage
+    name: "${name} Battery Positive Voltage"
     address: 0x0080
     register_type: holding
     value_type: S_WORD
@@ -672,8 +672,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: battery_positive_current
-    name: "Battery Positive Current"
+    id: ${name}_battery_positive_current
+    name: "${name} Battery Positive Current"
     address: 0x0081
     register_type: holding
     value_type: S_WORD
@@ -686,8 +686,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: battery_negative_voltage
-    name: "Battery Negative Voltage"
+    id: ${name}_battery_negative_voltage
+    name: "${name} Battery Negative Voltage"
     address: 0x0082
     register_type: holding
     value_type: S_WORD
@@ -700,8 +700,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: battery_negative_current
-    name: "Battery Negative Current"
+    id: ${name}_battery_negative_current
+    name: "${name} Battery Negative Current"
     address: 0x0083
     register_type: holding
     value_type: S_WORD
@@ -714,8 +714,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: battery_capacity_percentage
-    name: "Battery Capacity Percentage"
+    id: ${name}_battery_capacity_percentage
+    name: "${name} Battery Capacity Percentage"
     address: 0x0084
     register_type: holding
     value_type: S_WORD
@@ -727,8 +727,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: battery_power
-    name: "Battery Power"
+    id: ${name}_battery_power
+    name: "${name} Battery Power"
     address: 0x0085
     register_type: holding
     value_type: S_WORD
@@ -742,8 +742,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_battery_voltage
-    name: "BMS Battery Voltage"
+    id: ${name}_bms_battery_voltage
+    name: "${name} BMS Battery Voltage"
     address: 0x0088
     register_type: holding
     value_type: S_WORD
@@ -756,8 +756,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_battery_current
-    name: "BMS Battery Current"
+    id: ${name}_bms_battery_current
+    name: "${name} BMS Battery Current"
     address: 0x0089
     register_type: holding
     value_type: S_WORD
@@ -770,8 +770,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: simplify_bms_soc
-    name: "Simplified BMS SOC"
+    id: ${name}_simplify_bms_soc
+    name: "${name} Simplified BMS SOC"
     address: 0x008A
     register_type: holding
     value_type: S_WORD
@@ -781,8 +781,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: simplify_bms_temperature
-    name: "Simplified BMS Temperature"
+    id: ${name}_simplify_bms_temperature
+    name: "${name} Simplified BMS Temperature"
     address: 0x008B
     register_type: holding
     value_type: S_WORD
@@ -792,8 +792,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_cv_voltage
-    name: "BMS CV Voltage"
+    id: ${name}_bms_cv_voltage
+    name: "${name} BMS CV Voltage"
     address: 0x008C
     register_type: holding
     value_type: U_WORD
@@ -806,8 +806,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_rated_capacity
-    name: "BMS Rated Capacity"
+    id: ${name}_bms_rated_capacity
+    name: "${name} BMS Rated Capacity"
     address: 0x008D
     register_type: holding
     value_type: U_WORD
@@ -815,8 +815,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: simplify_bms_current_capacity
-    name: "Simplified BMS Current Capacity"
+    id: ${name}_simplify_bms_current_capacity
+    name: "${name} Simplified BMS Current Capacity"
     address: 0x008E
     register_type: holding
     value_type: U_WORD
@@ -824,32 +824,32 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: simplify_bms_communication_status
-    name: "Simplified BMS Communication Status"
+    id: ${name}_simplify_bms_communication_status
+    name: "${name} Simplified BMS Communication Status"
     address: 0x008F
     register_type: holding
     value_type: U_WORD
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: lithium_battery_network_status
-    name: "Lithium Battery Network Status"
+    id: ${name}_lithium_battery_network_status
+    name: "${name} Lithium Battery Network Status"
     address: 0x0090
     register_type: holding
     value_type: U_WORD
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_failure
-    name: "BMS Failure"
+    id: ${name}_bms_failure
+    name: "${name} BMS Failure"
     address: 0x0091
     register_type: holding
     value_type: U_WORD
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: bms_alarms
-    name: "BMS Alarms"
+    id: ${name}_bms_alarms
+    name: "${name} BMS Alarms"
     address: 0x0092
     register_type: holding
     value_type: U_WORD
@@ -860,8 +860,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: simplify_pv1_voltage
-    name: "Simplified PV1 Voltage"
+    id: ${name}_simplify_pv1_voltage
+    name: "${name} Simplified PV1 Voltage"
     address: 0x0096
     register_type: holding
     value_type: S_WORD
@@ -874,8 +874,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: simplify_pv1_current
-    name: "Simplified PV1 Current"
+    id: ${name}_simplify_pv1_current
+    name: "${name} Simplified PV1 Current"
     address: 0x0097
     register_type: holding
     value_type: S_WORD
@@ -888,8 +888,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: simplify_pv1_power
-    name: "Simplified PV1 Power"
+    id: ${name}_simplify_pv1_power
+    name: "${name} Simplified PV1 Power"
     address: 0x0098
     register_type: holding
     value_type: S_WORD
@@ -899,8 +899,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: simplify_pv2_voltage
-    name: "Simplified PV2 Voltage"
+    id: ${name}_simplify_pv2_voltage
+    name: "${name} Simplified PV2 Voltage"
     address: 0x0099
     register_type: holding
     value_type: S_WORD
@@ -913,8 +913,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: simplify_pv2_current
-    name: "Simplified PV2 Current"
+    id: ${name}_simplify_pv2_current
+    name: "${name} Simplified PV2 Current"
     address: 0x009A
     register_type: holding
     value_type: S_WORD
@@ -927,8 +927,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: simplify_pv2_power
-    name: "Simplified PV2 Power"
+    id: ${name}_simplify_pv2_power
+    name: "${name} Simplified PV2 Power"
     address: 0x009B
     register_type: holding
     value_type: S_WORD
@@ -938,8 +938,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: pv_energy_today
-    name: "PV Energy Today"
+    id: ${name}_pv_energy_today
+    name: "${name} PV Energy Today"
     address: 0x009C
     register_type: holding
     value_type: U_WORD
@@ -947,8 +947,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: sms_0
-    id: pv_energy_total
-    name: "PV Energy Total"
+    id: ${name}_pv_energy_total
+    name: "${name} PV Energy Total"
     address: 0x009D
     register_type: holding
     value_type: U_WORD
@@ -965,288 +965,288 @@ binary_sensor:
 #
 
   - platform: template
-    name: "Mains Soft Start Failure"
+    name: "${name} Mains Soft Start Failure"
     device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 0));'
+    lambda: 'return ((uint16_t)id(${name}_fault_code_1).state & (1 << 0));'
 
   - platform: template
-    name: "Bus Overvoltage"
+    name: "${name} Bus Overvoltage"
     device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 1));'
+    lambda: 'return ((uint16_t)id(${name}_fault_code_1).state & (1 << 1));'
 
   - platform: template
-    name: "Bus Undervoltage"
+    name: "${name} Bus Undervoltage"
     device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 2));'
+    lambda: 'return ((uint16_t)id(${name}_fault_code_1).state & (1 << 2));'
 
   - platform: template
-    name: "Battery Overcurrent"
+    name: "${name} Battery Overcurrent"
     device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 3));'
+    lambda: 'return ((uint16_t)id(${name}_fault_code_1).state & (1 << 3));'
 
   - platform: template
-    name: "Overtemperature"
+    name: "${name} Overtemperature"
     device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 4));'
+    lambda: 'return ((uint16_t)id(${name}_fault_code_1).state & (1 << 4));'
 
   - platform: template
-    name: "Battery Overvoltage"
+    name: "${name} Battery Overvoltage"
     device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 5));'
+    lambda: 'return ((uint16_t)id(${name}_fault_code_1).state & (1 << 5));'
 
   - platform: template
-    name: "Battery Soft Start Failure"
+    name: "${name} Battery Soft Start Failure"
     device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 6));'
+    lambda: 'return ((uint16_t)id(${name}_fault_code_1).state & (1 << 6));'
 
   - platform: template
-    name: "Bus Short Circuit"
+    name: "${name} Bus Short Circuit"
     device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 7));'
+    lambda: 'return ((uint16_t)id(${name}_fault_code_1).state & (1 << 7));'
 
   - platform: template
-    name: "Inverter Soft Start Failure"
+    name: "${name} Inverter Soft Start Failure"
     device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 8));'
+    lambda: 'return ((uint16_t)id(${name}_fault_code_1).state & (1 << 8));'
 
   - platform: template
-    name: "Inverter Overvoltage"
+    name: "${name} Inverter Overvoltage"
     device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 9));'
+    lambda: 'return ((uint16_t)id(${name}_fault_code_1).state & (1 << 9));'
 
   - platform: template
-    name: "Inverter Undervoltage"
+    name: "${name} Inverter Undervoltage"
     device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 10));'
+    lambda: 'return ((uint16_t)id(${name}_fault_code_1).state & (1 << 10));'
 
   - platform: template
-    name: "Inverter Short Circuit"
+    name: "${name} Inverter Short Circuit"
     device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 11));'
+    lambda: 'return ((uint16_t)id(${name}_fault_code_1).state & (1 << 11));'
 
   - platform: template
-    name: "Negative Power Protection"
+    name: "${name} Negative Power Protection"
     device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 12));'
+    lambda: 'return ((uint16_t)id(${name}_fault_code_1).state & (1 << 12));'
 
   - platform: template
-    name: "Overload Failure"
+    name: "${name} Overload Failure"
     device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 13));'
+    lambda: 'return ((uint16_t)id(${name}_fault_code_1).state & (1 << 13));'
 
   - platform: template
-    name: "Hardware Incompatible"
+    name: "${name} Hardware Incompatible"
     device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 14));'
+    lambda: 'return ((uint16_t)id(${name}_fault_code_1).state & (1 << 14));'
 
   - platform: template
-    name: "Bootloader Missing"
+    name: "${name} Bootloader Missing"
     device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_1).state & (1 << 15));'
+    lambda: 'return ((uint16_t)id(${name}_fault_code_1).state & (1 << 15));'
 
 #
 # Fault Code 2 (0x0047)
 #
 
   - platform: template
-    name: "Programming In Progress"
+    name: "${name} Programming In Progress"
     device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_2).state & (1 << 0));'
+    lambda: 'return ((uint16_t)id(${name}_fault_code_2).state & (1 << 0));'
 
   - platform: template
-    name: "PV Reverse Connection"
+    name: "${name} PV Reverse Connection"
     device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_2).state & (1 << 1));'
+    lambda: 'return ((uint16_t)id(${name}_fault_code_2).state & (1 << 1));'
 
   - platform: template
-    name: "Parallel Serial Number Error"
+    name: "${name} Parallel Serial Number Error"
     device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_2).state & (1 << 2));'
+    lambda: 'return ((uint16_t)id(${name}_fault_code_2).state & (1 << 2));'
 
   - platform: template
-    name: "Parallel Communication Error"
+    name: "${name} Parallel Communication Error"
     device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_2).state & (1 << 3));'
+    lambda: 'return ((uint16_t)id(${name}_fault_code_2).state & (1 << 3));'
 
   - platform: template
-    name: "Fault: Parallel Battery Voltage Difference"
+    name: "${name} Fault: Parallel Battery Voltage Difference"
     device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_2).state & (1 << 4));'
+    lambda: 'return ((uint16_t)id(${name}_fault_code_2).state & (1 << 4));'
 
   - platform: template
-    name: "Parallel Grid Voltage Difference"
+    name: "${name} Parallel Grid Voltage Difference"
     device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_2).state & (1 << 5));'
+    lambda: 'return ((uint16_t)id(${name}_fault_code_2).state & (1 << 5));'
 
   - platform: template
-    name: "Parallel Grid Frequency Difference"
+    name: "${name} Parallel Grid Frequency Difference"
     device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_2).state & (1 << 6));'
+    lambda: 'return ((uint16_t)id(${name}_fault_code_2).state & (1 << 6));'
 
   - platform: template
-    name: "Parallel Phase Loss"
+    name: "${name} Parallel Phase Loss"
     device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_2).state & (1 << 7));'
+    lambda: 'return ((uint16_t)id(${name}_fault_code_2).state & (1 << 7));'
 
   - platform: template
-    name: "Parallel Output Synchronization Lost"
+    name: "${name} Parallel Output Synchronization Lost"
     device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_2).state & (1 << 8));'
+    lambda: 'return ((uint16_t)id(${name}_fault_code_2).state & (1 << 8));'
 
   - platform: template
-    name: "BMS Fault"
+    name: "${name} BMS Fault"
     device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_2).state & (1 << 9));'
+    lambda: 'return ((uint16_t)id(${name}_fault_code_2).state & (1 << 9));'
 
   - platform: template
-    name: "MCU Fault"
+    name: "${name} MCU Fault"
     device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_2).state & (1 << 10));'
+    lambda: 'return ((uint16_t)id(${name}_fault_code_2).state & (1 << 10));'
 
   - platform: template
-    name: "Inverter Load Abnormal"
+    name: "${name} Inverter Load Abnormal"
     device_class: problem
-    lambda: 'return ((uint16_t)id(fault_code_2).state & (1 << 12));'
+    lambda: 'return ((uint16_t)id(${name}_fault_code_2).state & (1 << 12));'
 
 #
 # Alarm Code 1 (0x0048)
 #
 
   - platform: template
-    name: "Battery Not Connected"
+    name: "${name} Battery Not Connected"
     device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 0));'
+    lambda: 'return ((uint16_t)id(${name}_alarm_code_1).state & (1 << 0));'
 
   - platform: template
-    name: "Battery Undervoltage"
+    name: "${name} Battery Undervoltage"
     device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 1));'
+    lambda: 'return ((uint16_t)id(${name}_alarm_code_1).state & (1 << 1));'
 
   - platform: template
-    name: "Battery Low Voltage"
+    name: "${name} Battery Low Voltage"
     device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 2));'
+    lambda: 'return ((uint16_t)id(${name}_alarm_code_1).state & (1 << 2));'
 
   - platform: template
-    name: "Charger Short Circuit"
+    name: "${name} Charger Short Circuit"
     device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 3));'
+    lambda: 'return ((uint16_t)id(${name}_alarm_code_1).state & (1 << 3));'
 
   - platform: template
-    name: "Battery Overcharge"
+    name: "${name} Battery Overcharge"
     device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 5));'
+    lambda: 'return ((uint16_t)id(${name}_alarm_code_1).state & (1 << 5));'
 
   - platform: template
-    name: "BMS Lost"
+    name: "${name} BMS Lost"
     device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 6));'
+    lambda: 'return ((uint16_t)id(${name}_alarm_code_1).state & (1 << 6));'
 
   - platform: template
-    name: "Overtemperature Alarm"
+    name: "${name} Overtemperature Alarm"
     device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 7));'
+    lambda: 'return ((uint16_t)id(${name}_alarm_code_1).state & (1 << 7));'
 
   - platform: template
-    name: "Fan Stalled"
+    name: "${name} Fan Stalled"
     device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 8));'
+    lambda: 'return ((uint16_t)id(${name}_alarm_code_1).state & (1 << 8));'
 
   - platform: template
-    name: "EEPROM Fault"
+    name: "${name} EEPROM Fault"
     device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 9));'
+    lambda: 'return ((uint16_t)id(${name}_alarm_code_1).state & (1 << 9));'
 
   - platform: template
-    name: "Overload Alarm"
+    name: "${name} Overload Alarm"
     device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 10));'
+    lambda: 'return ((uint16_t)id(${name}_alarm_code_1).state & (1 << 10));'
 
   - platform: template
-    name: "Generator Waveform Abnormal"
+    name: "${name} Generator Waveform Abnormal"
     device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 11));'
+    lambda: 'return ((uint16_t)id(${name}_alarm_code_1).state & (1 << 11));'
 
   - platform: template
-    name: "Weak PV Energy"
+    name: "${name} Weak PV Energy"
     device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 12));'
+    lambda: 'return ((uint16_t)id(${name}_alarm_code_1).state & (1 << 12));'
 
   - platform: template
-    name: "Parallel Synchronization Lost"
+    name: "${name} Parallel Synchronization Lost"
     device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 13));'
+    lambda: 'return ((uint16_t)id(${name}_alarm_code_1).state & (1 << 13));'
 
   - platform: template
-    name: "Parallel Phase Loss Alarm"
+    name: "${name} Parallel Phase Loss Alarm"
     device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 14));'
+    lambda: 'return ((uint16_t)id(${name}_alarm_code_1).state & (1 << 14));'
 
   - platform: template
-    name: "Parallel Version Incompatible"
+    name: "${name} Parallel Version Incompatible"
     device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_1).state & (1 << 15));'
+    lambda: 'return ((uint16_t)id(${name}_alarm_code_1).state & (1 << 15));'
 
 #
 # Alarm Code 2 (0x0049)
 #
 
   - platform: template
-    name: "Parallel Communication Alarm"
+    name: "${name} Parallel Communication Alarm"
     device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_2).state & (1 << 0));'
+    lambda: 'return ((uint16_t)id(${name}_alarm_code_2).state & (1 << 0));'
 
   - platform: template
-    name: "Parallel Voltage Or Frequency Difference"
+    name: "${name} Parallel Voltage Or Frequency Difference"
     device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_2).state & (1 << 1));'
+    lambda: 'return ((uint16_t)id(${name}_alarm_code_2).state & (1 << 1));'
 
   - platform: template
-    name: "Low SOC Shutdown"
+    name: "${name} Low SOC Shutdown"
     device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_2).state & (1 << 2));'
+    lambda: 'return ((uint16_t)id(${name}_alarm_code_2).state & (1 << 2));'
 
   - platform: template
-    name: "Low SOC Alarm"
+    name: "${name} Low SOC Alarm"
     device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_2).state & (1 << 3));'
+    lambda: 'return ((uint16_t)id(${name}_alarm_code_2).state & (1 << 3));'
 
   - platform: template
-    name: "Alarm: Parallel Battery Voltage Difference"
+    name: "${name} Alarm: Parallel Battery Voltage Difference"
     device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_2).state & (1 << 4));'
+    lambda: 'return ((uint16_t)id(${name}_alarm_code_2).state & (1 << 4));'
 
   - platform: template
-    name: "Battery Short Circuit"
+    name: "${name} Battery Short Circuit"
     device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_2).state & (1 << 5));'
+    lambda: 'return ((uint16_t)id(${name}_alarm_code_2).state & (1 << 5));'
 
   - platform: template
-    name: "Battery Below Start Voltage"
+    name: "${name} Battery Below Start Voltage"
     device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_2).state & (1 << 6));'
+    lambda: 'return ((uint16_t)id(${name}_alarm_code_2).state & (1 << 6));'
 
   - platform: template
-    name: "Generator Overload"
+    name: "${name} Generator Overload"
     device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_2).state & (1 << 7));'
+    lambda: 'return ((uint16_t)id(${name}_alarm_code_2).state & (1 << 7));'
 
   - platform: template
-    name: "Generator Undervoltage"
+    name: "${name} Generator Undervoltage"
     device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_2).state & (1 << 8));'
+    lambda: 'return ((uint16_t)id(${name}_alarm_code_2).state & (1 << 8));'
 
   - platform: template
-    name: "Generator Overvoltage"
+    name: "${name} Generator Overvoltage"
     device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_2).state & (1 << 9));'
+    lambda: 'return ((uint16_t)id(${name}_alarm_code_2).state & (1 << 9));'
 
   - platform: template
-    name: "CT Reverse Connection"
+    name: "${name} CT Reverse Connection"
     device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_2).state & (1 << 10));'
+    lambda: 'return ((uint16_t)id(${name}_alarm_code_2).state & (1 << 10));'
 
   - platform: template
-    name: "Unstable Grid Power"
+    name: "${name} Unstable Grid Power"
     device_class: problem
-    lambda: 'return ((uint16_t)id(alarm_code_2).state & (1 << 11));'
+    lambda: 'return ((uint16_t)id(${name}_alarm_code_2).state & (1 << 11));'
