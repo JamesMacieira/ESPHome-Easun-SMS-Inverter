@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100mm" height="70mm" viewBox="0 0 1000 700" role="img" aria-labelledby="title desc">
+  <title id="title">Etiqueta de estados do LED do Easun SMS</title>
+  <desc id="desc">Legenda das cores do LED de estado do inversor.</desc>
+  <style>
+    .bg { fill: #ffffff; }
+    .border { fill: none; stroke: #17212b; stroke-width: 8; }
+    .heading { font: 700 42px Arial, sans-serif; fill: #17212b; letter-spacing: 2px; }
+    .subheading { font: 400 22px Arial, sans-serif; fill: #52616b; letter-spacing: 1px; }
+    .label { font: 700 24px Arial, sans-serif; fill: #17212b; }
+    .note { font: 400 19px Arial, sans-serif; fill: #52616b; }
+    .separator { stroke: #d9e1e6; stroke-width: 3; }
+    .led { stroke: #17212b; stroke-width: 5; }
+  </style>
+
+  <rect class="bg" width="1000" height="700" rx="28" />
+  <rect class="border" x="12" y="12" width="976" height="676" rx="20" />
+
+  <text class="heading" x="500" y="75" text-anchor="middle">EASUN SMS · LED DE ESTADO</text>
+  <text class="subheading" x="500" y="110" text-anchor="middle">LEGENDA PARA O ESP32-S3</text>
+  <line class="separator" x1="50" y1="135" x2="950" y2="135" />
+
+  <circle class="led" cx="92" cy="178" r="24" fill="#ff0000" />
+  <text class="label" x="145" y="171">VERMELHO intermitente</text>
+  <text class="note" x="145" y="198">Falha ou alarme ativo</text>
+
+  <circle class="led" cx="92" cy="248" r="24" fill="#ffffff" />
+  <text class="label" x="145" y="241">BRANCO fraco</text>
+  <text class="note" x="145" y="268">Standby</text>
+
+  <circle class="led" cx="92" cy="318" r="24" fill="#0000ff" />
+  <text class="label" x="145" y="311">AZUL</text>
+  <text class="note" x="145" y="338">Modo AC / rede elétrica</text>
+
+  <circle class="led" cx="92" cy="388" r="24" fill="#00ff00" />
+  <text class="label" x="145" y="381">VERDE sólido</text>
+  <text class="note" x="145" y="408">Modo solar: MPPT normal</text>
+
+  <circle class="led" cx="92" cy="458" r="24" fill="#a600ff" />
+  <text class="label" x="145" y="451">ROXO</text>
+  <text class="note" x="145" y="478">Modo bateria</text>
+
+  <circle class="led" cx="92" cy="528" r="24" fill="#1a1aff" />
+  <text class="label" x="145" y="521">AZUL fraco</text>
+  <text class="note" x="145" y="548">Arranque, inicialização ou estado desconhecido</text>
+
+  <line class="separator" x1="50" y1="570" x2="950" y2="570" />
+
+  <circle class="led" cx="92" cy="615" r="20" fill="#ffff00" />
+  <circle class="led" cx="142" cy="615" r="20" fill="#1aff00" />
+  <text class="label" x="180" y="610">AMARELO ↔ LIMA</text>
+  <text class="note" x="180" y="637">Solar: MPPT a procurar/ajustar</text>
+
+  <circle class="led" cx="588" cy="615" r="20" fill="#ff5900" />
+  <circle class="led" cx="638" cy="615" r="20" fill="#005900" />
+  <text class="label" x="676" y="610">LARANJA ↔ VERDE</text>
+  <text class="note" x="676" y="637">Wi-Fi/API Home Assistant desligada</text>
+
+  <rect x="893" y="170" width="45" height="45" rx="8" fill="#1c2730" />
+  <line x1="900" y1="177" x2="931" y2="208" stroke="#ffffff" stroke-width="6" />
+  <line x1="931" y1="177" x2="900" y2="208" stroke="#ffffff" stroke-width="6" />
+  <text class="label" x="875" y="245" text-anchor="end">APAGADO</text>
+  <text class="note" x="875" y="270" text-anchor="end">Inversor desligado</text>
+</svg>

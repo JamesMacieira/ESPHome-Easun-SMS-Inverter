@@ -76,7 +76,7 @@ modbus_controller:
     address: 0x01
     modbus_id: modbus_0
     setup_priority: -10
-    update_interval: 2s
+    update_interval: 3s
     command_throttle: 150ms
 
 light:
@@ -89,9 +89,14 @@ light:
     rgb_order: GRB
     # Limits maximum electrical output to 20% even when Home Assistant uses
     # the brightness slider at 100%.
-    color_correct: [20%, 20%, 20%]
+    color_correct: [30%, 30%, 30%]
     default_transition_length: 0s
     restore_mode: ALWAYS_OFF
+
+button:
+
+  - platform: restart
+    name: "${name} Esp Home Restart"
 
 packages:
   easun_sms:
